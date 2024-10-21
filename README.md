@@ -24,13 +24,13 @@ Upišite korake za instalaciju projekta.
 
 ## Članovi tima
 
-Zvonko Čagalj - https://github.com/Zvonko-Cagalj
-Sven Sonicki - https://github.com/SSonicki
-Marijan Tadijal - https://github.com/FER-Marijan-Tadijal
-Haris Plančić - https://github.com/hplancic
-Roko Peran - https://github.com/Rokidza
-Marko Subašić - https://github.com/
-Filip Crnoja - https://github.com/FilipCrnoja
+- [Zvonko Čagalj](https://github.com/Zvonko-Cagalj)  
+- [Sven Sonicki](https://github.com/SSonicki)  
+- [Marijan Tadijal](https://github.com/FER-Marijan-Tadijal)  
+- [Haris Plančić](https://github.com/hplancic)  
+- [Roko Peran](https://github.com/Rokidza)  
+- [Marko Subašić](https://github.com/)  
+- [Filip Crnoja](https://github.com/FilipCrnoja)
 
 
 ## Kontribucije
