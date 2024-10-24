@@ -29,6 +29,7 @@ Administratori imaju mogućnost upravljanja korisnicima i oglasima te uklanjanja
 2. Registracija i autentifikacija korisnika provodi se putem OAuth 2.0 protokola.
 3. Sustav treba podržavati rad više korisnika istovremeno (rad u stvarnom vremenu).
 4. Sustav mora biti pouzdan i dostupan, osiguravajući neprekidan rad aplikacije.
+5. Za prikaz geografskih informacija i interaktivnih mapa, sustav će koristiti OpenStreetMap kao osnovu za kartografske podatke.
 
 ## Tehnologije
 
