@@ -23,7 +23,7 @@ Administratori imaju mogućnost upravljanja korisnicima i oglasima te uklanjanja
 9. Arhiviranje i pregled izvršenih zamjena u sekciji "Moje zamjene".
 10. Upravljanje platformom od strane administratora (uređivanje oglasa, brisanje sadržaja, deaktivacija korisničkih računa).
 
-##Nefunkcionalni zahtjevi
+## Nefunkcionalni zahtjevi
 
 1. Aplikacija mora biti prilagođena mobilnim uređajima (responsivna web aplikacija).
 2. Registracija i autentifikacija korisnika provodi se putem OAuth 2.0 protokola.
