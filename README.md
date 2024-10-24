@@ -32,9 +32,9 @@ Administratori imaju mogućnost upravljanja korisnicima i oglasima te uklanjanja
 
 ## Tehnologije
 
-Frontend - React, HTML, CSS
-Backend - Spring
-Baza podataka - PostgreSQL
+- Frontend - React, HTML, CSS
+- Backend - Spring
+- Baza podataka - PostgreSQL
 
 
 ## Članovi tima
