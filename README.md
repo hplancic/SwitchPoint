@@ -12,15 +12,30 @@ Administratori imaju mogućnost upravljanja korisnicima i oglasima te uklanjanja
 
 ## Funkcijski zahtjevi
 
-Navedite ključne zahtjeve Vašeg projekta.
+1. Uvid u listu svih objavljenih ploča omogućen i neregistriranim korisnicima.
+2. Registracija i prijava korisnika (OAuth 2.0 protokol).
+3. Objavljivanje ploča sa svim relevantnim informacijama (naziv albuma, izvođač, godina, žanr, stanje ploče i omota, itd.).
+4. Pregled i uređivanje vlastitih ploča ("Moje ploče").
+5. Pretraga i filtriranje ploča po kategorijama i putem trake za pretraživanje.
+6. Ponuda za zamjenu ploča s mogućnošću odabira jedne ili više ploča.
+7. Prikaz i obavijest o novim ponudama za zamjenu putem sustava i e-maila.
+8. Stvaranje popisa želja ploča koje korisnik traži te obavijesti kada postanu dostupne.
+9. Arhiviranje i pregled izvršenih zamjena u sekciji "Moje zamjene".
+10. Upravljanje platformom od strane administratora (uređivanje oglasa, brisanje sadržaja, deaktivacija korisničkih računa).
+
+##Nefunkcionalni zahtjevi
+
+1. Aplikacija mora biti prilagođena mobilnim uređajima (responsivna web aplikacija).
+2. Registracija i autentifikacija korisnika provodi se putem OAuth 2.0 protokola.
+3. Sustav treba podržavati rad više korisnika istovremeno (rad u stvarnom vremenu).
+4. Sustav mora biti pouzdan i dostupan, osiguravajući neprekidan rad aplikacije.
 
 ## Tehnologije
 
-Navedite koje ste tehnologije koristili u projektu.
+Frontend - React, HTML, CSS
+Backend - Spring
+Baza podataka - PostgreSQL
 
-## Instalacija
-
-Upišite korake za instalaciju projekta.
 
 ## Članovi tima
 
