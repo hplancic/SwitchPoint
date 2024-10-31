@@ -1,45 +1,56 @@
 package G16.SwitchPoint.vinyl;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 @Entity
+@Table(name = "vinyls")
 public class Vinyl {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
-   private String title;
+   private Long vinylId;
+   private String vinylTitle;
    private String artist;
+   @Enumerated(EnumType.STRING)
    private VinylGenre genre;
    private int releaseYear;
+   @Enumerated(EnumType.STRING)
+   private SleeveCondition sleeveCondition;
+   @Enumerated(EnumType.STRING)
+   private VinylCondition vinylCondition;
+   private String vinylImage;
 
 
-    public Vinyl(String title, String artist, VinylGenre genre, int releaseYear) {
-        this.title = title;
+    public Vinyl(Long vinylId, String vinylTitle, String artist,
+                 VinylGenre genre, int releaseYear, SleeveCondition sleeveCondition,
+                 VinylCondition vinylCondition, String vinylImage ) {
+        this.vinylId = vinylId;
+        this.vinylTitle = vinylTitle;
         this.artist = artist;
         this.genre = genre;
         this.releaseYear = releaseYear;
+        this.sleeveCondition = sleeveCondition;
+        this.vinylCondition = vinylCondition;
+        this.vinylImage = vinylImage;
     }
 
     public Vinyl() {
 
     }
 
-    public Long getId() {
-        return id;
+    public Long getVinylId() {
+        return vinylId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setVinylId(Long vinylId) {
+        this.vinylId = vinylId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getVinylTitle() {
+        return vinylTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setVinylTitle(String vinylTitle) {
+        this.vinylTitle = vinylTitle;
     }
 
     public String getArtist() {
@@ -64,6 +75,44 @@ public class Vinyl {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
+    }
+
+    public SleeveCondition getSleeveCondition() {
+        return sleeveCondition;
+    }
+
+    public void setSleeveCondition(SleeveCondition sleeveCondition) {
+        this.sleeveCondition = sleeveCondition;
+    }
+
+    public VinylCondition getVinylCondition() {
+        return vinylCondition;
+    }
+
+    public void setVinylCondition(VinylCondition vinylCondition) {
+        this.vinylCondition = vinylCondition;
+    }
+
+    public String getVinylImage() {
+        return vinylImage;
+    }
+
+    public void setVinylImage(String vinylImage) {
+        this.vinylImage = vinylImage;
+    }
+
+    @Override
+    public String toString() {
+        return "Vinyl{" +
+                "vinylId=" + vinylId +
+                ", vinylTitle='" + vinylTitle + '\'' +
+                ", artist='" + artist + '\'' +
+                ", genre=" + genre +
+                ", releaseYear=" + releaseYear +
+                ", sleeveCondition=" + sleeveCondition +
+                ", vinylCondition=" + vinylCondition +
+                ", vinylImage='" + vinylImage + '\'' +
+                '}';
     }
 }
 

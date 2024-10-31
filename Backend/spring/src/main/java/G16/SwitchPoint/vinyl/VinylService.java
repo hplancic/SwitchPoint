@@ -13,7 +13,6 @@ public class VinylService {
     public VinylService(VinylRepository vinylRepository) {
         this.vinylRepository = vinylRepository;
     }
-
     public List<Vinyl> getAllVinyls() {
         return vinylRepository.findAll();
     }

@@ -17,22 +17,4 @@ public class SwitchPointApplication {
 		var context = SpringApplication.run(SwitchPointApplication.class, args);
 
 	}
-	public CommandLineRunner demo(VinylRepository vinylRepository) {
-		return (args) -> {
-			vinylRepository.saveAll(Arrays.asList(
-					new Vinyl("The Dark Side of the Moon", "Pink Floyd", VinylGenre.ROCK, 1973),
-					new Vinyl("Thriller", "Michael Jackson", VinylGenre.POP, 1982),
-					new Vinyl("Back in Black", "AC/DC", VinylGenre.ROCK, 1980)
-/*			private Long id; netreba
-			private String title;
-			private String artist;
-			private VinylGenre genre;
-			private int releaseYear;  */
-			));
-
-		};
-	}
-
-
-
 }
