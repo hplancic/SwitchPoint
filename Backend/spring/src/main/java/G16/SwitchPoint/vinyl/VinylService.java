@@ -1,5 +1,9 @@
 package G16.SwitchPoint.vinyl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +17,11 @@ public class VinylService {
     public VinylService(VinylRepository vinylRepository) {
         this.vinylRepository = vinylRepository;
     }
-    public List<Vinyl> getAllVinyls() {
-        return vinylRepository.findAll();
+    public Page<Vinyl> getVinyls(int page, int size, String sortBy, String direction) {
+        int validatedSize=Math.min(size,100);
+        Sort.Direction dir = direction.equalsIgnoreCase("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Pageable pageable = PageRequest.of(page,validatedSize, Sort.by(dir, sortBy));
+        return vinylRepository.findAll(pageable);
     }
 
     public Optional<Vinyl> getVinylById(Long id) {
@@ -32,7 +39,9 @@ public class VinylService {
         vinylRepository.deleteById(id);
     }
 
-
+    public List<Vinyl> searchVinylsByArtistOrTitle(String query) {
+        return vinylRepository.findByArtistContainingIgnoreCaseOrVinylTitleContainingIgnoreCase(query, query);
+    }
 }
 
 

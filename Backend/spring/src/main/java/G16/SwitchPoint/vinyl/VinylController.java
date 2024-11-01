@@ -1,5 +1,6 @@
 package G16.SwitchPoint.vinyl;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +15,15 @@ public class VinylController {
         this.vinylService = vinylService;
     }
     @GetMapping
-    public List<Vinyl> getVinyls() {
-        return vinylService.getAllVinyls();
-    }
+    public Page<Vinyl> getVinyls(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "vinylTitle") String sortBy,
+            @RequestParam(defaultValue = "asc") String direction
+            //dodati filtering
+    ) {
+        return vinylService.getVinyls(page,size,sortBy,direction);
+    }//wrappati sa response entity
 
     @PostMapping()
     public Vinyl addVinyl(@RequestBody Vinyl vinyl) {
@@ -37,7 +44,10 @@ public class VinylController {
             return vinylService.getVinylById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 
     }
-
+    @GetMapping("/search")
+    public List<Vinyl> searchVinyls(@RequestParam String query) {
+        return vinylService.searchVinylsByArtistOrTitle(query);
+    }
     //public List<Vinyl> getVinylsByTitle(String title) {}
     //public List<Vinyl> getVinylsByGenre(String genre) {}
 

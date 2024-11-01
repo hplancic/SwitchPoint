@@ -1,5 +1,7 @@
 package G16.SwitchPoint.users;
 
+import G16.SwitchPoint.vinyl.Vinyl;
+import G16.SwitchPoint.vinyl.VinylRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,10 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
+    private final VinylRepository vinylRepository;
+    public UserService(UserRepository userRepository, VinylRepository vinylRepository) {
         this.userRepository = userRepository;
+        this.vinylRepository = vinylRepository;
     }
 
     public User addUser(User user) {

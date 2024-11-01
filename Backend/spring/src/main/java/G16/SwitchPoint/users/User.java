@@ -1,8 +1,11 @@
 package G16.SwitchPoint.users;
 
+import G16.SwitchPoint.vinyl.Vinyl;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "korisnici")
@@ -17,6 +20,7 @@ public class User {
     //@jsonignore
     @Temporal(TemporalType.DATE)
     private Date dateCreated;
+
 
     public User(){
         this.dateCreated = new Date();

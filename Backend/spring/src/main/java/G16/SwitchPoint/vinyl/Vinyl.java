@@ -1,6 +1,10 @@
 package G16.SwitchPoint.vinyl;
 
+import G16.SwitchPoint.users.User;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "vinyls")
@@ -13,12 +17,7 @@ public class Vinyl {
    @Enumerated(EnumType.STRING)
    private VinylGenre genre;
    private int releaseYear;
-   @Enumerated(EnumType.STRING)
-   private SleeveCondition sleeveCondition;
-   @Enumerated(EnumType.STRING)
-   private VinylCondition vinylCondition;
    private String vinylImage;
-
 
     public Vinyl(Long vinylId, String vinylTitle, String artist,
                  VinylGenre genre, int releaseYear, SleeveCondition sleeveCondition,
@@ -28,8 +27,6 @@ public class Vinyl {
         this.artist = artist;
         this.genre = genre;
         this.releaseYear = releaseYear;
-        this.sleeveCondition = sleeveCondition;
-        this.vinylCondition = vinylCondition;
         this.vinylImage = vinylImage;
     }
 
@@ -77,22 +74,6 @@ public class Vinyl {
         this.releaseYear = releaseYear;
     }
 
-    public SleeveCondition getSleeveCondition() {
-        return sleeveCondition;
-    }
-
-    public void setSleeveCondition(SleeveCondition sleeveCondition) {
-        this.sleeveCondition = sleeveCondition;
-    }
-
-    public VinylCondition getVinylCondition() {
-        return vinylCondition;
-    }
-
-    public void setVinylCondition(VinylCondition vinylCondition) {
-        this.vinylCondition = vinylCondition;
-    }
-
     public String getVinylImage() {
         return vinylImage;
     }
@@ -101,18 +82,5 @@ public class Vinyl {
         this.vinylImage = vinylImage;
     }
 
-    @Override
-    public String toString() {
-        return "Vinyl{" +
-                "vinylId=" + vinylId +
-                ", vinylTitle='" + vinylTitle + '\'' +
-                ", artist='" + artist + '\'' +
-                ", genre=" + genre +
-                ", releaseYear=" + releaseYear +
-                ", sleeveCondition=" + sleeveCondition +
-                ", vinylCondition=" + vinylCondition +
-                ", vinylImage='" + vinylImage + '\'' +
-                '}';
-    }
 }
 
