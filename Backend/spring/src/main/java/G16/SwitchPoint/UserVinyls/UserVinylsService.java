@@ -10,7 +10,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserVinylsService {
@@ -34,10 +37,13 @@ public class UserVinylsService {
         userVinyls.setVinyl(vinyl);
         return userVinylsRepository.save(userVinyls);
     }
-    public Page<UserVinyls> getUserVinyls(int page,int size,String sortBy,String direction) {
+    public Page<UserVinyls> getUserVinyls(Specification<UserVinyls> spec, int page, int size, String sortBy, String direction) {
         int validatedSize=Math.min(size,100);
         Sort.Direction dir = direction.equalsIgnoreCase("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
         Pageable pageable = PageRequest.of(page,validatedSize, Sort.by(dir, sortBy));
-        return userVinylsRepository.findAll(pageable);
+        return userVinylsRepository.findAll(spec,pageable);
+    }
+    public List<UserVinyls> getUserVinylsByUserId(Long userId) {
+        return userVinylsRepository.findByUser_UserId(userId);
     }
 }

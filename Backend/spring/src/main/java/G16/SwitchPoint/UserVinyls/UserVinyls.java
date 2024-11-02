@@ -24,6 +24,14 @@ public class UserVinyls {
     @Enumerated(EnumType.STRING)
     private VinylCondition vinylCondition;
 
+    public UserVinyls() {}
+    public UserVinyls(User user, Vinyl vinyl, SleeveCondition sleeveCondition, VinylCondition condition) {
+        this.user = user;
+        this.vinyl = vinyl;
+        this.sleeveCondition = sleeveCondition;
+        this.vinylCondition = condition;
+    }
+
     public Long getId() {
         return id;
     }

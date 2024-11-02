@@ -55,4 +55,9 @@ public class UserController {
         UserVinyls userVinyl = userVinylsService.addVinylToUser(userId,vinylId,sleeveCondition,vinylCondition);
         return new ResponseEntity<>(userVinyl, HttpStatus.CREATED);
     }
+    @GetMapping("/{userId}/vinyls")
+    public ResponseEntity<List<UserVinyls>> getUserVinyls(@PathVariable Long userId) {
+        List<UserVinyls> userVinyls = userVinylsService.getUserVinylsByUserId(userId);
+        return new ResponseEntity<>(userVinyls, HttpStatus.OK);
+    }
 }
