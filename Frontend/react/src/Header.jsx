@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom"
 
 function Header(){
     return (
         <div className="header">
-            <a href="/" className="header-title">SwitchPoint</a>
+            <Link to="/" className="header-title">SwitchPoint</Link>
             <div className="header-buttons">
-                <a href="/login" className="header-button">Log in</a>
-                <a href="/signup" className="header-button">Sign up</a>
+                <Link to="/login" className="header-button">Log in</Link>
+                <Link to="/signup" className="header-button">Sign up</Link>
             </div>
         </div>
     )
