@@ -25,8 +25,10 @@ function Signup() {
     return (
         <>
         <Header />
-        <SignupForm />
-        <div id="google-login"></div>
+        <div className="login-form">
+            <SignupForm />
+            <div id="google-login"></div>
+        </div>
         </>
     )
 }

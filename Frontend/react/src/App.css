@@ -5,6 +5,7 @@ body {
 #root {
     max-width: 1200px;
     margin: 12px;
+    width: 90vw;
 }
 
 /* HEADER */
@@ -114,7 +115,34 @@ input {
     font-style: italic;
 }
 
+.login-form {
+    max-width: 500px;
+    margin: auto;
+}
+
 form {
     background-color: #313131;
     padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+form > input {
+    background-color: white;
+    color:#313131
+}
+
+.submit-button {
+    background-color: cornflowerblue;
+    color: white;
+    border: 1px solid rgb(126, 164, 234);
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+    padding: 5px;
+    margin: 10px auto;
 }

@@ -25,8 +25,10 @@ function Login() {
     return (
         <>
         <Header/>
-        <LoginForm />
-        <div id='google-login'></div>
+        <div className='login-form'>
+            <LoginForm />
+            <div id='google-login'></div>
+        </div>
         </>
     )
 }
