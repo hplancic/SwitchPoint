@@ -7,16 +7,21 @@ import Header from './Header.jsx'
 import Sidebar from './Sidebar.jsx'
 import CardList from './CardList.jsx'
 import Card from './Card.jsx'
+import Login from './Login.jsx'
+import Home from './Home.jsx'
+import Signup from './Signup.jsx'
 
 function App() {
 
   return (
     <>
-      <Header />
-      <div className='content'>
-        <Sidebar />
-        <CardList />
-      </div>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />}/>
+          <Route path='/signup' element={<Signup />}/>
+        </Routes>
+      </Router>
     </>
   )
 }

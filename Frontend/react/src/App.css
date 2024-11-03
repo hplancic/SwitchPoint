@@ -113,3 +113,8 @@ input {
 .artist {
     font-style: italic;
 }
+
+form {
+    background-color: #313131;
+    padding: 10px;
+}
