@@ -4,8 +4,8 @@ function Header(){
         <div className="header">
             <a href="/" className="header-title">SwitchPoint</a>
             <div className="header-buttons">
-                <button><a href="/login">Log in</a></button>
-                <button><a href="/signup">Sign up</a></button>
+                <a href="/login" className="header-button">Log in</a>
+                <a href="/signup" className="header-button">Sign up</a>
             </div>
         </div>
     )

@@ -37,6 +37,24 @@ body {
     flex-direction: row-reverse;
 }
 
+.header-button {
+    background-color: #d4d4d4;
+    border: 2px solid #d4d4d4;
+    border-radius: 5px;
+    color: #313131;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 7px;
+    margin: 5px 7px;
+
+}
+
+.header-button:hover {
+    background-color: rgb(193, 193, 174);
+    color: #313131;
+    border: 2px solid #313131;
+}
+
 button {
     font-weight: bold;
     margin: 5px;
@@ -136,13 +154,18 @@ form > input {
 .submit-button {
     background-color: cornflowerblue;
     color: white;
-    border: 1px solid rgb(126, 164, 234);
+    border: 1px solid cornflowerblue;
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     font-weight: bold;
     cursor: pointer;
     width: 100px;
-    padding: 5px;
+    padding: 7px 5px;
     margin: 10px auto;
+}
+
+.submit-button:hover {
+    background-color: rgb(78, 114, 180);
+    border: 1px solid #313131;
 }
