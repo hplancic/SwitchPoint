@@ -1,5 +1,16 @@
+import MultiRangeSlider from 'multi-range-slider-react'
+import { useState } from 'react'
 
 function Sidebar() {
+
+    const [filterYearMinValue, setFilterYearMinValue] = useState(1945)
+    const [filterYearMaxValue, setFilterYearMaxValue] = useState(1990)
+
+    const handleFilterYearInput = (e) => {
+        setFilterYearMinValue(e.minValue)
+        setFilterYearMaxValue(e.maxValue)
+    }
+
     return (
         <div className="sidebar">
             <div>Filter</div>
@@ -17,8 +28,18 @@ function Sidebar() {
                     <input type="checkbox" id="used" name="used" value="used"></input>
                 </fieldset>
             </form>
-            <div>Godina</div>
-            <div>1920 - 2024</div>
+            <div>Godina: {filterYearMinValue} do {filterYearMaxValue}</div>
+            <MultiRangeSlider
+                min={1920}
+                max={2024}
+                minValue={filterYearMinValue}
+                maxValue={filterYearMaxValue}
+                step={1}
+                onInput={(e) => {
+                    handleFilterYearInput(e);
+                }}
+                ruler={false}
+            />
         </div>
     )
 }
