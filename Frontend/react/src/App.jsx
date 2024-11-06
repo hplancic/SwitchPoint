@@ -12,12 +12,17 @@ import Home from './Home.jsx'
 import Signup from './Signup.jsx'
 import axios from 'axios'
 
+const USER_REGEX = /^\[A-z\][A-z0-9-_]{3,23}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
 function App() {
 
   // Testiranje rada axiosa
 /*   axios.get('api/users')
     .then(response => console.log(response.data))
  */
+
+
   return (
     <>
       <Router>
