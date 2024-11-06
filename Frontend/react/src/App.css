@@ -169,3 +169,9 @@ form > input {
     background-color: rgb(78, 114, 180);
     border: 1px solid #313131;
 }
+
+#invalid-login-text {
+    color: red;
+    text-align: center;
+    display: none;
+}

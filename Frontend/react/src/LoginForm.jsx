@@ -1,22 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function LoginForm() {
+function LoginForm({setAuth}) {
+
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("login", username, password)
-/*         axios.post('/api/users', {
-            "email":email,
-            "username":username,
-            "location":location,
-            "hashPassword":password
+    const login = () => {
+        axios.get('api/users')
+        .then(response => response.data)
+        .then(json => {
+            let valid = false;
+            json.forEach(obj => {
+                let validUsername = obj.username == username;
+                let validPassword = obj.hashPassword == password;
+                if (validUsername && validPassword) valid = true;
+                })
+            if (valid) {
+                const info = {
+                    'isLoggedIn': true,
+                    'username':username
+                }
+                setAuth(info);
+                navigate('/', {replace: true})
+            } else {
+                document.getElementById('invalid-login-text').style.display = 'block';
+            }
         })
-        console.log("submit", username, email, location, password)
- */    }
+    }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        login();
+    }
 
     return (
         <>
@@ -30,6 +49,8 @@ function LoginForm() {
             <label htmlFor="password">Password</label>
             <input type="text" name="password"
                 onChange={(e) => setPassword(e.target.value)}/>
+
+            <h5 id="invalid-login-text">Invalid username or password.</h5>
 
             <input type="submit" value="Log in" className="submit-button"/>
         </form>
