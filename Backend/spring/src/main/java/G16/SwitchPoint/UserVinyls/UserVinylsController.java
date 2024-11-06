@@ -62,4 +62,6 @@ public class UserVinylsController {
          Page<UserVinyls> userVinyls = userVinylsService.getUserVinyls(spec,page,size,sortBy,direction);
             return new ResponseEntity<>(userVinyls    , HttpStatus.OK);
     }
+
+
 }
