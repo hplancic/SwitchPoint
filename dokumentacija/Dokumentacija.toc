@@ -1,2 +1,12 @@
 \babel@toc {croatian}{}\relax 
 \contentsline {chapter}{\numberline {1}Dnevnik promjena dokumentacije}{2}{}%
+\contentsline {chapter}{\numberline {2}Opis projektnog zadatka}{3}{}%
+\contentsline {section}{\numberline {2.1}Funkcionalnosti Aplikacije}{3}{}%
+\contentsline {section}{\numberline {2.2}Uloga Korisnika i Razine Ovlasti}{3}{}%
+\contentsline {section}{\numberline {2.3}Neregistrirani Korisnici}{3}{}%
+\contentsline {section}{\numberline {2.4}Registrirani Korisnici}{4}{}%
+\contentsline {section}{\numberline {2.5}Administratori}{4}{}%
+\contentsline {section}{\numberline {2.6}Tehnički Detalji}{4}{}%
+\contentsline {section}{\numberline {2.7}Sigurnosne Mjere}{4}{}%
+\contentsline {section}{\numberline {2.8}Potencijalne Nadogradnje i Razvoj}{5}{}%
+\contentsline {section}{\numberline {2.9}Zaključak}{5}{}%

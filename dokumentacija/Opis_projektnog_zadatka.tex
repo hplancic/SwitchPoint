@@ -1,0 +1,80 @@
+\chapter{Opis projektnog zadatka}
+
+
+\textbf{SwitchPoint} je platforma namijenjena glazbenim entuzijastima, koja omogućava razmjenu gramofonskih ploča. U vremenu digitalne distribucije, SwitchPoint nudi alternativu gdje korisnici mogu razmijeniti fizičke primjerke ploča, naglašavajući osobni doživljaj i autentičnost glazbe na vinilu.
+
+Cilj je aplikacije pojednostaviti proces pronalaska i razmjene ploča, povezujući kolekcionare i ljubitelje glazbe širom svijeta. Pored osnovne funkcionalnosti razmjene, aplikacija omogućava korisnicima stvaranje kolekcija, pregled povijesti zamjena te kreiranje liste želja.
+
+\section{Funkcionalnosti Aplikacije}
+
+\begin{itemize}
+	\item \textbf{Pregled i pretraga ploča} – Omogućeno je svim korisnicima pregledavanje ploča prema žanru, izvođaču, godini izdanja i stanju.
+	\item \textbf{Objava i upravljanje pločama} – Registrirani korisnici mogu objaviti ploče koje žele razmijeniti, zajedno s detaljnim informacijama.
+	\item \textbf{Sustav zamjene} – Jednostavno usklađivanje ponuda za zamjenu putem korisničkog sučelja, uključujući obavijesti o novim ponudama.
+	\item \textbf{Lista želja} – Korisnici mogu označiti ploče koje traže, a sustav ih obavještava kada postanu dostupne.
+\end{itemize}
+
+\section{Uloga Korisnika i Razine Ovlasti}
+
+SwitchPoint koristi sustav registracije i autorizacije putem OAuth 2.0 protokola. Svaka razina ovlasti ima različite funkcionalnosti i mogućnosti unutar sustava:
+
+\section{Neregistrirani Korisnici}
+
+Neregistrirani korisnici mogu samo pregledavati ploče i tražiti osnovne informacije. Za daljnje korištenje aplikacije potrebno je stvoriti korisnički račun.
+
+\section{Registrirani Korisnici}
+
+Registrirani korisnici imaju pristup punim funkcionalnostima aplikacije, uključujući:
+\begin{itemize}
+	\item Objavu ploča za razmjenu
+	\item Upravljanje vlastitim kolekcijama
+	\item Kreiranje liste želja i postavljanje ponuda za zamjenu
+	\item Pregled povijesti izvršenih zamjena
+\end{itemize}
+
+\section{Administratori}
+
+Administratori imaju proširene ovlasti koje omogućavaju moderiranje sadržaja i korisničkih aktivnosti. Oni su odgovorni za održavanje reda u aplikaciji, uključujući brisanje neprimjerenih oglasa i blokiranje korisnika koji krše pravila ponašanja.
+
+\section{Tehnički Detalji}
+
+SwitchPoint je implementiran kao web aplikacija koja podržava rad na različitim uređajima i preglednicima. Ključne tehnologije uključuju:
+
+\begin{itemize}
+	\item \textbf{Frontend}: HTML, CSS, JavaScript (React) za responzivni dizajn
+	\item \textbf{Backend}: Spring boot za upravljanje API zahtjevima
+	\item \textbf{Baza podataka}: Postgres za pohranu podataka o korisnicima, pločama i zamjenama
+	\item \textbf{Autentifikacija}: OAuth 2.0 za sigurnu prijavu korisnika
+\end{itemize}
+
+Aplikacija je optimizirana za mobilne uređaje i podržava rad više korisnika u stvarnom vremenu.
+
+\section{Sigurnosne Mjere}
+
+Kako bi se osigurala privatnost korisnika i sigurnost podataka, SwitchPoint implementira nekoliko ključnih sigurnosnih mjera:
+
+\begin{itemize}
+	\item \textbf{SSL enkripcija} za sve komunikacije između klijenta i servera
+	\item \textbf{Hashing lozinki} koristeći bcrypt algoritam
+	\item \textbf{Sigurnosne obavijesti} za korisnike u slučaju sumnjivih aktivnosti na njihovom računu
+\end{itemize}
+
+\section{Potencijalne Nadogradnje i Razvoj}
+
+SwitchPoint se može proširiti dodatnim značajkama za još bolje korisničko iskustvo, uključujući:
+
+\begin{itemize}
+	\item \textbf{Mobilna aplikacija} za još brži pristup svim funkcionalnostima na mobilnim uređajima
+	\item \textbf{Integracija društvenih mreža} kako bi korisnici mogli dijeliti svoje kolekcije i zamjene
+	\item \textbf{Unaprijeđeni sustav filtriranja} kako bi korisnici lakše pronalazili specifične ploče
+	\item \textbf{Privatna komunikacija} između korisnika unutar aplikacije
+\end{itemize}
+
+\section{Zaključak}
+
+SwitchPoint je inovativna platforma koja povezuje ljubitelje gramofonskih ploča i pruža jednostavan način za razmjenu rijetkih i vrijednih izdanja. S daljnjim razvojem i prilagođavanjem potrebama korisnika, aplikacija može postati nezaobilazna točka za sve kolekcionare i ljubitelje glazbe na vinilu.
+
+
+
+	   	
+

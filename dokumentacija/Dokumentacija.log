@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.11.3)  6 NOV 2024 13:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.11.3)  7 NOV 2024 13:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -24,12 +24,17 @@ File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
 )
+(C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
+\KV@toks@=\toks19
 )
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
@@ -48,7 +53,7 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layoutheight=\dimen146
 \Gm@layouthoffset=\dimen147
 \Gm@layoutvoffset=\dimen148
-\Gm@dimlist=\toks18
+\Gm@dimlist=\toks20
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)
 ) (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
@@ -82,7 +87,7 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks19
+\@emptytoks=\toks21
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
@@ -98,7 +103,7 @@ Package: amstext 2021/08/26 v2.01 AMS text
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks20
+\@emptytoks=\toks22
 \ex@=\dimen150
 ))
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
@@ -138,21 +143,21 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \dotsspace@=\muskip16
 \c@parentequation=\count274
 \dspbrk@lvl=\count275
-\tag@help=\toks21
+\tag@help=\toks23
 \row@=\count276
 \column@=\count277
 \maxfields@=\count278
-\andhelp@=\toks22
+\andhelp@=\toks24
 \eqnshift@=\dimen153
 \alignsep@=\dimen154
 \tagshift@=\dimen155
 \tagwidth@=\dimen156
 \totwidth@=\dimen157
 \lineht@=\dimen158
-\@envbody=\toks23
+\@envbody=\toks25
 \multlinegap=\skip51
 \multlinetaggap=\skip52
-\mathdisplay@stack=\toks24
+\mathdisplay@stack=\toks26
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
@@ -273,21 +278,21 @@ Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \col@sep=\dimen160
 \ar@mcellbox=\box54
 \extrarowheight=\dimen161
-\NC@list=\toks25
+\NC@list=\toks27
 \extratabsurround=\skip53
 \backup@length=\skip54
 \ar@cellbox=\box55
 )
-\everycr=\toks26
+\everycr=\toks28
 \minrowclearance=\skip55
 \rownum=\count279
 )
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count280
-\float@exts=\toks27
+\float@exts=\toks29
 \float@box=\box56
-\@float@everytoks=\toks28
+\@float@everytoks=\toks30
 \@floatcapt=\box57
 )
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
@@ -300,7 +305,7 @@ Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \aftertitleunit=\skip57
 \ttl@plus=\dimen162
 \ttl@minus=\dimen163
-\ttl@toksa=\toks29
+\ttl@toksa=\toks31
 \titlewidth=\dimen164
 \titlewidthlast=\dimen165
 \titlewidthfirst=\dimen166
@@ -315,7 +320,7 @@ Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
 ty
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfuti
 l-common.tex
-\pgfutil@everybye=\toks30
+\pgfutil@everybye=\toks32
 \pgfutil@tempdima=\dimen167
 \pgfutil@tempdimb=\dimen168
 )
@@ -359,12 +364,12 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkey
 s.code.tex
-\pgfkeys@pathtoks=\toks31
-\pgfkeys@temptoks=\toks32
+\pgfkeys@pathtoks=\toks33
+\pgfkeys@temptoks=\toks34
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkey
 slibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks33
+\pgfkeys@tmptoks=\toks35
 ))
 \pgf@x=\dimen171
 \pgf@y=\dimen172
@@ -382,9 +387,9 @@ slibraryfiltered.code.tex
 \c@pgf@countb=\count282
 \c@pgf@countc=\count283
 \c@pgf@countd=\count284
-\t@pgf@toka=\toks34
-\t@pgf@tokb=\toks35
-\t@pgf@tokc=\toks36
+\t@pgf@toka=\toks36
+\t@pgf@tokb=\toks37
+\t@pgf@tokc=\toks38
 \pgf@sys@id@count=\count285
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.
@@ -445,9 +450,9 @@ er.code.tex
 \pgfmath@dimen=\dimen181
 \pgfmath@count=\count288
 \pgfmath@box=\box60
-\pgfmath@toks=\toks37
-\pgfmath@stack@operand=\toks38
-\pgfmath@stack@operation=\toks39
+\pgfmath@toks=\toks39
+\pgfmath@stack@operand=\toks40
+\pgfmath@stack@operation=\toks41
 )
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
 tions.code.tex)
@@ -595,8 +600,8 @@ Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 ))
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
 Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks40
-\verbatim@line=\toks41
+\every@verbatim=\toks42
+\verbatim@line=\toks43
 \verbatim@in@stream=\read4
 )
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
@@ -724,53 +729,75 @@ Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
 \l__tblr_cell_ht_dim=\dimen306
 \l__tblr_diag_box=\box99
 )
-LaTeX Font Info:    Trying to load font information for OT1+txr on input line 4
-7.
-
-(C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\ot1txr.fd
+(C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+Package: fancyhdr 2024/07/23 v4.3.1 Extensive control of page headers and foote
+rs
+\f@nch@headwidth=\skip58
+\f@nch@O@elh=\skip59
+\f@nch@O@erh=\skip60
+\f@nch@O@olh=\skip61
+\f@nch@O@orh=\skip62
+\f@nch@O@elf=\skip63
+\f@nch@O@erf=\skip64
+\f@nch@O@olf=\skip65
+\f@nch@O@orf=\skip66
+) (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.st
+y
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip67
+\enit@outerparindent=\dimen307
+\enit@toks=\toks44
+\enit@inbox=\box100
+\enit@count@id=\count320
+\enitdp@description=\count321
+)
+LaTeX Font Info:    Trying to load font information for OT1+txr on input line 5
+6.
+ (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 )
-(Dokumentacija.aux (Dnevnik_promjena_dokumentacije.aux))
+(Dokumentacija.aux (Dnevnik_promjena_dokumentacije.aux)
+(Opis_projektnog_zadatka.aux))
 \openout1 = `Dokumentacija.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 47.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 56.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
-47.
+56.
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 56.
 LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 
-47.
+56.
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 56.
 LaTeX Font Info:    Trying to load font information for OMX+txex on input line 
-47.
+56.
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 47.
-LaTeX Font Info:    Trying to load font information for U+txexa on input line 4
-7.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 56.
+LaTeX Font Info:    Trying to load font information for U+txexa on input line 5
+6.
 
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    ... okay on input line 56.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -780,15 +807,15 @@ LaTeX Font Info:    ... okay on input line 47.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 671.37021pt, 101.40665pt)
+* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 674.33032pt, 85.35826pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=452.9679pt
-* \textheight=671.37021pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
+* \textwidth=426.79135pt
+* \textheight=674.33032pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-23.91173pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
@@ -810,17 +837,17 @@ LaTeX Font Info:    ... okay on input line 47.
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.m
 kii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count320
-\scratchdimen=\dimen307
-\scratchbox=\box100
-\nofMPsegments=\count321
-\nofMParguments=\count322
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count323
-\MPscratchDim=\dimen308
-\MPnumerator=\count324
-\makeMPintoPDFobject=\count325
-\everyMPtoPDFconversion=\toks43
+\scratchcounter=\count322
+\scratchdimen=\dimen308
+\scratchbox=\box101
+\nofMPsegments=\count323
+\nofMParguments=\count324
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count325
+\MPscratchDim=\dimen309
+\MPnumerator=\count326
+\makeMPintoPDFobject=\count327
+\everyMPtoPDFconversion=\toks46
 )
 (C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-
 base.sty
@@ -844,16 +871,40 @@ Package: xparse 2023-10-10 L3 Experimental document command parser
 {C:/Users/Zvonko/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Zvo
 nko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
 LaTeX Font Info:    Font shape `OT1/txr/b/n' in size <24.88> not available
-(Font)              Font shape `OT1/txr/bx/n' tried instead on input line 77.
+(Font)              Font shape `OT1/txr/bx/n' tried instead on input line 86.
 
 (Dokumentacija.toc
 LaTeX Font Info:    Font shape `OT1/txr/b/n' in size <12> not available
 (Font)              Font shape `OT1/txr/bx/n' tried instead on input line 2.
+LaTeX Font Info:    Trying to load font information for U+txsya on input line 4
+.
+
+(C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\utxsya.fd
+File: utxsya.fd 2000/12/15 v3.1
 )
+LaTeX Font Info:    Trying to load font information for U+txsyb on input line 4
+.
+
+(C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\utxsyb.fd
+File: utxsyb.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txmia on input line 4
+.
+
+(C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\utxmia.fd
+File: utxmia.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Trying to load font information for U+txsyc on input line 4
+.
+
+(C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\utxsyc.fd
+File: utxsyc.fd 2000/12/15 v3.1
+))
 \tf@toc=\write4
 \openout4 = `Dokumentacija.toc'.
 
- [1
+
+[1
 
 ]
 \openout2 = `Dnevnik_promjena_dokumentacije.aux'.
@@ -898,38 +949,103 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--20
 ) [2
 
 
-] (Dokumentacija.lof)
+]
+\openout2 = `Opis_projektnog_zadatka.aux'.
+
+ (Opis_projektnog_zadatka.tex
+Poglavlje 2.
+
+Overfull \hbox (2.28062pt too wide) in paragraph at lines 4--5
+\OT1/txr/m/n/12 tivu gdje ko-ris-nici mogu raz-mi-je-niti fizi[]cke pri-mjerke 
+plo[]ca, na-gla[]savaju[]ci osobni do[]zivljaj
+ []
+
+LaTeX Font Info:    Font shape `OT1/txr/b/n' in size <17.28> not available
+(Font)              Font shape `OT1/txr/bx/n' tried instead on input line 8.
+LaTeX Font Info:    Trying to load font information for TS1+txr on input line 1
+1.
+(C:\Users\Zvonko\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\ts1txr.fd
+File: ts1txr.fd 2000/12/15 v3.1
+)
+[3
+
+
+
+
+]
+Overfull \hbox (7.38063pt too wide) in paragraph at lines 37--38
+\OT1/txr/m/n/12 Administratori imaju pro[]sirene ov-lasti koje omogu[]cavaju mo
+-de-ri-ra-nje sadr[]zaja i ko-risni[]ckih
+ []
+
+
+Overfull \hbox (4.22466pt too wide) in paragraph at lines 41--42
+\OT1/txr/m/n/12 SwitchPoint je im-ple-men-ti-ran kao web apli-ka-cija koja podr
+[]zava rad na razli[]citim ure[]dajima
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4]
+Overfull \hbox (14.72333pt too wide) in paragraph at lines 67--68
+[]\OT1/txr/bx/n/12 Mobilna apli-ka-cija \OT1/txr/m/n/12 za jo[]s br[]zi pris-tu
+p svim funk-ci-onal-nos-tima na mo-bil-nim ure[]dajima 
+ []
+
+
+Overfull \hbox (33.38394pt too wide) in paragraph at lines 75--76
+\OT1/txr/m/n/12 jed-nos-ta-van na[]cin za raz-mjenu ri-jet-kih i vri-jed-nih iz
+-da-nja. S dalj-njim ra-zvo-jem i prilago[]davanjem
+ []
+
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[5] (Dokumentacija.lof)
 \tf@lof=\write5
 \openout5 = `Dokumentacija.lof'.
 
- [3
+ [6
 
 
 
 ] (Dokumentacija.aux
-(Dnevnik_promjena_dokumentacije.aux))
+(Dnevnik_promjena_dokumentacije.aux) (Opis_projektnog_zadatka.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 18190 strings out of 474485
- 370912 string characters out of 5743262
+ 18888 strings out of 474485
+ 383334 string characters out of 5743262
  1937542 words of memory out of 5000000
- 40176 multiletter control sequences out of 15000+600000
- 574854 words of font info for 64 fonts, out of 8000000 for 9000
+ 40829 multiletter control sequences out of 15000+600000
+ 586181 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,6n,107p,451b,479s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtx
-r.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb
-8a.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
-bi8a.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
-tmr8a.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
-utmri8a.pfb>
-Output written on Dokumentacija.pdf (4 pages, 53025 bytes).
+ 101i,11n,107p,451b,480s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtc
+xr.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfont
+s/rtxr.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
+/utmb8a.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
+s/utmbi8a.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/ti
+mes/utmr8a.pfb><C:/Users/Zvonko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
+imes/utmri8a.pfb>
+Output written on Dokumentacija.pdf (7 pages, 70576 bytes).
 PDF statistics:
- 44 PDF objects out of 1000 (max. 8388607)
+ 60 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
