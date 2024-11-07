@@ -1,6 +1,7 @@
 import Header from './Header.jsx'
 import Sidebar from './Sidebar.jsx'
 import CardList from './CardList.jsx'
+import SearchBar from './SearchBar.jsx'
 
 
 function Home() {
@@ -9,7 +10,10 @@ function Home() {
         <Header />
         <div className='content'>
             <Sidebar />
-            <CardList />
+            <div className='content-container'>
+                <SearchBar />
+                <CardList />
+            </div>
         </div>
         </>
     )
