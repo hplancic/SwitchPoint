@@ -1,6 +1,6 @@
 .card {
     width: 240px;
-    height: 320px;
+    height: max-content;
     background-color: #313131;
     color:white;
     border: 2px solid black;
@@ -16,6 +16,32 @@
     margin-top: 10px;
     width: 90%;
     border-radius: 5px;
+}
+
+.KVPair {
+    width: 90%;
+    grid-template-columns: auto auto;
+    display: grid;
+    margin: 2px 0px;
+}
+
+.key {
+    justify-self: left;
+    color: lightgray;
+    font-weight: bold;
+}
+
+.value {
+    justify-self: right;
+    text-align: right;
+}
+
+.bubble {
+    color:black;
+    background-color: whitesmoke;
+    padding: 0 5px;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 .title {

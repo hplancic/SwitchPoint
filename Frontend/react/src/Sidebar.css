@@ -8,6 +8,13 @@
     border-radius: 5px;
     color: white;
     padding:10px;
+    margin-bottom: 10px;
+    min-width: 250px;
+}
+
+.filterLine {
+    display: inline-grid;
+    grid-template-columns: auto auto;
 }
 
 .filter-category-name {
