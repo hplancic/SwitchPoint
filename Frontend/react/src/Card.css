@@ -1,0 +1,27 @@
+.card {
+    width: 240px;
+    height: 320px;
+    background-color: #313131;
+    color:white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0px 5px 5px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.albumImage {
+    margin-top: 10px;
+    width: 90%;
+    border-radius: 5px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.artist {
+    font-style: italic;
+}

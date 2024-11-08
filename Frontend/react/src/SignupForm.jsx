@@ -38,7 +38,7 @@ function SignupForm() {
                 onChange={(e) => setLocation(e.target.value)}/>
 
             <label htmlFor="password">Password</label>
-            <input type="text" name="password"
+            <input type="password" name="password"
                 onChange={(e) => setPassword(e.target.value)}/>
 
             <input type="submit" value="Sign up" className="submit-button"/>

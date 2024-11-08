@@ -10,10 +10,8 @@ function Home() {
         <Header />
         <div className='content'>
             <Sidebar />
-            <div className='content-container'>
-                <SearchBar />
-                <CardList />
-            </div>
+            <SearchBar />
+            <CardList />
         </div>
         </>
     )

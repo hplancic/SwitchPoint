@@ -1,3 +1,4 @@
+import './Sidebar.css';
 import MultiRangeSlider from 'multi-range-slider-react'
 import { useState } from 'react'
 
@@ -34,7 +35,7 @@ function Sidebar() {
         "All", "Rock", "Pop", "Jazz", "Disco",
         "Soul & Funk", "Country", "Blues", "Rap & Hip Hop"
     ]
-    const initCollapse = "▲" //▼
+    const initCollapse = "▲" // ▼
 
     const [filterYearMinValue, setFilterYearMinValue] = useState(1945)
     const [filterYearMaxValue, setFilterYearMaxValue] = useState(1990)

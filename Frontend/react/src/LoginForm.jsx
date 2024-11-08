@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './LoginForm.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -47,7 +48,7 @@ function LoginForm({setAuth}) {
                 onChange={(e) => setUsername(e.target.value)}/>
 
             <label htmlFor="password">Password</label>
-            <input type="text" name="password"
+            <input type="password" name="password"
                 onChange={(e) => setPassword(e.target.value)}/>
 
             <h5 id="invalid-login-text">Invalid username or password.</h5>
