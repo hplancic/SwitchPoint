@@ -1,11 +1,7 @@
 package G16.SwitchPoint.users;
 
-import G16.SwitchPoint.vinyl.Vinyl;
 import jakarta.persistence.*;
-
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "korisnici")
@@ -13,18 +9,27 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
     private String hashPassword;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
     private String location;
-    //@jsonignore
-    @Temporal(TemporalType.DATE)
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
 
-
-    public User(){
+    // Zadani konstruktor postavlja dateCreated na trenutni datum
+    public User() {
         this.dateCreated = new Date();
     }
+
+    // Konstruktor s parametrima za postavljanje svih polja osim userId
     public User(String username, String hashPassword, String email, String location) {
         this.username = username;
         this.hashPassword = hashPassword;
@@ -33,6 +38,7 @@ public class User {
         this.dateCreated = new Date();
     }
 
+    // Getter i Setter za userId
     public Long getUserId() {
         return userId;
     }
@@ -41,6 +47,7 @@ public class User {
         this.userId = userId;
     }
 
+    // Getter i Setter za username
     public String getUsername() {
         return username;
     }
@@ -49,6 +56,7 @@ public class User {
         this.username = username;
     }
 
+    // Getter i Setter za hashPassword
     public String getHashPassword() {
         return hashPassword;
     }
@@ -57,6 +65,7 @@ public class User {
         this.hashPassword = hashPassword;
     }
 
+    // Getter i Setter za email
     public String getEmail() {
         return email;
     }
@@ -65,6 +74,7 @@ public class User {
         this.email = email;
     }
 
+    // Getter i Setter za location
     public String getLocation() {
         return location;
     }
@@ -73,6 +83,7 @@ public class User {
         this.location = location;
     }
 
+    // Getter i Setter za dateCreated
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -81,16 +92,16 @@ public class User {
         this.dateCreated = dateCreated;
     }
 
+    // toString metoda za predstavljanje informacija o korisniku
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
                 ", username='" + username + '\'' +
-                ", hashPassword='" + hashPassword + '\'' +
+                ", hashPassword='[PROTECTED]'" +
                 ", email='" + email + '\'' +
                 ", location='" + location + '\'' +
                 ", dateCreated=" + dateCreated +
                 '}';
     }
 }
-
