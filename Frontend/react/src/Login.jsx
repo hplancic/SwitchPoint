@@ -12,7 +12,7 @@ function Login({setAuth}) {
 
     useEffect(() => {
         google.accounts.id.initialize({
-            client_id:"",
+            client_id:"817895363129-joisrep5bkd9fcomrekms9hbagm3u05d.apps.googleusercontent.com",
             callback: handleCallbackResponse,
         });
 

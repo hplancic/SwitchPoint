@@ -1,4 +1,3 @@
-// googleAuth.js
 
 export function initializeGoogleSignIn() {
     // Function to handle the response from Google's sign-in
@@ -21,7 +20,6 @@ export function initializeGoogleSignIn() {
             });
     };
 
-    // Function to initialize Google Sign-In after the script has loaded
     function initializeGoogle() {
         if (window.google && window.google.accounts && window.google.accounts.id) {
             window.google.accounts.id.initialize({
@@ -41,7 +39,7 @@ export function initializeGoogleSignIn() {
         }
     }
 
-    // Function to load the Google Identity Services script dynamically
+
     function loadGoogleScript() {
         return new Promise((resolve, reject) => {
             if (document.getElementById("google-js")) {
@@ -60,7 +58,6 @@ export function initializeGoogleSignIn() {
         });
     }
 
-    // Load the script and initialize Google Sign-In
     loadGoogleScript()
         .then(() => {
             initializeGoogle();
