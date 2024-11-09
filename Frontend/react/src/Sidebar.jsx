@@ -45,6 +45,8 @@ function Sidebar() {
         return a;
     }
     const [selectedZanrovi, setSelectedZanrovi] = useState(selectedList(zanrovi));
+    const [selectedStanjaPloce, setSelectedStanjaPloce] = useState(selectedList(stanjaPloce));
+    const [selectedStanjaOmota, setSelectedStanjaOmota] = useState(selectedList(stanjaOmota));
 
     const [yearMin, setYearMin] = useState(1945)
     const [yearMax, setYearMax] = useState(1990)
@@ -59,8 +61,16 @@ function Sidebar() {
                 categories={zanrovi}
                 selected={selectedZanrovi}
                 setSelected={setSelectedZanrovi} />
-            <FilterCategorySelectMultiple filterName="Stanje ploče" categories={stanjaPloce}/>
-            <FilterCategorySelectMultiple filterName="Stanje omota" categories={stanjaOmota}/>
+            <FilterCategorySelectMultiple 
+                filterName="Stanje ploče"
+                categories={stanjaPloce}
+                selected={selectedStanjaPloce}
+                setSelected={setSelectedStanjaPloce}/>
+            <FilterCategorySelectMultiple
+                filterName="Stanje omota"
+                categories={stanjaOmota}
+                selected={selectedStanjaOmota}
+                setSelected={setSelectedStanjaOmota}/>
 
             <FilterCategoryYearSelect 
                 filterYearMinValue={yearMin}
