@@ -29,7 +29,7 @@
 
 .header-button {
     background-color: #d4d4d4;
-    border: 2px solid #d4d4d4;
+    border: 1px solid #d4d4d4;
     border-radius: 5px;
     color: #313131;
     font-weight: bold;
@@ -40,9 +40,9 @@
 }
 
 .header-button:hover {
-    background-color: rgb(193, 193, 174);
+    background-color: #848484;
     color: #313131;
-    border: 2px solid #313131;
+    border: 1px solid #313131;
 }
 
 button {

@@ -1,3 +1,4 @@
+import './SearchBar.css'
 
 function SearchBar() {
 
@@ -6,12 +7,10 @@ function SearchBar() {
     }
 
     return (
-        <>
-            <form action="post" className="searchForm" onSubmit={handleSearch}>
-                <input type="text" name="search" id="searchInput" placeholder="Search artist or album name"/>
-                <input type="submit" value="Search" id="searchButton"/>
-            </form>
-        </>
+        <form action="post" className="searchForm" onSubmit={handleSearch}>
+            <input type="text" name="search" id="searchInput" placeholder="Search artist or album name"/>
+            <input type="submit" value="Search" id="searchButton"/>
+        </form>
     )
 }
 
