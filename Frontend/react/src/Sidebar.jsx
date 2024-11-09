@@ -40,7 +40,7 @@ function Sidebar() {
     const selectedList = (array) => {
         let a = {};
         for (let e in array) {
-            a[array] = e=="All" ? 1 : 0;
+            a[array[e]] = e=="All" ? 1 : 0;
         }
         return a;
     }
