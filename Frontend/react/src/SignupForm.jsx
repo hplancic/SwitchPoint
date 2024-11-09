@@ -1,13 +1,15 @@
 import axios from "axios"
 import { useState } from "react";
 import './LoginForm.css'
+import { useNavigate } from "react-router-dom";
 
-function SignupForm() {
+function SignupForm({setAuth}) {
+
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [location, setLocation] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,10 +17,10 @@ function SignupForm() {
         axios.post('/api/users/register', {
             "email":email,
             "username":username,
-            "location":location,
             "hashPassword":password
         })
-        console.log("submit", username, email, location, password)
+        setAuth({username:username, isLoggedIn:true});
+        navigate('/');
     }
 
     return (
@@ -33,10 +35,6 @@ function SignupForm() {
             <label htmlFor="email">E-mail</label>
             <input type="text" name="email"
                 onChange={(e) => setEmail(e.target.value)}/>
-
-            <label htmlFor="location">Location</label>
-            <input type="text" name="location"
-                onChange={(e) => setLocation(e.target.value)}/>
 
             <label htmlFor="password">Password</label>
             <input type="password" name="password"

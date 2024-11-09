@@ -22,7 +22,6 @@ function LoginForm({setAuth}) {
                 let invalid = document.getElementById('invalid-login-text');
                 invalid.style.display = 'block';
             })
-        console.log(username, password);
     }
 
     const handleSubmit = async (e) => {

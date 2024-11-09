@@ -35,7 +35,7 @@ function App() {
           {!auth.isLoggedIn &&
             <>
             <Route path='/login' element={<Login setAuth={setAuth}/>}/>
-            <Route path='/signup' element={<Signup />}/>
+            <Route path='/signup' element={<Signup setAuth={setAuth}/>}/>
             </>
           }
         </Routes>
