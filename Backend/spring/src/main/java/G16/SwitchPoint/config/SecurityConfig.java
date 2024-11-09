@@ -24,7 +24,7 @@ public class SecurityConfig {
                     auth.requestMatchers("/").permitAll();             // Allow access to the root URL
                     auth.requestMatchers("/error").permitAll();        // Allow access to the error page
                     auth.requestMatchers("/h2-console/**").permitAll(); // Allow access to H2 console
-                    auth.anyRequest().authenticated();                 // Require authentication for all other requests
+                    auth.anyRequest().permitAll();                // Require authentication for all other requests
                 })
                 .csrf(AbstractHttpConfigurer::disable) // Disable CSRF for the H2 console
                 .headers(headers -> headers

@@ -11,26 +11,18 @@ function LoginForm({setAuth}) {
     const [password, setPassword] = useState('');
 
     const login = () => {
-        axios.get('api/users')
-        .then(response => response.data)
-        .then(json => {
-            let valid = false;
-            json.forEach(obj => {
-                let validUsername = obj.username == username;
-                let validPassword = obj.hashPassword == password;
-                if (validUsername && validPassword) valid = true;
-                })
-            if (valid) {
-                const info = {
-                    'isLoggedIn': true,
-                    'username':username
-                }
-                setAuth(info);
-                navigate('/', {replace: true})
-            } else {
-                document.getElementById('invalid-login-text').style.display = 'block';
-            }
-        })
+        
+        let path = '/api/auth/login?username=' + username + '&password=' + password;
+        axios.post(path)
+            .then(response => {
+                setAuth({username:username, isLoggedIn:true});
+                navigate('/')
+            })
+            .catch(error => {
+                let invalid = document.getElementById('invalid-login-text');
+                invalid.style.display = 'block';
+            })
+        console.log(username, password);
     }
 
     const handleSubmit = async (e) => {

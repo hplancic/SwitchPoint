@@ -12,7 +12,7 @@ function SignupForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('/api/users', {
+        axios.post('/api/users/register', {
             "email":email,
             "username":username,
             "location":location,
