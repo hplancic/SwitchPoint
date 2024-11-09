@@ -1,6 +1,8 @@
 import './Sidebar.css';
 import MultiRangeSlider from 'multi-range-slider-react'
 import { useState } from 'react'
+import FilterCategorySelectMultiple from './FilterCategorySelectMultiple';
+import FilterCategoryYearSelect from './FilterCategoryYearSelect';
 
 function Sidebar() {
 
@@ -35,123 +37,37 @@ function Sidebar() {
         "All", "Rock", "Pop", "Jazz", "Disco",
         "Soul & Funk", "Country", "Blues", "Rap & Hip Hop"
     ]
-    const initCollapse = "▲" // ▼
-
-    const [filterYearMinValue, setFilterYearMinValue] = useState(1945)
-    const [filterYearMaxValue, setFilterYearMaxValue] = useState(1990)
-
-    const handleFilterYearInput = (e) => {
-        setFilterYearMinValue(e.minValue)
-        setFilterYearMaxValue(e.maxValue)
+    const selectedList = (array) => {
+        let a = {};
+        for (let e in array) {
+            a[array] = e=="All" ? 1 : 0;
+        }
+        return a;
     }
+    const [selectedZanrovi, setSelectedZanrovi] = useState(selectedList(zanrovi));
 
-    const filterCategoryClick = (e) => {
-        let category = e.target.innerText;
-        const changeClass = {
-            'filter-category-unclicked':'filter-category-clicked',
-            'filter-category-clicked':'filter-category-unclicked'
-        }
-        const type = {
-            'unclicked':'filter-category-unclicked',
-            'clicked':'filter-category-clicked'
-        }
-        let currentClass = e.target.className;
-        e.target.classList.remove(currentClass);
-        e.target.classList.add(changeClass[currentClass]);
-        if (category == "All") {
-            let sibling = e.target.nextSibling;
-            while (sibling != null) {
-                if (sibling.className == type.clicked) {
-                    sibling.classList.remove(type.clicked);
-                    sibling.classList.add(type.unclicked);
-                }
-                sibling = sibling.nextSibling;    
-            }
-        } else {
-            let all = e.target.parentElement.firstChild;
-            if (all.className == type.clicked) {
-                all.classList.remove(type.clicked);
-                all.classList.add(type.unclicked);
-            }
-        }
-    }
-
-    const collapseCategory = (e) => {
-        let container = e.target.parentElement.nextSibling;
-        let current = e.target.innerText;
-        const changeText = {
-            "▼":"▲",
-            "▲":"▼"
-        }
-        const changeDisplay = {
-            "▼":"none",
-            "▲":"flex"
-        }
-        e.target.innerText = changeText[current];
-        container.style.display = changeDisplay[current];
-    }
+    const [yearMin, setYearMin] = useState(1945)
+    const [yearMax, setYearMax] = useState(1990)
 
     return (
         <div className="sidebar">
             <div>Filter</div>
             <hr></hr>
 
-            <div className='filter-category'>
-                <div>
-                    <span className='filter-category-name'>Žanr</span>
-                    <span className='filter-category-collapse' onClick={(e) => collapseCategory(e)}>{initCollapse}</span>
-                </div>
-                <div className='filter-category-container'>
-                    {zanrovi.map((zanr) => (
-                        <div className={zanr=="All" ? 'filter-category-clicked' : 'filter-category-unclicked'} onClick={(e) => filterCategoryClick(e)}>{zanr}</div>
-                    ))}
-                </div>
-                <hr />
-            </div>
+            <FilterCategorySelectMultiple 
+                filterName="Žanr" 
+                categories={zanrovi}
+                selected={selectedZanrovi}
+                setSelected={setSelectedZanrovi} />
+            <FilterCategorySelectMultiple filterName="Stanje ploče" categories={stanjaPloce}/>
+            <FilterCategorySelectMultiple filterName="Stanje omota" categories={stanjaOmota}/>
 
-            <div className='filter-category'>
-                <div>
-                    <span className='filter-category-name'>Stanje ploče</span>
-                    <span className='filter-category-collapse' onClick={(e) => collapseCategory(e)}>{initCollapse}</span>
-                </div>
-                <div className='filter-category-container'>
-                    {stanjaPloce.map((stanjePloce) => (
-                        <div className={stanjePloce=="All" ? 'filter-category-clicked' : 'filter-category-unclicked'} onClick={(e) => filterCategoryClick(e)}>{stanjePloce}</div>
-                    ))}
-                </div>
-                <hr />
-            </div>
-
-            <div className='filter-category'>
-                <div>
-                    <span className='filter-category-name'>Stanje omota</span>
-                    <span className='filter-category-collapse' onClick={(e) => collapseCategory(e)}>{initCollapse}</span>
-                </div>
-                <div className='filter-category-container'>
-                    {stanjaOmota.map((stanjeOmota) => (
-                        <div className={stanjeOmota=="All" ? 'filter-category-clicked' : 'filter-category-unclicked'} onClick={(e) => filterCategoryClick(e)}>{stanjeOmota}</div>
-                    ))}
-                </div>
-                <hr />
-            </div>
-
-            <div className='filter-category'>
-                <div className='filter-category-name'>Godina: {filterYearMinValue} do {filterYearMaxValue}</div>
-                <MultiRangeSlider
-                    min={1920}
-                    max={2024}
-                    minValue={filterYearMinValue}
-                    maxValue={filterYearMaxValue}
-                    step={1}
-                    onInput={(e) => {
-                        handleFilterYearInput(e);
-                    }}
-                    ruler={false}
-                />
-                <hr />
-            </div>
+            <FilterCategoryYearSelect 
+                filterYearMinValue={yearMin}
+                filterYearMaxValue={yearMax}
+                setFilterYearMinValue={setYearMin}
+                setFilterYearMaxValue={setYearMax}/>
         </div>
-            
     )
 }
 
