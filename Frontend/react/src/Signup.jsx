@@ -5,7 +5,7 @@ import { initializeGoogleSignIn } from "./assets/utils/googleAuth";
 
 
 
-function Signup() {
+function Signup({setAuth}) {
 
     useEffect(() => {
         initializeGoogleSignIn();
@@ -15,7 +15,7 @@ function Signup() {
         <>
             <Header />
             <div className="login-form">
-                <SignupForm />
+                <SignupForm setAuth={setAuth} />
                 <div id="google-login"></div>
             </div>
         </>
