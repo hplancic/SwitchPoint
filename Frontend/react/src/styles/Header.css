@@ -2,7 +2,6 @@
     position: relative;
     top: 0;
     background-color: #313131; 
-    border: 1px solid black;
     border-radius: 5px;
     display: grid;
     grid-template-columns: 3fr 7fr;
@@ -13,8 +12,9 @@
     text-decoration: none;
     color: white;
     align-self: center;
-    font-size: larger;
+    font-size: 2rem;
     padding-left: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .header-title:hover {
     color: beige;
@@ -46,4 +46,15 @@
 button {
     font-weight: bold;
     margin: 5px;
+}
+
+.logout-button {
+    background-color: #813232;
+    color: aliceblue;
+    border: 1px solid #813232;
+}
+
+.logout-button:hover {
+    background-color: #642727;
+    color: aliceblue;
 }

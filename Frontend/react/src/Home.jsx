@@ -4,10 +4,10 @@ import CardList from './CardList.jsx'
 import SearchBar from './SearchBar.jsx'
 
 
-function Home() {
+function Home({title}) {
     return (
         <>
-        <Header />
+        <Header title={title} />
         <div className='content'>
             <Sidebar />
             <SearchBar />

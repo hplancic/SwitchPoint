@@ -12,6 +12,9 @@ const USER_REGEX = /^\[A-z\][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 function App() {
+
+  const title = 'SwitchPoint';
+
   const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')) || {username:'username', isLoggedIn:false});
 
   useEffect(() => {
@@ -27,10 +30,10 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={
-              auth.isLoggedIn ? <LoggedInHome auth={auth} setAuth={setAuth}/> : <Home />
+              auth.isLoggedIn ? <LoggedInHome title={title} auth={auth} setAuth={setAuth}/> : <Home title={title} />
           } />
           {auth.isLoggedIn &&
-            <Route path='/mypage' element={<MyPage auth={auth} setAuth={setAuth} />} />
+            <Route path='/mypage' element={<MyPage title={title} auth={auth} setAuth={setAuth} />} />
           } 
           {!auth.isLoggedIn &&
             <>

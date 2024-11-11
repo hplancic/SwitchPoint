@@ -6,7 +6,7 @@ import Ponude from './Ponude';
 import PopisZelja from './PopisZelja';
 import Postavke from './Postavke';
 
-function MyPage({auth, setAuth}) {
+function MyPage({title, auth, setAuth}) {
 
     const [tabs, setTabs] = useState({
         'Moje ploče':<MojePloce />,
@@ -19,7 +19,7 @@ function MyPage({auth, setAuth}) {
 
     return (
         <>
-        <LoggedInHeader auth={auth} setAuth={setAuth}/>
+        <LoggedInHeader title={title} auth={auth} setAuth={setAuth}/>
         <div className="content">
             <MyPageSidebar 
                 tabs={tabs} 

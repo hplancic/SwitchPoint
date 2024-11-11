@@ -1,7 +1,7 @@
 import { Link, replace, useNavigate } from "react-router-dom"
 import './styles/Header.css'
 
-function LoggedInHeader({auth, setAuth}){
+function LoggedInHeader({title, auth, setAuth}){
 
     const navigate = useNavigate();
 
@@ -12,9 +12,9 @@ function LoggedInHeader({auth, setAuth}){
 
     return (
         <div className="header">
-            <Link to="/" className="header-title">SwitchPoint</Link>
+            <Link to="/" className="header-title">{title}</Link>
             <div className="header-buttons"> 
-                <Link onClick={() => logout()} to="/" className="header-button">Log out</Link>
+                <Link onClick={() => logout()} to="/" className="header-button logout-button">Log out</Link>
                 <Link to="/mypage" className="header-button">{auth.username}</Link>
             </div>
         </div>
