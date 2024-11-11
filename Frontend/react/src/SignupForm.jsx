@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState } from "react";
-import './LoginForm.css'
+import './styles/LoginForm.css'
 import { useNavigate } from "react-router-dom";
 
 function SignupForm({setAuth}) {

@@ -1,4 +1,4 @@
-import './Sidebar.css';
+import './styles/Sidebar.css';
 import MultiRangeSlider from 'multi-range-slider-react'
 import { useState } from 'react'
 import FilterCategorySelectMultiple from './FilterCategorySelectMultiple';
