@@ -2,7 +2,7 @@ import Header from './Header'
 import LoginForm from './LoginForm'
 import { useEffect } from 'react'
 
-function Login({setAuth}) {
+function Login({setAuth, title}) {
 
     const google = window.google;
 
@@ -24,7 +24,7 @@ function Login({setAuth}) {
 
     return (
         <>
-        <Header/>
+        <Header title={title}/>
         <div className='login-form'>
             <LoginForm setAuth={setAuth}/>
             <div id='google-login'></div>
