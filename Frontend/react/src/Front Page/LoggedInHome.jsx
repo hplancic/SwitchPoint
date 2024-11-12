@@ -1,6 +1,6 @@
-import Sidebar from './Sidebar.jsx'
-import CardList from './CardList.jsx'
-import LoggedInHeader from './LoggedInHeader.jsx'
+import Sidebar from './Sidebar/Sidebar.jsx'
+import CardList from './Content/CardList.jsx'
+import LoggedInHeader from '../Headers/LoggedInHeader.jsx'
 
 
 function LoggedInHome({title, auth, setAuth}) {

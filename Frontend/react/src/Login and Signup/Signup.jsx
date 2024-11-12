@@ -1,7 +1,7 @@
-import Header from "./Header";
-import SignupForm from "./SignupForm";
+import Header from "../Headers/Header.jsx";
+import SignupForm from "./SignupForm.jsx";
 import { useEffect } from "react";
-import { initializeGoogleSignIn } from "./assets/utils/googleAuth";
+import { initializeGoogleSignIn } from "../assets/utils/googleAuth";
 
 
 

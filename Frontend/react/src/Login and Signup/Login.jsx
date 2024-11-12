@@ -1,5 +1,5 @@
-import Header from './Header'
-import LoginForm from './LoginForm'
+import Header from '../Headers/Header.jsx'
+import LoginForm from './LoginForm.jsx'
 import { useEffect } from 'react'
 
 function Login({setAuth, title}) {

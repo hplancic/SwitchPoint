@@ -1,7 +1,7 @@
-import Header from './Header.jsx'
-import Sidebar from './Sidebar.jsx'
-import CardList from './CardList.jsx'
-import SearchBar from './SearchBar.jsx'
+import Header from '../Headers/Header.jsx'
+import Sidebar from './Sidebar/Sidebar.jsx'
+import CardList from './Content/CardList.jsx'
+import SearchBar from './Content/SearchBar.jsx'
 
 
 function Home({title}) {

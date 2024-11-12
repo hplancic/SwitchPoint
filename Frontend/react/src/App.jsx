@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './styles/App.css'
-import Login from './Login.jsx'
-import Home from './Home.jsx'
-import Signup from './Signup.jsx'
+import Login from './Login and Signup/Login.jsx'
+import Home from './Front Page/Home.jsx'
+import Signup from './Login and Signup/Signup.jsx'
 import axios from 'axios'
-import LoggedInHome from './LoggedInHome.jsx'
-import MyPage from './MyPage.jsx'
+import LoggedInHome from './Front Page/LoggedInHome.jsx'
+import MyPage from './My Page/MyPage.jsx'
 
 const USER_REGEX = /^\[A-z\][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;

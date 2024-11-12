@@ -1,5 +1,5 @@
 import { Link, replace, useNavigate } from "react-router-dom"
-import './styles/Header.css'
+import '../styles/Header.css'
 
 function LoggedInHeader({title, auth, setAuth}){
 

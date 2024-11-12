@@ -1,4 +1,4 @@
-import LoggedInHeader from "./LoggedInHeader";
+import LoggedInHeader from "../Headers/LoggedInHeader";
 import MyPageSidebar from "./MyPageSidebar";
 import { useState } from "react";
 import MojePloce from './MojePloce';
