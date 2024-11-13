@@ -11,7 +11,7 @@ function MojePloce() {
         <>
             <div className="mypage-mojeploce">
                 <h2>Moje ploče</h2>
-                <div className="add-vinyl-button" onClick={() => openNewVinylPopUp()}>Add vinyl</div>
+                <button className="add-vinyl-button" onClick={() => openNewVinylPopUp()}>Add vinyl</button>
                 <NewVinyl />
             </div>
         </>

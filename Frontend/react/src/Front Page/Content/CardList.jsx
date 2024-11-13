@@ -24,7 +24,7 @@ const fetchedArray = [
         sleeveCondition: "VG",
     },
     {
-        vinylId: 1,
+        vinylId: 3,
         vinylTitle: "Prokletije II",
         artist: "Nemeček",
         genre: "Rock",

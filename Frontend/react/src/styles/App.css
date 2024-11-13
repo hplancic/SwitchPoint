@@ -23,7 +23,7 @@ form {
     color:white;
 }
 
-input {
+input, select {
     margin:5px;
 }
 
