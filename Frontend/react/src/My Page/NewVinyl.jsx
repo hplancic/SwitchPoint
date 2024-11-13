@@ -10,8 +10,15 @@ function NewVinyl() {
     const [sleeveCondition, setSleeveCondition] = useState("");
 
     const closePopUp = () => {
-        let popup = document.getElementById('newvinyl-popup');
-        popup.style.display = 'none';
+        let overlay = document.getElementById('overlay');
+
+        let popup = document.getElementById("newvinyl-popup");
+        let closeButton = document.getElementById("closeButton");
+        if (popup.matches(':hover') && !closeButton.matches(':hover')) {
+            return
+        }
+
+        overlay.style.display = 'none';    
     }
 
     const addVinyl = (e) => {
@@ -21,11 +28,11 @@ function NewVinyl() {
     }
 
     return (
-        <>
+        <div id="overlay" onClick={closePopUp}>
             <div id="newvinyl-popup">
-                <div style={{display:"flex", justifyContent:"space-between"}}>
-                    <h2>Add a new vinyl</h2>
-                    <button onClick={() => closePopUp()}>X</button>
+                <div className="titleGroup">
+                    <h2 className="title">Add a new vinyl</h2>
+                    <button id="closeButton" onClick={closePopUp}>X</button>
                 </div>
                 <form action="post" onSubmit={addVinyl}>
 
@@ -68,7 +75,7 @@ function NewVinyl() {
                     <input type="submit" value="Add vinyl" />
                 </form>
             </div>
-        </>
+        </div>
     )
 }
 

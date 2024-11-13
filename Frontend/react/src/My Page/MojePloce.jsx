@@ -3,8 +3,8 @@ import NewVinyl from "./NewVinyl";
 function MojePloce() {
 
     const openNewVinylPopUp = () => {
-        let popup = document.getElementById('newvinyl-popup');
-        popup.style.display = 'block';
+        let overlay = document.getElementById('overlay');
+        overlay.style.display = 'grid';
     }
 
     return (
