@@ -51,3 +51,31 @@
 .artist {
     font-style: italic;
 }
+
+.colored {
+    color: whitesmoke;
+}
+
+.darkblue {
+    background-color: dodgerblue;
+}
+
+.blue {
+    background-color: darkcyan;
+}
+
+.darkgreen {
+    background-color: darkolivegreen;
+}
+
+.green {
+    background-color: darkseagreen;
+}
+
+.orange {
+    background-color: chocolate;
+}
+
+.red {
+    background-color: maroon;
+}

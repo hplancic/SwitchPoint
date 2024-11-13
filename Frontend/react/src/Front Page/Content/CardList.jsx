@@ -9,8 +9,8 @@ const fetchedArray = [
         releaseYear: "2024",
         vinylImage: "/Prokletije2Front.jpg",
         username: "Marijanus",
-        sleeveCondition: "M",
-        vinylCondition: "M"
+        vinylCondition: "M",
+        sleeveCondition: "NM",
     },
     {
         vinylId: 2,
@@ -20,9 +20,20 @@ const fetchedArray = [
         releaseYear: "2021",
         vinylImage: "/Prokletije2Back.jpg",
         username: "Marijanus",
-        sleeveCondition: "P",
-        vinylCondition: "VG+"
-    }
+        vinylCondition: "VG+",
+        sleeveCondition: "VG",
+    },
+    {
+        vinylId: 1,
+        vinylTitle: "Prokletije II",
+        artist: "Nemeček",
+        genre: "Rock",
+        releaseYear: "2024",
+        vinylImage: "/Prokletije2Front.jpg",
+        username: "Marijanus",
+        vinylCondition: "G",
+        sleeveCondition: "P/F",
+    },
 ]
 
 function CardList() {

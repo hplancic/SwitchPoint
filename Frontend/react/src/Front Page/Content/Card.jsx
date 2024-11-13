@@ -1,6 +1,15 @@
 import { Link } from 'react-router-dom'
 import '../../styles/Card.css'
 
+const conditionToColor = {
+    "M": "darkblue",
+    "NM": "blue",
+    "VG+": "darkgreen",
+    "VG": "green",
+    "G": "orange",
+    "P/F": "red",
+};
+
 function Card(props) {
     return (
         <div className="card">
@@ -26,11 +35,11 @@ function Card(props) {
             </div>
             <div className="KVPair">
                 <div className="key">Stanje Ploče</div>
-                <div className="value bubble"> {props.vinyl.vinylCondition} </div>
+                <div className={"value bubble colored " + conditionToColor[props.vinyl.vinylCondition]}> {props.vinyl.vinylCondition} </div>
             </div>
             <div className="KVPair">
                 <div className="key">Stanje Omota</div>
-                <div className="value bubble"> {props.vinyl.sleeveCondition} </div>
+                <div className={"value bubble colored " + conditionToColor[props.vinyl.sleeveCondition]}> {props.vinyl.sleeveCondition} </div>
             </div>
 
             <hr></hr>
@@ -39,7 +48,6 @@ function Card(props) {
                 <div className="key bubble">Lokacija</div>
                 <div className="value">5 km daleko</div>
             </div>
-
         </div>
     )
 }
