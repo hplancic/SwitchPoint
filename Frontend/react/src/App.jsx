@@ -8,9 +8,6 @@ import axios from 'axios'
 import LoggedInHome from './Front Page/LoggedInHome.jsx'
 import MyPage from './My Page/MyPage.jsx'
 
-const USER_REGEX = /^\[A-z\][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
 function App() {
 
   const title = 'SwitchPoint';
@@ -20,17 +17,17 @@ function App() {
   useEffect(() => {
     localStorage.setItem('auth', JSON.stringify(auth));
   }, [auth]);
-  // Testiranje rada axiosa
-/*   axios.get('api/users')
-    .then(response => console.log(response.data))
- */
 
   return (
     <>
       <Router>
         <Routes>
           <Route path='/' element={
-              auth.isLoggedIn ? <LoggedInHome title={title} auth={auth} setAuth={setAuth}/> : <Home title={title} />
+              auth.isLoggedIn ? <LoggedInHome 
+                                    title={title} 
+                                    auth={auth} 
+                                    setAuth={setAuth} /> 
+                              : <Home title={title} />
           } />
           {auth.isLoggedIn &&
             <Route path='/mypage' element={<MyPage title={title} auth={auth} setAuth={setAuth} />} />

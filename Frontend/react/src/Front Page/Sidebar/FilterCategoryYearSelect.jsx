@@ -26,6 +26,7 @@ function FilterCategoryYearSelect({filterYearMinValue, filterYearMaxValue, setFi
                     handleFilterYearInput(e);
                 }}
                 ruler={false}
+                style={initCollapse=="opened" ? {display:"flex"} : {display:"none"}}
             />
         </div>
         </>

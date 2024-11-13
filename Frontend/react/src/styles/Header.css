@@ -33,8 +33,7 @@
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px 7px;
-    margin: 5px 7px;
-
+    margin: auto 7px;
 }
 
 .header-button:hover {
@@ -57,4 +56,19 @@ button {
 .logout-button:hover {
     background-color: #642727;
     color: aliceblue;
+}
+
+@media only screen and (max-width: 600px) {
+    .header-title {
+        font-size: 6vw;
+    }
+    .header-button {
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 933px /* Wide enough to fit two cards */) {
+    .header {
+        border-radius: 0;
+    }
 }

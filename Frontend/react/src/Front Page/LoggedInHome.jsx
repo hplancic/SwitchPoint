@@ -3,10 +3,14 @@ import CardList from './Content/CardList.jsx'
 import LoggedInHeader from '../Headers/LoggedInHeader.jsx'
 
 
-function LoggedInHome({title, auth, setAuth}) {
+function LoggedInHome(props) {
+
     return (
         <>
-        <LoggedInHeader title={title} auth={auth} setAuth={setAuth}/>
+        <LoggedInHeader 
+            title={props.title} 
+            auth={props.auth} 
+            setAuth={props.setAuth}/>
         <div className='content'>
             <Sidebar />
             <CardList />

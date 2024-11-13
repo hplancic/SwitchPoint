@@ -5,6 +5,7 @@ import SearchBar from './Content/SearchBar.jsx'
 
 
 function Home({title}) {
+    
     return (
         <>
         <Header title={title} />

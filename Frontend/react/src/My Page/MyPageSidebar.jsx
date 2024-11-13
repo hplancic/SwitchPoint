@@ -24,7 +24,7 @@ function MyPageSidebar({tabs, selectedTab, setSelectedTab}) {
 
     return (
         <>
-        <div className="sidebar">
+        <div className="sidebar mypage-sidebar">
             {Object.keys(tabs).map((tab, index) => (
                 <Link 
                     to='/mypage'

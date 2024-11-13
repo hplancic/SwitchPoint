@@ -40,10 +40,13 @@ input {
     .content {
         display: grid;
         grid-template-columns: 1fr;
-        margin: 20px 10px 10px 20px;
+        margin: 10px 20px 10px 20px;
     }
-    
     .searchForm {
         grid-row: 1;
+    }
+    #root {
+        margin: 0;
+        width: 100vw;
     }
 }
