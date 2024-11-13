@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -68,6 +69,16 @@ public class UserController {
     public ResponseEntity<List<UserVinyls>> getUserVinyls(@PathVariable Long userId) {
         List<UserVinyls> userVinyls = userVinylsService.getUserVinylsByUserId(userId);
         return new ResponseEntity<>(userVinyls, HttpStatus.OK);
+    }
+
+    @GetMapping("/username")
+    public ResponseEntity<?> getUserByUsername(@RequestParam String username) {
+        Optional<User> userOptional = userService.getUserByUsername(username);
+        if (userOptional.isPresent()) {
+            return ResponseEntity.ok(userOptional.get()); // return user data
+        } else {
+            return ResponseEntity.notFound().build(); // return 404 if user not found
+        }
     }
 }
 
