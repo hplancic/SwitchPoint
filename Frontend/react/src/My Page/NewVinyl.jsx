@@ -11,13 +11,6 @@ function NewVinyl() {
 
     const closePopUp = () => {
         let overlay = document.getElementById('overlay');
-
-        let popup = document.getElementById("newvinyl-popup");
-        let closeButton = document.getElementById("closeButton");
-        if (popup.matches(':hover') && !closeButton.matches(':hover')) {
-            return
-        }
-
         overlay.style.display = 'none';    
     }
 
@@ -29,7 +22,7 @@ function NewVinyl() {
 
     return (
         <div id="overlay" onClick={closePopUp}>
-            <div id="newvinyl-popup">
+            <div id="newvinyl-popup" onClick={ e => e.stopPropagation() }>
                 <div className="titleGroup">
                     <h2 className="title">Add a new vinyl</h2>
                     <button id="closeButton" onClick={closePopUp}>X</button>
