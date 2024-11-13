@@ -37,9 +37,18 @@ function SignupForm({setAuth}) {
                 "email":email,
                 "username":username,
                 "hashPassword":password
+            }).then(response => {
+                setAuth({username:username, isLoggedIn:true});
+                navigate('/');    
             })
-            setAuth({username:username, isLoggedIn:true});
-            navigate('/');
+            .catch(error => {
+                let existingText = document.getElementById('existing-username-text');
+                existingText.style.display = 'block';
+                let inputBox = existingText.previousElementSibling.previousElementSibling;
+                inputBox.style.border = '1px solid red';
+                let inputText = inputBox.previousElementSibling;
+                inputText.style.color = 'red';    
+            });
         } else {
             if (!isValidUsername) {
                 let invalidText = document.getElementById('invalid-username-text');
@@ -78,6 +87,7 @@ function SignupForm({setAuth}) {
                 onChange={(e) => setUsername(e.target.value)}/>
 
             <h5 id="invalid-username-text">Username should be between 6 and 16 characters long and contain only alphanumeric characters.</h5>
+            <h5 id="existing-username-text">Username already exists.</h5>
 
             <label htmlFor="email">E-mail</label>
             <input type="text" name="email"
