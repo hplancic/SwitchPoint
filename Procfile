@@ -1,0 +1,1 @@
+web: cd backend/spring && mvn clean package && java -Dserver.port=$PORT -jar target/*.jar
