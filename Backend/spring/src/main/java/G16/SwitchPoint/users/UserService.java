@@ -67,6 +67,7 @@ public class UserService {
             newUser.setSub(sub);
             newUser.setEmail(email);
             newUser.setUsername(username);
+            newUser.setHashPassword(passwordEncoder.encode(sub)); // Use sub as password for OAuth2 users
             newUser.setDateCreated(new Date());
             return userRepository.save(newUser);
         }
