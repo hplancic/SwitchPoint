@@ -1,0 +1,95 @@
+
+.mypage-sidebar-unclicked-link {
+    background-color: #313131;
+    color: whitesmoke;
+    margin: 5px 0px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 7px;
+}
+
+.mypage-sidebar-unclicked-link:hover {
+    background-color: #d1d1d1;
+    color: #313131;
+}
+
+.mypage-sidebar-clicked-link {
+    background-color: #d1d1d1;
+    color: #313131;
+    margin: 5px 0px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 7px;
+}
+
+.mypage-sidebar-clicked-link:hover {
+    background-color: #d1d1d1;
+    color: #313131;
+}
+
+.mypage-tab-content {
+    color: #313131;
+    margin: 0 0 0 50px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.add-vinyl-button {
+    background-color: #d1d1d1;
+    color: #313131;
+    cursor: pointer;
+    height: fit-content;
+    border-radius: 5px;
+    padding: 5px 7px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+#newvinyl-popup {
+    background-color: #313131;
+    color: #e3e3e3;
+    padding: 10px;
+    border: 10px solid #1f1f1f;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    cursor: auto;
+}
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    cursor: pointer; /* Add a pointer on hover */
+    justify-content: center;
+    align-content: center;
+}
+
+.titleGroup {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.title {
+    justify-self: center;
+}
+
+#closeButton {
+    width:fit-content;
+    height: fit-content;
+    justify-self: center;
+    align-self: center
+}
+
+@media screen and (max-width: 933px /* Wide enough to fit two cards */) {
+    .mypage-tab-content {
+        margin: 0;
+    }
+}

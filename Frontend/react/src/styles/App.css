@@ -1,0 +1,52 @@
+body {
+    background-color: aliceblue;
+}
+
+#root {
+    max-width: 1200px;
+    margin: 12px;
+    width: 90vw;
+}
+
+/* CONTENT */
+.content {
+    position: relative;
+    top: 0;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 20px 10px 10px 20px;
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    color:white;
+}
+
+input, select {
+    margin:5px;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-left: 10px;
+}
+/* END CONTENT */
+
+@media screen and (max-width: 933px /* Wide enough to fit two cards */) {
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 10px 20px 10px 20px;
+    }
+    .searchForm {
+        grid-row: 1;
+    }
+    #root {
+        margin: 0;
+        width: 100vw;
+    }
+}
