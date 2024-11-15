@@ -43,6 +43,7 @@
     padding: 5px 7px;
     font-weight: 600;
     width: fit-content;
+    margin: auto 0;
 }
 
 #newvinyl-popup {
@@ -71,6 +72,24 @@
     justify-content: center;
     align-content: center;
 }
+/* Stavi background na dropdown panel jer inače će biti prozirno i neće se ništa vidjeti */
+.p-dropdown-panel {
+    background-color: #e3e3e3;
+    color: #313131;
+    border-radius: 5px;
+}
+/* Dodaj malo prostora elementima dropdown panela */
+.p-dropdown-item {
+    margin: 2px 4px;
+}
+/* Kad se unosi text, promijenit će se boja elementu dropdowna koji odgovara tekstu */
+.p-dropdown-items > .p-focus {
+    background-color: #c5c5c5;
+}
+
+.add-vinyl-img {
+    width: 100px;
+}
 
 .titleGroup {
     display: grid;
@@ -91,5 +110,9 @@
 @media screen and (max-width: 933px /* Wide enough to fit two cards */) {
     .mypage-tab-content {
         margin: 0;
+    }
+    #newvinyl-popup {
+        max-width: 300px;
+        font-size: 3vw;
     }
 }

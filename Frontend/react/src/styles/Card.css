@@ -70,6 +70,7 @@
 
 .green {
     background-color: darkseagreen;
+    color: #313131;
 }
 
 .orange {
@@ -78,4 +79,14 @@
 
 .red {
     background-color: maroon;
+}
+
+.yellow {
+    background-color: yellow;
+    color: #313131;
+}
+
+.pink {
+    background-color: pink;
+    color: #313131;
 }

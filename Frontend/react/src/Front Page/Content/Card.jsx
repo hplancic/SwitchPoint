@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom'
 import '../../styles/Card.css'
 
 const conditionToColor = {
-    "M": "darkblue",
-    "NM": "blue",
-    "VG+": "darkgreen",
-    "VG": "green",
-    "G": "orange",
-    "P/F": "red",
+    'MINT': "darkblue",
+    'NEAR_MINT': "blue",
+    'VERY_GOOD_PLUS': "darkgreen",
+    'VERY_GOOD': "green",
+    'GOOD_PLUS': "yellow",
+    'GOOD': "orange",
+    'FAIR':"pink",
+    'POOR':"red"
 };
 
 function Card(props) {

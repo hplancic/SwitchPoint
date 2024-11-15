@@ -9,7 +9,7 @@ function SearchBar() {
     return (
         <form action="post" className="searchForm" onSubmit={handleSearch}>
             <input type="text" name="search" id="searchInput" placeholder="Search artist or album name"/>
-            <input type="submit" value="Search" id="searchButton"/>
+            <img src="../../../searchIcon.svg" alt="searchIcon" id='searchIcon' />
         </form>
     )
 }

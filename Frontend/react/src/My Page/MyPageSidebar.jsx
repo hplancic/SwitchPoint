@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import '../styles/MyPage.css';
+import '../styles/Mypage.css';
 import { useState } from "react";
 
 function MyPageSidebar({tabs, selectedTab, setSelectedTab}) {
