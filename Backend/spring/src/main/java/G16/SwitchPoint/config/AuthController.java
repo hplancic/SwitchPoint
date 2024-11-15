@@ -6,6 +6,8 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
+import com.google.gson.JsonObject;
+import com.google.gson.Gson;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,7 +33,14 @@ public class AuthController {
     }
 
     @PostMapping("/google")
-    public ResponseEntity<String> verifyGoogleToken(@RequestBody String token) {
+    public ResponseEntity<String> verifyGoogleToken(@RequestBody String data) {
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(data, JsonObject.class);
+        String body = jsonObject.get("body").toString();
+        JsonObject bodyJsonObject = gson.fromJson(body, JsonObject.class);
+        String tokenA = bodyJsonObject.get("token").toString();
+        String token = tokenA.substring(1, tokenA.length()-1);
+        System.out.println(token);
         try {
             GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(
                     GoogleNetHttpTransport.newTrustedTransport(),
