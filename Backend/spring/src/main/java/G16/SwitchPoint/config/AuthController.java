@@ -1,7 +1,7 @@
 package G16.SwitchPoint.config;
 
 import G16.SwitchPoint.users.User;
-import G16.SwitchPoint.users.UserRepository;
+import G16.SwitchPoint.users.UserService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -13,9 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Collections;
-import java.util.Date;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -23,11 +22,11 @@ public class AuthController {
 
     private static final String CLIENT_ID = "817895363129-joisrep5bkd9fcomrekms9hbagm3u05d.apps.googleusercontent.com";
     private final AuthenticationManager authenticationManager;
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository) {
+    public AuthController(AuthenticationManager authenticationManager, UserService userService) {
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @PostMapping("/google")
@@ -43,26 +42,10 @@ public class AuthController {
             if (idToken != null) {
                 GoogleIdToken.Payload payload = idToken.getPayload();
 
-                // Retrieve user information from the token
-                String userId = payload.getSubject();
-                String email = payload.getEmail();
-                String name = (String) payload.get("name");
+                // Use UserService to verify and register OAuth2 user
+                User user = userService.verifyAndRegisterOAuthUser(payload);
 
-                // Check if user already exists in the database using the sub (userId)
-                Optional<User> existingUser = userRepository.findBySub(userId);
-                if (existingUser.isPresent()) {
-                    // User already exists, proceed with login
-                    return ResponseEntity.ok("User verified and logged in successfully");
-                } else {
-                    // Register a new user with the obtained Google information
-                    User newUser = new User();
-                    newUser.setEmail(email);
-                    newUser.setUsername(name); // You might want to adjust how you set the username
-                    newUser.setSub(userId);
-                    newUser.setDateCreated(new Date());
-                    userRepository.save(newUser);
-                    return ResponseEntity.ok("User verified and registered successfully");
-                }
+                return ResponseEntity.ok("User verified and logged in successfully");
             } else {
                 return ResponseEntity.status(401).body("Invalid ID token");
             }
