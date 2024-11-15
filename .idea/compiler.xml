@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SwitchPoint (1)" />
         <module name="SwitchPoint" />
       </profile>
     </annotationProcessing>
