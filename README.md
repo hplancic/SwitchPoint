@@ -1,5 +1,8 @@
 # SwitchPoint
 
+### Link za deployanu web-aplikaciju: 
+  - https://switchpointx-3993d389768a.herokuapp.com/
+***
 ## Opis projekta
 
 Cilj ovog projekta je izraditi platformu pod nazivom **VinylSwap** koja omogućava ljubiteljima gramofonskih ploča jednostavnu razmjenu ploča.
