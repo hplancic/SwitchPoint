@@ -72,6 +72,11 @@
 			<artifactId>google-api-client</artifactId>
 			<version>1.32.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>9.20.0</version> <!-- Use the latest version as appropriate -->
+		</dependency>
 
 
 	</dependencies>

@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SwitchPoint (2)" />
         <module name="SwitchPoint (1)" />
-        <module name="SwitchPoint" />
       </profile>
     </annotationProcessing>
   </component>
@@ -15,6 +15,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SwitchPoint" options="-parameters" />
       <module name="SwitchPoint (1)" options="-parameters" />
+      <module name="SwitchPoint (2)" options="-parameters" />
     </option>
   </component>
 </project>
