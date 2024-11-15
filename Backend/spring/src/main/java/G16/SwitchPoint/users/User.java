@@ -24,21 +24,26 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
 
-    // Zadani konstruktor postavlja dateCreated na trenutni datum
+    @Column(unique = true)
+    private String sub; // OAuth2 subject identifier, unique for each user from OAuth provider
+
+    // Default constructor sets dateCreated to the current date
     public User() {
         this.dateCreated = new Date();
+        this.sub = null; // Default value for non-OAuth2 registrations
     }
 
-    // Konstruktor s parametrima za postavljanje svih polja osim userId
+    // Constructor with parameters for setting all fields except userId and sub
     public User(String username, String hashPassword, String email, String location) {
         this.username = username;
         this.hashPassword = hashPassword;
         this.email = email;
         this.location = location;
         this.dateCreated = new Date();
+        this.sub = null; // Default value for non-OAuth2 registrations
     }
 
-    // Getter i Setter za userId
+    // Getter and Setter for userId
     public Long getUserId() {
         return userId;
     }
@@ -47,7 +52,7 @@ public class User {
         this.userId = userId;
     }
 
-    // Getter i Setter za username
+    // Getter and Setter for username
     public String getUsername() {
         return username;
     }
@@ -56,7 +61,7 @@ public class User {
         this.username = username;
     }
 
-    // Getter i Setter za hashPassword
+    // Getter and Setter for hashPassword
     public String getHashPassword() {
         return hashPassword;
     }
@@ -65,7 +70,7 @@ public class User {
         this.hashPassword = hashPassword;
     }
 
-    // Getter i Setter za email
+    // Getter and Setter for email
     public String getEmail() {
         return email;
     }
@@ -74,7 +79,7 @@ public class User {
         this.email = email;
     }
 
-    // Getter i Setter za location
+    // Getter and Setter for location
     public String getLocation() {
         return location;
     }
@@ -83,7 +88,7 @@ public class User {
         this.location = location;
     }
 
-    // Getter i Setter za dateCreated
+    // Getter and Setter for dateCreated
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -92,7 +97,16 @@ public class User {
         this.dateCreated = dateCreated;
     }
 
-    // toString metoda za predstavljanje informacija o korisniku
+    // Getter and Setter for sub
+    public String getSub() {
+        return sub;
+    }
+
+    public void setSub(String sub) {
+        this.sub = sub;
+    }
+
+    // toString method for representing user information
     @Override
     public String toString() {
         return "User{" +
@@ -102,6 +116,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", location='" + location + '\'' +
                 ", dateCreated=" + dateCreated +
+                ", sub='" + sub + '\'' +
                 '}';
     }
 }

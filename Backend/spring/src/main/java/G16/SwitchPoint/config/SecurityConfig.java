@@ -24,7 +24,8 @@ public class SecurityConfig {
                     auth.requestMatchers("/").permitAll();             // Allow access to the root URL
                     auth.requestMatchers("/error").permitAll();        // Allow access to the error page
                     auth.requestMatchers("/h2-console/**").permitAll(); // Allow access to H2 console
-                    auth.anyRequest().permitAll();                // Require authentication for all other requests
+                    auth.requestMatchers("/api/auth/google").permitAll(); // Allow access to Google OAuth2 login endpoint
+                    auth.anyRequest().authenticated();                // Require authentication for all other requests
                 })
                 .csrf(AbstractHttpConfigurer::disable) // Disable CSRF for the H2 console
                 .headers(headers -> headers
@@ -45,4 +46,3 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 }
-

@@ -2,6 +2,7 @@ package G16.SwitchPoint.users;
 
 import G16.SwitchPoint.vinyl.Vinyl;
 import G16.SwitchPoint.vinyl.VinylRepository;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ public class UserService {
         // Lozinka se enkodira prije spremanja radi sigurnosti
         user.setHashPassword(passwordEncoder.encode(user.getHashPassword()));
         user.setDateCreated(new Date());
+        user.setSub(null); // Default value for non-OAuth2 registrations
         return userRepository.save(user);
     }
 
@@ -45,8 +47,36 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    // Metoda za dohvaćanje korisnika po username-u
     public Optional<User> getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-}
 
+    // Metoda za dohvaćanje korisnika po sub-u (OAuth2 korisnici)
+    public Optional<User> getUserBySub(String sub) {
+        return userRepository.findBySub(sub);
+    }
+
+    // Metoda za registraciju ili dohvaćanje korisnika na temelju OAuth2 sub-a
+    public User registerOrGetOAuthUser(String sub, String email, String username) {
+        Optional<User> existingUser = userRepository.findBySub(sub);
+        if (existingUser.isPresent()) {
+            return existingUser.get();
+        } else {
+            User newUser = new User();
+            newUser.setSub(sub);
+            newUser.setEmail(email);
+            newUser.setUsername(username);
+            newUser.setDateCreated(new Date());
+            return userRepository.save(newUser);
+        }
+    }
+
+    // Metoda za provjeru ili registraciju korisnika koristeći Google OAuth token
+    public User verifyAndRegisterOAuthUser(GoogleIdToken.Payload payload) {
+        String userId = payload.getSubject();
+        String email = payload.getEmail();
+        String name = (String) payload.get("name");
+        return registerOrGetOAuthUser(userId, email, name);
+    }
+}

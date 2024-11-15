@@ -19,12 +19,16 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Traženje korisnika u bazi podataka prema usernameu
-        Optional<User> userOptional = userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String identifier) throws UsernameNotFoundException {
+        // Traženje korisnika u bazi podataka prema username-u ili sub-u
+        Optional<User> userOptional = userRepository.findByUsername(identifier);
 
         if (userOptional.isEmpty()) {
-            throw new UsernameNotFoundException("Korisnik s korisničkim imenom: " + username + " nije pronađen");
+            // If user is not found by username, try to find by sub (OAuth2 identifier)
+            userOptional = userRepository.findBySub(identifier);
+            if (userOptional.isEmpty()) {
+                throw new UsernameNotFoundException("Korisnik s identifikatorom: " + identifier + " nije pronađen");
+            }
         }
 
         User user = userOptional.get();
@@ -36,4 +40,3 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .build();
     }
 }
-
