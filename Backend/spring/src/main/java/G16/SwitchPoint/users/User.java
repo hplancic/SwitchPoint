@@ -19,7 +19,8 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    private String location;
+    private double longitude;
+    private double latitude;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
@@ -34,11 +35,12 @@ public class User {
     }
 
     // Constructor with parameters for setting all fields except userId and sub
-    public User(String username, String hashPassword, String email, String location) {
+    public User(String username, String hashPassword, String email, double longitude, double latitude) {
         this.username = username;
         this.hashPassword = hashPassword;
         this.email = email;
-        this.location = location;
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.dateCreated = new Date();
         this.sub = null; // Default value for non-OAuth2 registrations
     }
@@ -79,14 +81,6 @@ public class User {
         this.email = email;
     }
 
-    // Getter and Setter for location
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     // Getter and Setter for dateCreated
     public Date getDateCreated() {
@@ -106,17 +100,19 @@ public class User {
         this.sub = sub;
     }
 
-    // toString method for representing user information
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", username='" + username + '\'' +
-                ", hashPassword='[PROTECTED]'" +
-                ", email='" + email + '\'' +
-                ", location='" + location + '\'' +
-                ", dateCreated=" + dateCreated +
-                ", sub='" + sub + '\'' +
-                '}';
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }
