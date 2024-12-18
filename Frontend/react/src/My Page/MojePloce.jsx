@@ -35,7 +35,6 @@ function MojePloce() {
             .catch(error => {
                 console.log(error);
             })
-
     }, []);
 
     return (
@@ -46,13 +45,13 @@ function MojePloce() {
                     <button className="add-vinyl-button" onClick={() => openNewVinylPopUp()}>Add a vinyl</button>
                 </div>
                 <hr style={{color:'#313131', marginBottom:'30px', height:'1px'}}/>
-                <NewVinyl2/>
+                <NewVinyl/>
                 <div className="card-list">
                     {userVinyls.map((userVinyl, index) => (
                         <Card 
                             key={index}
                             vinyl={{
-                                vinylImage:'../../public/unavailable-image.jpg',
+                                vinylImage: userVinyl.image ? 'data:image/png;base64,' + userVinyl.image.imageData : '../../public/unavailable-image.jpg',
                                 artist:userVinyl.vinyl.artist,
                                 vinylTitle:userVinyl.vinyl.vinylTitle,
                                 genre:userVinyl.vinyl.genre,

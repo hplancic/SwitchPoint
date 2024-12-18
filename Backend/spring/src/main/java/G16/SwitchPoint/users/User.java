@@ -19,8 +19,8 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    private double longitude;
-    private double latitude;
+    //private double longitude;
+    //private double latitude;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
@@ -35,12 +35,12 @@ public class User {
     }
 
     // Constructor with parameters for setting all fields except userId and sub
-    public User(String username, String hashPassword, String email, double longitude, double latitude) {
+    public User(String username, String hashPassword, String email) { //, double longitude, double latitude) {
         this.username = username;
         this.hashPassword = hashPassword;
         this.email = email;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        //this.longitude = longitude;
+        //this.latitude = latitude;
         this.dateCreated = new Date();
         this.sub = null; // Default value for non-OAuth2 registrations
     }
@@ -100,7 +100,7 @@ public class User {
         this.sub = sub;
     }
 
-    public double getLatitude() {
+/*     public double getLatitude() {
         return latitude;
     }
 
@@ -114,5 +114,5 @@ public class User {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
-    }
+    } */
 }

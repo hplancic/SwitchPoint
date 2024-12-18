@@ -1,4 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
+import ConditionSelect from "./ConditionSelect";
+import GenreSelect from "./GenreSelect";
 
 function NewVinyl() {
 
@@ -8,6 +11,7 @@ function NewVinyl() {
     const [year, setYear] = useState("");
     const [vinylCondition, setVinylCondition] = useState("");
     const [sleeveCondition, setSleeveCondition] = useState("");
+    const [file, setFile] = useState(null);
 
     const closePopUp = () => {
         let overlay = document.getElementById('overlay');
@@ -16,8 +20,45 @@ function NewVinyl() {
 
     const addVinyl = (e) => {
         e.preventDefault();
+        //console.log(selectedArtist, selectedAlbum, selectedVinylCondition, selectedSleeveCondition);
+        let username = JSON.parse(localStorage.getItem('auth')).username;
         closePopUp();
-        console.log(artist, album, genre, year, vinylCondition, sleeveCondition);
+        axios.get('/api/users/username?username=' + username)
+            .then(response => {
+                let userId = response.data.userId;
+                //console.log(artistAlbums, vinylIds);
+                const formData = new FormData();
+                formData.append("vinylTitle", album);
+                formData.append("artist", artist);
+                formData.append("genre", genre);
+                formData.append("releaseYear", year);
+                formData.append("vinylCondition", vinylCondition);
+                formData.append("sleeveCondition", sleeveCondition);
+                formData.append("imageFile", file);
+/*                 let postPATH = '?vinylTitle='+album
+                        +'&artist='+artist
+                        +'&genre='+genre
+                        +'&releaseYear='+year
+                        +'&vinylCondition='+vinylCondition
+                        +'&sleeveCondition='+sleeveCondition
+                        +'&imageFile='+file; */
+                axios.post('/api/users/' + userId + '/vinyls', formData, {
+                    headers: {
+                        "content-type": "multipart/form-data"
+                    }
+                }) // + postPATH)
+                    .then(response => {
+                        console.log("Successfully added a new vinyl.");
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+                
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -30,7 +71,8 @@ function NewVinyl() {
                 <form action="post" onSubmit={addVinyl}>
 
                     <label htmlFor="image">Choose image</label>
-                    <input type="file" name="image" id="" />
+                    <input type="file" name="image" id="inputImage"
+                        onChange={(e) => setFile(e.target.files[0])} />
 
                     <label htmlFor="artist">Artist name</label>
                     <input type="text" name="artist" id="" 
@@ -40,30 +82,28 @@ function NewVinyl() {
                     <input type="text" name="album" id="" 
                         onChange={(e) => setAlbum(e.target.value)}/>
 
-                    <label htmlFor="genre">Select genre</label>
-                    <select name="genre" id="" 
-                        onChange={(e) => setGenre(e.target.value)}>
-                        <option value="Rock">Rock</option>
-                        <option value="Pop">Pop</option>
-                    </select>
+                    <div style={{maxWidth:'600px'}}>
+                        <label>Select genre</label>                    
+                        <GenreSelect
+                            setSelected={setGenre} />
+                    </div>
 
                     <label htmlFor="year">Year of release</label>
                     <input type="number" name="year" id="" 
                         onChange={(e) => setYear(e.target.value)}/>
 
-                    <label htmlFor="vinyl-condition">Select vinyl condition</label>
-                    <select name="vinyl-condition" id="" 
-                        onChange={(e) => setVinylCondition(e.target.value)}>
-                        <option value="VG">VG</option>
-                        <option value="M">M</option>
-                    </select>
-
-                    <label htmlFor="sleeve-condition">Select sleeve condition</label>
-                    <select name="sleeve-condition" id=""
-                        onChange={(e) => setSleeveCondition(e.target.value)}>
-                        <option value="VG">VG</option>
-                        <option value="M">M</option>
-                    </select>
+                    <div style={{display:'flex'}}>
+                        <div style={{maxWidth:'300px'}}>
+                            <label>Select vinyl condition</label>                    
+                            <ConditionSelect
+                                setSelected={setVinylCondition} />
+                        </div>
+                        <div style={{maxWidth:'300px'}}>
+                            <label>Select sleeve condition</label>
+                            <ConditionSelect
+                                setSelected={setSleeveCondition} />
+                        </div>
+                    </div>
 
                     <input type="submit" value="Add vinyl" />
                 </form>
