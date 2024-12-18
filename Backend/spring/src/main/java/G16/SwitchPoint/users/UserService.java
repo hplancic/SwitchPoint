@@ -80,4 +80,12 @@ public class UserService {
         String name = (String) payload.get("name");
         return registerOrGetOAuthUser(userId, email, name);
     }
+
+    public User updateUserLocation(long userId,double latitude, double longitude) {
+        User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("User not found"));
+        //mozda provjeriti jesu kordinate valjane
+        user.setLatitude(latitude);
+        user.setLongitude(longitude);
+        return userRepository.save(user);
+    }
 }
