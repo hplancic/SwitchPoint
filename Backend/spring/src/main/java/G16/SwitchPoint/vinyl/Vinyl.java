@@ -20,8 +20,7 @@ public class Vinyl {
    private String vinylImage;
 
     public Vinyl(Long vinylId, String vinylTitle, String artist,
-                 VinylGenre genre, int releaseYear, SleeveCondition sleeveCondition,
-                 VinylCondition vinylCondition, String vinylImage ) {
+                 VinylGenre genre, int releaseYear, String vinylImage ) {
         this.vinylId = vinylId;
         this.vinylTitle = vinylTitle;
         this.artist = artist;

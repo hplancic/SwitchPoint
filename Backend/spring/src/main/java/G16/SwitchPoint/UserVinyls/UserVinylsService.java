@@ -2,10 +2,7 @@ package G16.SwitchPoint.UserVinyls;
 
 import G16.SwitchPoint.users.User;
 import G16.SwitchPoint.users.UserRepository;
-import G16.SwitchPoint.vinyl.SleeveCondition;
-import G16.SwitchPoint.vinyl.Vinyl;
-import G16.SwitchPoint.vinyl.VinylCondition;
-import G16.SwitchPoint.vinyl.VinylRepository;
+import G16.SwitchPoint.vinyl.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,17 +17,20 @@ public class UserVinylsService {
     private UserRepository userRepository;
     private VinylRepository vinylRepository;
     private UserVinylsRepository userVinylsRepository;
-    public UserVinylsService(UserRepository userRepository, VinylRepository vinylRepository, UserVinylsRepository userVinylsRepository) {
+    private VinylService vinylService;
+    public UserVinylsService(UserRepository userRepository, VinylRepository vinylRepository, UserVinylsRepository userVinylsRepository, VinylService vinylService) {
         this.userRepository = userRepository;
         this.vinylRepository = vinylRepository;
         this.userVinylsRepository = userVinylsRepository;
+        this.vinylService = vinylService;
     }
 
-    public UserVinyls addVinylToUser(Long userId, Long vinylId, SleeveCondition sleeveCondition, VinylCondition vinylCondition) {
+    public UserVinyls addVinylToUser(Long userId, Vinyl vinyl, SleeveCondition sleeveCondition, VinylCondition vinylCondition) {
 
         UserVinyls userVinyls = new UserVinyls();
         User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("User not found"));
-        Vinyl vinyl = vinylRepository.findById(vinylId).orElseThrow(()->new RuntimeException("Vinyl not found"));
+
+        vinylService.addVinyl(vinyl); //dodaj u Vinyls taj vinyl
         userVinyls.setUser(user);
         userVinyls.setVinylCondition(vinylCondition);
         userVinyls.setSleeveCondition(sleeveCondition);

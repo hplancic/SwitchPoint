@@ -3,6 +3,7 @@ package G16.SwitchPoint.users;
 import G16.SwitchPoint.UserVinyls.UserVinyls;
 import G16.SwitchPoint.UserVinyls.UserVinylsService;
 import G16.SwitchPoint.vinyl.SleeveCondition;
+import G16.SwitchPoint.vinyl.Vinyl;
 import G16.SwitchPoint.vinyl.VinylCondition;
 import G16.SwitchPoint.vinyl.VinylService;
 import org.springframework.http.HttpStatus;
@@ -59,8 +60,8 @@ public class UserController {
 
     // Endpoint za dodavanje vinila korisniku
     @PostMapping("/{userId}/vinyls")
-    public ResponseEntity<UserVinyls> addVinylToUser(@PathVariable Long userId, @RequestParam Long vinylId, @RequestParam VinylCondition vinylCondition, @RequestParam SleeveCondition sleeveCondition) {
-        UserVinyls userVinyl = userVinylsService.addVinylToUser(userId, vinylId, sleeveCondition, vinylCondition);
+    public ResponseEntity<UserVinyls> addVinylToUser(@PathVariable Long userId, @RequestBody Vinyl vinyl, @RequestParam VinylCondition vinylCondition, @RequestParam SleeveCondition sleeveCondition) {
+        UserVinyls userVinyl = userVinylsService.addVinylToUser(userId, vinyl, sleeveCondition, vinylCondition);
         return new ResponseEntity<>(userVinyl, HttpStatus.CREATED);
     }
 
