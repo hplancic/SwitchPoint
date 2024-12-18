@@ -2,14 +2,13 @@ package G16.SwitchPoint.users;
 
 import G16.SwitchPoint.UserVinyls.UserVinyls;
 import G16.SwitchPoint.UserVinyls.UserVinylsService;
-import G16.SwitchPoint.vinyl.SleeveCondition;
-import G16.SwitchPoint.vinyl.Vinyl;
-import G16.SwitchPoint.vinyl.VinylCondition;
-import G16.SwitchPoint.vinyl.VinylService;
+import G16.SwitchPoint.vinyl.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,8 +59,20 @@ public class UserController {
 
     // Endpoint za dodavanje vinila korisniku
     @PostMapping("/{userId}/vinyls")
-    public ResponseEntity<UserVinyls> addVinylToUser(@PathVariable Long userId, @RequestBody Vinyl vinyl, @RequestParam VinylCondition vinylCondition, @RequestParam SleeveCondition sleeveCondition) {
-        UserVinyls userVinyl = userVinylsService.addVinylToUser(userId, vinyl, sleeveCondition, vinylCondition);
+    public ResponseEntity<UserVinyls> addVinylToUser(@PathVariable Long userId,
+                                                     @RequestParam String vinylTitle,
+                                                     @RequestParam String artist,
+                                                     @RequestParam VinylGenre genre,
+                                                     @RequestParam int releaseYear,
+                                                     @RequestParam VinylCondition vinylCondition,
+                                                     @RequestParam SleeveCondition sleeveCondition,
+                                                     @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
+        Vinyl vinyl = new Vinyl();
+        vinyl.setArtist(artist);
+        vinyl.setGenre(genre);
+        vinyl.setReleaseYear(releaseYear);
+        vinyl.setVinylTitle(vinylTitle);
+        UserVinyls userVinyl = userVinylsService.addVinylToUser(userId, vinyl, sleeveCondition, vinylCondition, imageFile);
         return new ResponseEntity<>(userVinyl, HttpStatus.CREATED);
     }
 

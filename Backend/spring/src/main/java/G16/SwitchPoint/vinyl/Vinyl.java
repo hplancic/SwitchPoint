@@ -17,16 +17,16 @@ public class Vinyl {
    @Enumerated(EnumType.STRING)
    private VinylGenre genre;
    private int releaseYear;
-   private String vinylImage;
+
 
     public Vinyl(Long vinylId, String vinylTitle, String artist,
-                 VinylGenre genre, int releaseYear, String vinylImage ) {
+                 VinylGenre genre, int releaseYear  ) {
         this.vinylId = vinylId;
         this.vinylTitle = vinylTitle;
         this.artist = artist;
         this.genre = genre;
         this.releaseYear = releaseYear;
-        this.vinylImage = vinylImage;
+
     }
 
     public Vinyl() {
@@ -73,13 +73,7 @@ public class Vinyl {
         this.releaseYear = releaseYear;
     }
 
-    public String getVinylImage() {
-        return vinylImage;
-    }
 
-    public void setVinylImage(String vinylImage) {
-        this.vinylImage = vinylImage;
-    }
 
 }
 

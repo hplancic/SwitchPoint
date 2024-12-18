@@ -1,6 +1,7 @@
 package G16.SwitchPoint.UserVinyls;
 
 import G16.SwitchPoint.Package.VinylPackage;
+import G16.SwitchPoint.VinylImages.VinylImage;
 import G16.SwitchPoint.users.User;
 import G16.SwitchPoint.vinyl.SleeveCondition;
 import G16.SwitchPoint.vinyl.Vinyl;
@@ -29,14 +30,18 @@ public class UserVinyls {
     @JoinColumn(name = "package_id", nullable = true)
     private VinylPackage vinylPackage;
 
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private VinylImage image;
+
     public UserVinyls() {}
-    public UserVinyls(User user, Vinyl vinyl, SleeveCondition sleeveCondition, VinylCondition condition, VinylPackage vinylPackage) {
+    public UserVinyls(User user, Vinyl vinyl, SleeveCondition sleeveCondition, VinylCondition condition, VinylPackage vinylPackage, VinylImage image) {
         this.user = user;
         this.vinyl = vinyl;
         this.sleeveCondition = sleeveCondition;
         this.vinylCondition = condition;
         this.vinylPackage = vinylPackage;
-
+        this.image = image;
     }
 
     public Long getId() {
@@ -85,5 +90,12 @@ public class UserVinyls {
 
     public void setVinylPackage(VinylPackage vinylPackage) {
         this.vinylPackage = vinylPackage;
+    }
+
+    public VinylImage getImage() {
+        return image;
+    }
+    public void setImage(VinylImage image) {
+        this.image = image;
     }
 }
