@@ -2,11 +2,12 @@ import axios from "axios"
 import { useState } from "react";
 import '../styles/LoginForm.css'
 import { useNavigate } from "react-router-dom";
+import Map from "./Map.jsx";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const usernamePattern = /^[0-9A-Za-z]{6,16}$/;
 
-function SignupForm({setAuth}) {
+function SignupForm({setAuth, position, setPosition, initCoord}) {
 
     const navigate = useNavigate();
 
@@ -36,7 +37,9 @@ function SignupForm({setAuth}) {
             axios.post('/api/users/register', {
                 "email":email,
                 "username":username,
-                "hashPassword":password
+                "hashPassword":password,
+                "latitude":position.lat,
+                "longitude":position.lng
             }).then(response => {
                 setAuth({username:username, isLoggedIn:true});
                 navigate('/');    
@@ -101,6 +104,10 @@ function SignupForm({setAuth}) {
 
             <h5 id="invalid-password-text">Invalid password.</h5>
 
+            <label htmlFor="location">Location</label>
+            <Map position={position} setPosition={setPosition} initCoord={initCoord} />
+            <label htmlFor="lat">Latitude: {position.lat}</label>
+            <label htmlFor="lng">Longitude: {position.lng}</label>
 
             <input type="submit" value="Sign up" className="submit-button"/>
         </form>

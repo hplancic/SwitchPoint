@@ -1,8 +1,10 @@
+import ChangeLocation from "./ChangeLocation";
 
 function Postavke() {
     return (
         <>
-            <h1>Postavke</h1>
+            <h2>Postavke</h2>
+            <ChangeLocation />
         </>
     )
 }

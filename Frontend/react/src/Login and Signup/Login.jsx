@@ -53,6 +53,7 @@ function Login({setAuth, title}) {
                         })
                         .catch(error => {
                             console.log("ERROR",error);
+                            navigate('/signup');
                         })
                     }}
                     onError={() => {

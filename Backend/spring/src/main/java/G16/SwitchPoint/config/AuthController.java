@@ -40,6 +40,14 @@ public class AuthController {
         String tokenA = bodyJsonObject.get("token").toString();
         String token = tokenA.substring(1, tokenA.length()-1);
         System.out.println(token);
+        Double latitude = null;
+        Double longitude = null;
+        if (bodyJsonObject.get("latitude") != null && bodyJsonObject.get("longitude") != null) {
+            latitude = Double.parseDouble(bodyJsonObject.get("latitude").toString());
+            longitude = Double.parseDouble(bodyJsonObject.get("longitude").toString());
+        }
+        System.out.println(latitude);
+        System.out.println(longitude);        
         try {
             GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(
                     GoogleNetHttpTransport.newTrustedTransport(),
@@ -52,7 +60,7 @@ public class AuthController {
                 GoogleIdToken.Payload payload = idToken.getPayload();
 
                 // Use UserService to verify and register OAuth2 user
-                User user = userService.verifyAndRegisterOAuthUser(payload);
+                User user = userService.verifyAndRegisterOAuthUser(payload, longitude, latitude);
 
                 return ResponseEntity.ok("User verified and logged in successfully");
             } else {

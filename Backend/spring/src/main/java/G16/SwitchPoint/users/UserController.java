@@ -93,12 +93,12 @@ public class UserController {
         }
     }
 
-/*     @PutMapping("/{userId}/location")
+    @PutMapping("/{userId}/location")
     public ResponseEntity<User> updateUserLocation(@PathVariable Long userId,
                                                    @RequestParam double lat,
                                                    @RequestParam double lon) {
        User user = userService.updateUserLocation(userId,lat,lon);
        return new ResponseEntity<>(user, HttpStatus.OK);
-    } */
+    }
 }
 

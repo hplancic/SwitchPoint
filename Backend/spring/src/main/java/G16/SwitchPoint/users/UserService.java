@@ -58,7 +58,7 @@ public class UserService {
     }
 
     // Metoda za registraciju ili dohvaćanje korisnika na temelju OAuth2 sub-a
-    public User registerOrGetOAuthUser(String sub, String email, String username) { //, double longitude, double latitude) {
+    public User registerOrGetOAuthUser(String sub, String email, String username, Double longitude, Double latitude) {
         Optional<User> existingUser = userRepository.findBySub(sub);
         if (existingUser.isPresent()) {
             return existingUser.get();
@@ -67,8 +67,8 @@ public class UserService {
             newUser.setSub(sub);
             newUser.setEmail(email);
             newUser.setUsername(username);
-            //newUser.setLatitude(latitude);
-            //newUser.setLongitude(longitude);
+            newUser.setLatitude((double) latitude);
+            newUser.setLongitude((double) longitude);
             newUser.setHashPassword(passwordEncoder.encode(sub)); // Use sub as password for OAuth2 users
             newUser.setDateCreated(new Date());
             return userRepository.save(newUser);
@@ -76,20 +76,18 @@ public class UserService {
     }
 
     // Metoda za provjeru ili registraciju korisnika koristeći Google OAuth token
-    public User verifyAndRegisterOAuthUser(GoogleIdToken.Payload payload) {
+    public User verifyAndRegisterOAuthUser(GoogleIdToken.Payload payload, Double longitude, Double latitude) {
         String userId = payload.getSubject();
         String email = payload.getEmail();
         String name = (String) payload.get("name");
-        //double longitude = 0;
-        //double latitude = 0;
-        return registerOrGetOAuthUser(userId, email, name); //, longitude, latitude);
+        return registerOrGetOAuthUser(userId, email, name, longitude, latitude);
     }
 
-/*     public User updateUserLocation(long userId,double latitude, double longitude) {
+    public User updateUserLocation(long userId,double latitude, double longitude) {
         User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("User not found"));
         //mozda provjeriti jesu kordinate valjane
         user.setLatitude(latitude);
         user.setLongitude(longitude);
         return userRepository.save(user);
-    } */
+    }
 }
