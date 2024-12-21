@@ -15,6 +15,9 @@ public class VinylPackage {
     private String packageName;
     private String description;
 
+    @OneToMany(mappedBy = "vinylPackage", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserVinyls> userVinyls = new HashSet<>();
+
     public VinylPackage() {}
     public VinylPackage(String packageName, String description) {
         this.packageName = packageName;
@@ -45,4 +48,11 @@ public class VinylPackage {
         this.description = description;
     }
 
+    public Set<UserVinyls> getUserVinyls() {
+        return userVinyls;
+    }
+
+    public void setUserVinyls(Set<UserVinyls> userVinyls) {
+        this.userVinyls = userVinyls;
+    }
 }
