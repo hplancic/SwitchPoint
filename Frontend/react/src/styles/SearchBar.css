@@ -4,6 +4,7 @@
     width: 80%;
     background-color: aliceblue;
     margin: 0;
+    max-height: 5vh;
 }
 
 #searchInput {

@@ -90,3 +90,15 @@
     background-color: pink;
     color: #313131;
 }
+
+.delete-vinyl-button {
+    background-color: #6e0404;
+    color: #fff;
+    width: 100%;
+}
+
+.change-vinyl-button {
+    background-color: #0e1763;
+    color: #fff;
+    width: 100%;
+}

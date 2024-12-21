@@ -23,19 +23,23 @@ function MojePloce() {
         axios.get('/api/users/username?username=' + username)
             .then(response => {
                 let userId = response.data.userId;
-                    axios.get('/api/users/' + userId + '/vinyls')
-                        .then(response => {
-                            setUserVinyls(response.data);
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        })
+                axios.get('/api/users/' + userId + '/vinyls')
+                    .then(response => {
+                        setUserVinyls(response.data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
                 
             })
             .catch(error => {
                 console.log(error);
             })
     }, []);
+
+    useEffect(() => {
+        console.log(userVinyls);
+    }, [userVinyls]);
 
     return (
         <>
@@ -50,7 +54,15 @@ function MojePloce() {
                     {userVinyls.map((userVinyl, index) => (
                         <Card 
                             key={index}
+                            type={"USER_CARD"}
+                            user = {{
+                                id:userVinyl.user.userId,
+                                username:userVinyl.user.username,
+                                latitude:userVinyl.user.latitude,
+                                longitude:userVinyl.user.longitude
+                            }}
                             vinyl={{
+                                id: userVinyl.vinyl.vinylId,
                                 vinylImage: userVinyl.image ? 'data:image/png;base64,' + userVinyl.image.imageData : '../../public/unavailable-image.jpg',
                                 artist:userVinyl.vinyl.artist,
                                 vinylTitle:userVinyl.vinyl.vinylTitle,

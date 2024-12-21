@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../../styles/Card.css'
+import axios from 'axios';
 
 const conditionToColor = {
     'MINT': "darkblue",
@@ -13,6 +14,22 @@ const conditionToColor = {
 };
 
 function Card(props) {
+
+    const deleteVinyl = () => {
+        axios.delete('/api/users/' + props.user.id + '/vinyls/' + props.vinyl.id)
+            .then((res) => {
+                window.location.reload();
+            })
+            .catch((err) => {
+                console.log("Delete vinyl ERROR:", err);
+            });
+    };
+
+    const changeVinyl = () => {
+        console.log("CHANGE VINYL");
+        console.log("OWNER", props.user.username);
+    }
+
     return (
         <div className="card">
             <img className="albumImage" src= { props.vinyl.vinylImage} />
@@ -50,6 +67,9 @@ function Card(props) {
                 <div className="key bubble">Lokacija</div>
                 <div className="value">5 km daleko</div>
             </div>
+
+            {props.type=="USER_CARD" && <button className='delete-vinyl-button' onClick={deleteVinyl}>Delete vinyl</button>}
+            {props.type=="CHANGE_CARD" && <button className='change-vinyl-button' onClick={changeVinyl}>Ponudi zamjenu</button>}
         </div>
     )
 }

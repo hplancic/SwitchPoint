@@ -2,7 +2,7 @@ import Sidebar from './Sidebar/Sidebar.jsx'
 import CardList from './Content/CardList.jsx'
 import SearchBar from './Content/SearchBar.jsx'
 import LoggedInHeader from '../Headers/LoggedInHeader.jsx'
-
+import AllVinyls from './AllVinyls.jsx'
 
 function LoggedInHome(props) {
 
@@ -15,7 +15,7 @@ function LoggedInHome(props) {
         <div className='content'>
             <Sidebar />
             <SearchBar />
-            <CardList />
+            <AllVinyls />
         </div>
         </>
     )
