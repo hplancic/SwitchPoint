@@ -61,4 +61,17 @@ public class UserVinylsService {
     public List<UserVinyls> getUserVinylsByUserId(Long userId) {
         return userVinylsRepository.findByUser_UserId(userId);
     }
+
+
+
+    public void deleteVinylFromUser(Long userId, Long vinylId) {
+
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+
+
+        UserVinyls userVinyl = userVinylsRepository.findByUserAndVinyl_VinylId(user, vinylId)
+                .orElseThrow(() -> new RuntimeException("Vinyl not found for this user"));
+
+        userVinylsRepository.delete(userVinyl);
+    }
 }

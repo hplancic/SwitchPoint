@@ -76,6 +76,19 @@ public class UserController {
         return new ResponseEntity<>(userVinyl, HttpStatus.CREATED);
     }
 
+
+    @DeleteMapping("/{userId}/vinyls/{vinylId}")
+    public ResponseEntity<String> deleteVinylFromUser(@PathVariable Long userId,
+                                                      @PathVariable Long vinylId) {
+        try {
+            userVinylsService.deleteVinylFromUser(userId, vinylId);
+            return new ResponseEntity<>("Ploca uspjesno obrisana.", HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+
     // Endpoint za dohvaćanje svih vinila korisnika
     @GetMapping("/{userId}/vinyls")
     public ResponseEntity<List<UserVinyls>> getUserVinyls(@PathVariable Long userId) {

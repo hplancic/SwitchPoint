@@ -1,5 +1,6 @@
 package G16.SwitchPoint.UserVinyls;
 
+import G16.SwitchPoint.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
@@ -13,4 +14,5 @@ public interface UserVinylsRepository extends JpaRepository<UserVinyls, Long>, J
  Optional<UserVinyls> findByUser_UserIdAndVinyl_VinylId(Long userId, Long vinylId);
  List<UserVinyls> findByUser_UserIdAndVinylPackage_PackageId(Long userId, Long packageId);
 
+    Optional<UserVinyls> findByUserAndVinyl_VinylId(User user, Long vinylId);
 }
