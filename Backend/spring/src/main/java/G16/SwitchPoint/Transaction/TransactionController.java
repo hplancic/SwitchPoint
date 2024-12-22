@@ -19,11 +19,13 @@ public class TransactionController {
     private final TransactionService transactionService;
     private final UserVinylsRepository userVinylRepository;
     private final UserService userService;
+    private final TransactionRepository transactionRepository;
 
-    public TransactionController(TransactionService transactionService, UserVinylsRepository userVinylRepository, UserService userService) {
+    public TransactionController(TransactionService transactionService, UserVinylsRepository userVinylRepository, UserService userService, TransactionRepository transactionRepository) {
         this.transactionService = transactionService;
         this.userVinylRepository = userVinylRepository;
         this.userService = userService;
+        this.transactionRepository = transactionRepository;
     }
     @PostMapping("/initiate")
     public Transaction initiateTrade(@RequestParam Long senderId,
@@ -79,6 +81,7 @@ public class TransactionController {
             Principal principal) {
 
         Transaction transaction = transactionService.getTransactionById(transactionId);
+        //security
        /* if (principal == null) {
             throw new SecurityException("You are not authorized to view this transaction, log in first.");
         }
@@ -89,6 +92,19 @@ public class TransactionController {
             throw new SecurityException("You are not authorized to view this transaction. Current user: " + loggedInUsername);
         }*/
 
+        return ResponseEntity.ok(transaction);
+    }
+    @PutMapping("/{transactionId}")
+    public ResponseEntity<Transaction> editTransaction(@PathVariable Long transactionId, @RequestBody Transaction editedTransaction){
+
+        Transaction transaction = transactionService.getTransactionById(transactionId);
+
+        //security -> ovaj PUT smiju callat useri koji su ili senderi ili receiveri transakcije.
+
+
+        transaction.setUserVinylsOfferedBySender(editedTransaction.getUserVinylsOfferedBySender());
+        transaction.setUserVinylsOfferedByReceiver(editedTransaction.getUserVinylsOfferedByReceiver());
+        transactionRepository.save(transaction);
         return ResponseEntity.ok(transaction);
     }
 
