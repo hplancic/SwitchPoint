@@ -1,9 +1,11 @@
 package G16.SwitchPoint.Transaction;
 
+import G16.SwitchPoint.Email.EmailService;
 import G16.SwitchPoint.UserVinyls.UserVinyls;
 import G16.SwitchPoint.UserVinyls.UserVinylsRepository;
 import G16.SwitchPoint.users.User;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,10 +16,12 @@ import java.util.Set;
 public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final UserVinylsRepository userVinylsRepository;
-
-    public TransactionService(TransactionRepository transactionRepository, UserVinylsRepository userVinylsRepository) {
+    @Autowired
+    private final EmailService emailService;
+    public TransactionService(TransactionRepository transactionRepository, UserVinylsRepository userVinylsRepository, EmailService emailService) {
         this.transactionRepository = transactionRepository;
         this.userVinylsRepository = userVinylsRepository;
+        this.emailService = emailService;
     }
 
     @Transactional
@@ -40,6 +44,11 @@ public class TransactionService {
         transaction.setUserVinylsOfferedByReceiver(receiverUserVinyls);
         transaction.setTimestamp(LocalDateTime.now());
         transaction.setStatus(TransactionStatus.PENDING);
+
+        String subject = "SwitchPoint - NOVA PONUDA";
+        String link = "https://switchpointx-3993d389768a.herokuapp.com/transactions/"+transaction.getTransactionId();
+        String body = "Poštovani,\n stigla vam je nova ponuda za zamjenu u aplikaciji SwtichPoint:\n"+link+"\nSwitchPoint inc.";
+        emailService.sendEmail(receiver.getEmail(), subject, body);
 
         return transactionRepository.save(transaction);
     }

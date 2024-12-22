@@ -1,8 +1,10 @@
 package G16.SwitchPoint.users;
 
+import G16.SwitchPoint.Email.EmailService;
 import G16.SwitchPoint.UserVinyls.UserVinyls;
 import G16.SwitchPoint.UserVinyls.UserVinylsService;
 import G16.SwitchPoint.vinyl.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +22,12 @@ public class UserController {
     private final VinylService vinylService;
     private final UserVinylsService userVinylsService;
 
+
     public UserController(UserService userService, VinylService vinylService, UserVinylsService userVinylsService) {
         this.userService = userService;
         this.vinylService = vinylService;
         this.userVinylsService = userVinylsService;
+
     }
 
     // Endpoint za registraciju korisnika
@@ -123,5 +127,8 @@ public class UserController {
         UserVinyls userVinyl =  userVinylsService.updateUserVinyl(userId,updatedUserVinyl,principal.getName());
         return ResponseEntity.ok(userVinyl);
     }
+
+
+
 }
 
