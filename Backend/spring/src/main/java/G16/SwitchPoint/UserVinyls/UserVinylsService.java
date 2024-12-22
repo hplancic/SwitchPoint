@@ -5,6 +5,7 @@ import G16.SwitchPoint.VinylImages.VinylImageRepository;
 import G16.SwitchPoint.users.User;
 import G16.SwitchPoint.users.UserRepository;
 import G16.SwitchPoint.vinyl.*;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -73,5 +74,23 @@ public class UserVinylsService {
                 .orElseThrow(() -> new RuntimeException("Vinyl not found for this user"));
 
         userVinylsRepository.delete(userVinyl);
+    }
+    @Transactional
+    public UserVinyls updateUserVinyl(Long userId, UserVinyls userVinyl,String username) {
+        User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("User not found"));
+        UserVinyls postojeciVinyl = userVinylsRepository.findById(userVinyl.getId()).orElseThrow(()->new RuntimeException("User not found"));
+        /*if (!user.getUsername().equals(username) || !postojeciVinyl.getUser().getUsername().equals(username)) {
+            throw new SecurityException("You are not authorized to update this UserVinyl. Current user username: " + username);
+        }*/
+
+        postojeciVinyl.setOznIzdanja(userVinyl.getOznIzdanja());
+        postojeciVinyl.setOpis(userVinyl.getOpis());
+        postojeciVinyl.setVinyl(userVinyl.getVinyl());
+        postojeciVinyl.setVinylPackage(userVinyl.getVinylPackage());
+        postojeciVinyl.setVinylCondition(userVinyl.getVinylCondition());
+        postojeciVinyl.setSleeveCondition(userVinyl.getSleeveCondition());
+        postojeciVinyl.setImage(userVinyl.getImage());//treba i drugi image
+
+        return userVinylsRepository.save(postojeciVinyl);
     }
 }

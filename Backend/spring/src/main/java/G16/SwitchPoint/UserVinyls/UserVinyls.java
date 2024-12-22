@@ -34,14 +34,18 @@ public class UserVinyls {
     @JoinColumn(name = "image_id")
     private VinylImage image;
 
+    private String oznIzdanja;
+    private String opis;
     public UserVinyls() {}
-    public UserVinyls(User user, Vinyl vinyl, SleeveCondition sleeveCondition, VinylCondition condition, VinylPackage vinylPackage, VinylImage image) {
+    public UserVinyls(User user, Vinyl vinyl, SleeveCondition sleeveCondition, VinylCondition condition, VinylPackage vinylPackage, VinylImage image, String oznIzdanja, String opis) {
         this.user = user;
         this.vinyl = vinyl;
         this.sleeveCondition = sleeveCondition;
         this.vinylCondition = condition;
         this.vinylPackage = vinylPackage;
         this.image = image;
+        this.oznIzdanja = oznIzdanja;
+        this.opis = opis;
     }
 
     public Long getId() {
@@ -97,5 +101,21 @@ public class UserVinyls {
     }
     public void setImage(VinylImage image) {
         this.image = image;
+    }
+
+    public String getOznIzdanja() {
+        return oznIzdanja;
+    }
+
+    public void setOznIzdanja(String oznIzdanja) {
+        this.oznIzdanja = oznIzdanja;
+    }
+
+    public String getOpis() {
+        return opis;
+    }
+
+    public void setOpis(String opis) {
+        this.opis = opis;
     }
 }

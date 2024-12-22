@@ -108,4 +108,10 @@ public class TransactionService {
     public List<Transaction> getTransactionsReceivedByUserIdAndStatus(Long receiverId, TransactionStatus status) {
         return transactionRepository.findByReceiver_UserIdAndStatus(receiverId, status);
     }
+
+    public Transaction getTransactionById(Long transactionId) {
+        return transactionRepository.findById(transactionId).orElseThrow(
+                () -> new IllegalArgumentException("Transaction does not exist: " + transactionId)
+        );
+    }
 }

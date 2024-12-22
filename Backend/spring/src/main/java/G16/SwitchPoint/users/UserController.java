@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -112,6 +113,15 @@ public class UserController {
                                                    @RequestParam double lon) {
        User user = userService.updateUserLocation(userId,lat,lon);
        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+
+    //naknadno editanje uservinyla  -> potrebno provjeriti tko je logged-in
+    @PutMapping("/{userId}/vinyls")
+    public ResponseEntity<UserVinyls> updateUserVinyl(@PathVariable Long userId,
+                                                      @RequestBody UserVinyls updatedUserVinyl, Principal principal) {
+        UserVinyls userVinyl =  userVinylsService.updateUserVinyl(userId,updatedUserVinyl,principal.getName());
+        return ResponseEntity.ok(userVinyl);
     }
 }
 

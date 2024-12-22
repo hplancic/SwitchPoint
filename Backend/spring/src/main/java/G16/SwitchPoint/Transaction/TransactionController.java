@@ -4,8 +4,10 @@ import G16.SwitchPoint.UserVinyls.UserVinyls;
 import G16.SwitchPoint.UserVinyls.UserVinylsRepository;
 import G16.SwitchPoint.users.User;
 import G16.SwitchPoint.users.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -71,6 +73,25 @@ public class TransactionController {
             return transactionService.getTransactionsReceivedByUserId(userId);
         }
     }
+    @GetMapping("/{transactionId}")
+    public ResponseEntity<Transaction> getTransaction(
+            @PathVariable Long transactionId,
+            Principal principal) {
+
+        Transaction transaction = transactionService.getTransactionById(transactionId);
+       /* if (principal == null) {
+            throw new SecurityException("You are not authorized to view this transaction, log in first.");
+        }
+        // Check if the logged-in user is the sender or receiver
+        String loggedInUsername = principal.getName();
+        if ( !transaction.getSender().getUsername().equals(loggedInUsername)
+                && !transaction.getReceiver().getUsername().equals(loggedInUsername)) {
+            throw new SecurityException("You are not authorized to view this transaction. Current user: " + loggedInUsername);
+        }*/
+
+        return ResponseEntity.ok(transaction);
+    }
+
 
 
 
