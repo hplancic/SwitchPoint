@@ -71,13 +71,15 @@ public class UserController {
                                                      @RequestParam int releaseYear,
                                                      @RequestParam VinylCondition vinylCondition,
                                                      @RequestParam SleeveCondition sleeveCondition,
-                                                     @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
+                                                     @RequestParam("imageFile") MultipartFile imageFile,
+                                                     @RequestParam String edition,
+                                                     @RequestParam String description) throws IOException {
         Vinyl vinyl = new Vinyl();
         vinyl.setArtist(artist);
         vinyl.setGenre(genre);
         vinyl.setReleaseYear(releaseYear);
         vinyl.setVinylTitle(vinylTitle);
-        UserVinyls userVinyl = userVinylsService.addVinylToUser(userId, vinyl, sleeveCondition, vinylCondition, imageFile);
+        UserVinyls userVinyl = userVinylsService.addVinylToUser(userId, vinyl, sleeveCondition, vinylCondition, imageFile, edition, description);
         return new ResponseEntity<>(userVinyl, HttpStatus.CREATED);
     }
 

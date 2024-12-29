@@ -42,7 +42,7 @@ public class UserVinylsService {
         this.emailService = emailService;
     }
 
-    public UserVinyls addVinylToUser(Long userId, Vinyl vinyl, SleeveCondition sleeveCondition, VinylCondition vinylCondition, MultipartFile imageFile) throws IOException {
+    public UserVinyls addVinylToUser(Long userId, Vinyl vinyl, SleeveCondition sleeveCondition, VinylCondition vinylCondition, MultipartFile imageFile, String edition, String description) throws IOException {
         long maxFileSize = 5 * 1024 * 1024; // 5 MB
         if (imageFile.getSize() > maxFileSize) {
             throw new IllegalArgumentException("Slika mora imati veličinu do 5 MB");
@@ -61,6 +61,8 @@ public class UserVinylsService {
         userVinyls.setSleeveCondition(sleeveCondition);
         userVinyls.setVinyl(vinyl);
         userVinyls.setImage(savedImage);
+        userVinyls.setOznIzdanja(edition);
+        userVinyls.setOpis(description);
 
         //saljemo e-mail svima koji u wishlistu imaju taj vinyl
         sendWishlistNotificationEmail(vinyl);

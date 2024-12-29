@@ -12,6 +12,8 @@ function NewVinyl() {
     const [vinylCondition, setVinylCondition] = useState("");
     const [sleeveCondition, setSleeveCondition] = useState("");
     const [file, setFile] = useState(null);
+    const [edition, setEdition] = useState("");
+    const [description, setDescription] = useState("");
 
     const closePopUp = () => {
         let overlay = document.getElementById('overlay');
@@ -20,7 +22,6 @@ function NewVinyl() {
 
     const addVinyl = (e) => {
         e.preventDefault();
-        //console.log(selectedArtist, selectedAlbum, selectedVinylCondition, selectedSleeveCondition);
         let username = JSON.parse(localStorage.getItem('auth')).username;
         closePopUp();
         axios.get('/api/users/username?username=' + username)
@@ -35,6 +36,8 @@ function NewVinyl() {
                 formData.append("vinylCondition", vinylCondition);
                 formData.append("sleeveCondition", sleeveCondition);
                 formData.append("imageFile", file);
+                formData.append("edition", edition);
+                formData.append("description", description)
 /*                 let postPATH = '?vinylTitle='+album
                         +'&artist='+artist
                         +'&genre='+genre
@@ -104,6 +107,14 @@ function NewVinyl() {
                                 setSelected={setSleeveCondition} />
                         </div>
                     </div>
+
+                    <label htmlFor="edition">Edition</label>
+                    <input type="text" name="edition" id="" 
+                        onChange={(e) => setEdition(e.target.value)}/>
+
+                    <label htmlFor="description">Description</label>
+                    <input type="text" name="description" id="" 
+                        onChange={(e) => setDescription(e.target.value)}/>
 
                     <input type="submit" value="Add vinyl" />
                 </form>

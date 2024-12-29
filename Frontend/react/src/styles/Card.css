@@ -14,8 +14,8 @@
 
 .albumImage {
     margin-top: 10px;
-    width: 90%;
     border-radius: 5px;
+    max-height: 10em;
 }
 
 .KVPair {

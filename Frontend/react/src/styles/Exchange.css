@@ -1,0 +1,23 @@
+
+#card-exchange-view {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    cursor:auto;
+}
+
+#card-exchange-cards {
+    display: flex;
+}
+
+#card-exchange-cards > .card {
+    cursor: pointer;
+}
+
+.card-select {
+    border: 5px solid rgb(11, 130, 215);
+}
+
+#send-exchange-button {
+
+}

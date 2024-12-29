@@ -1,0 +1,62 @@
+
+#offer-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.offer {
+    background-color: #d1d1d1;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 5px solid #313131;
+    border-radius: 5px;
+}
+
+.offer-vinyls-wrap {
+
+}
+
+.offer-vinyls {
+    display: flex;
+}
+
+.offer-buttons {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cancel-button {
+    background-color: #6e0404;
+    color: #fff;
+    width: 100%;
+}
+
+.accept-button {
+    background-color: #156c38;
+    color: #fff;
+    width: 100%;
+}
+
+.change-button {
+    background-color: #0e1763;
+    color: #fff;
+    width: 100%;
+}
+
+.offer-switch-cards {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.offer-number-of-cards {
+    display:flex;
+    flex-direction: column;
+}
+
+.offer-number-of-cards > h4 {
+    margin: 0;
+    text-align: center;
+}

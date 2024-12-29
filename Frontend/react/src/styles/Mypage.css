@@ -71,6 +71,7 @@
     cursor: pointer; /* Add a pointer on hover */
     justify-content: center;
     align-content: center;
+    z-index: 1;
 }
 /* Stavi background na dropdown panel jer inače će biti prozirno i neće se ništa vidjeti */
 .p-dropdown-panel {

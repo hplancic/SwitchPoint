@@ -53,8 +53,8 @@ function Signup({setAuth, title}) {
                     onError={() => {
                         console.log('Login Failed');
                     }}
-                    />;
-                </GoogleOAuthProvider>;
+                    />
+                </GoogleOAuthProvider>
             </div>
         </>
     );
