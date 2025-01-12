@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './styles/App.css'
 import Login from './Login and Signup/Login.jsx'
-import Home from './Front Page/Home.jsx'
 import Signup from './Login and Signup/Signup.jsx'
 import axios from 'axios'
 import LoggedInHome from './Front Page/LoggedInHome.jsx'
@@ -22,13 +21,10 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' element={
-              auth.isLoggedIn ? <LoggedInHome 
+          <Route path='/' element={<LoggedInHome 
                                     title={title} 
                                     auth={auth} 
-                                    setAuth={setAuth} /> 
-                              : <Home title={title} />
-          } />
+                                    setAuth={setAuth} />} />
           {auth.isLoggedIn &&
             <Route path='/mypage' element={<MyPage title={title} auth={auth} setAuth={setAuth} />} />
           } 

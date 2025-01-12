@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import FilterCategorySelectMultiple from './FilterCategorySelectMultiple';
 import FilterCategoryYearSelect from './FilterCategoryYearSelect';
 
-function Sidebar() {
+function Sidebar(props) {
 
     const kategorije = {
         "Filteri":{}, 
@@ -13,51 +13,6 @@ function Sidebar() {
         "Stanje omota":{},
         "Godina":{}
     }
-
-    const stanjaPloce = [
-        "All",
-        "Mint (M)", 
-        "Near Mint (NM)", 
-        "Very Good Plus (VG+)",
-        "Very Good (VG)",
-        "Good (G)",
-        "Poor (P) / Fair (F)"
-    ]
-    const stanjaPloceKratice = [
-        "All",
-        "M", 
-        "NM", 
-        "VG+",
-        "VG",
-        "G",
-        "P / F"
-    ]
-
-    const stanjaOmota = [
-        "All",
-        "Mint (M)", 
-        "Near Mint (NM)", 
-        "Very Good Plus (VG+)",
-        "Very Good (VG)",
-        "Good (G)"
-    ]
-    const zanrovi = [
-        "All", "Rock", "Pop", "Jazz", "Disco",
-        "Soul & Funk", "Country", "Blues", "Rap & Hip Hop"
-    ]
-    const selectedList = (array) => {
-        let a = {};
-        for (let e in array) {
-            a[array[e]] = e=="All" ? 1 : 0;
-        }
-        return a;
-    }
-    const [selectedZanrovi, setSelectedZanrovi] = useState(selectedList(zanrovi));
-    const [selectedStanjaPloce, setSelectedStanjaPloce] = useState(selectedList(stanjaPloce));
-    const [selectedStanjaOmota, setSelectedStanjaOmota] = useState(selectedList(stanjaOmota));
-
-    const [yearMin, setYearMin] = useState(1945)
-    const [yearMax, setYearMax] = useState(1990)
 
     const collapse = {"opened":"▼", "closed":"▲"}
     const initCollapses = () => {
@@ -112,33 +67,36 @@ function Sidebar() {
             <div className='filter-categories' style={initCollapse["Filteri"]=="opened" ? {display:"flex"} : {display:"none"}}>
                 <FilterCategorySelectMultiple 
                     filterName="Žanr"
-                    categories={zanrovi}
-                    selected={selectedZanrovi}
-                    setSelected={setSelectedZanrovi}
+                    categories={props.zanrovi}
+                    selected={props.selectedZanrovi}
+                    setSelected={props.setSelectedZanrovi}
                     collapse={collapse}
                     initCollapse={initCollapse["Žanr"]}
-                    collapseCategory={collapseCategory} />
+                    collapseCategory={collapseCategory}
+                    filterSelect={props.filterSelect} />
                 <FilterCategorySelectMultiple 
                     filterName="Stanje ploče"
-                    categories={stanjaPloce}
-                    selected={selectedStanjaPloce}
-                    setSelected={setSelectedStanjaPloce}
+                    categories={props.conditions}
+                    selected={props.selectedStanjaPloce}
+                    setSelected={props.setSelectedStanjaPloce}
                     collapse={collapse}
                     initCollapse={initCollapse["Stanje ploče"]}
-                    collapseCategory={collapseCategory} />
+                    collapseCategory={collapseCategory}
+                    filterSelect={props.filterSelect} />
                 <FilterCategorySelectMultiple
                     filterName="Stanje omota"
-                    categories={stanjaOmota}
-                    selected={selectedStanjaOmota}
-                    setSelected={setSelectedStanjaOmota}
+                    categories={props.conditions}
+                    selected={props.selectedStanjaOmota}
+                    setSelected={props.setSelectedStanjaOmota}
                     collapse={collapse}
                     initCollapse={initCollapse["Stanje omota"]}
-                    collapseCategory={collapseCategory} />
+                    collapseCategory={collapseCategory}
+                    filterSelect={props.filterSelect} />
                 <FilterCategoryYearSelect 
-                    filterYearMinValue={yearMin}
-                    filterYearMaxValue={yearMax}
-                    setFilterYearMinValue={setYearMin}
-                    setFilterYearMaxValue={setYearMax}                
+                    filterYearMinValue={props.yearMin}
+                    filterYearMaxValue={props.yearMax}
+                    setFilterYearMinValue={props.setYearMin}
+                    setFilterYearMaxValue={props.setYearMax}                
                     collapse={collapse}
                     initCollapse={initCollapse["Godina"]}
                     collapseCategory={collapseCategory} />
