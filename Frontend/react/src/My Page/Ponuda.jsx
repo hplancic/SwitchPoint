@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../Front Page/Content/Card"
 import axios from "axios";
+import ChooseExchangeVinyl from "../Front Page/ChooseExchangeVinyls";
 
 export default function Ponuda(props) {
 
     const [selectedCardTheir, setSelectedCardTheir] = useState(1);
     const [selectedCardMy, setSelectedCardMy] = useState(1);
+    const [senderVinyls, setSenderVinyls] = useState(null);
 
     const dekl = (broj) => {
         if ((broj % 10 == 2 || broj % 10 == 3 || broj % 10 == 4) && (broj != 12 || broj != 13 || broj != 14))  return "ploče";
@@ -73,10 +75,29 @@ export default function Ponuda(props) {
             })
     };
 
+    const editOffer = (e) => {
+        let senderId = props.offer.sender.userId;
+        axios.get('/api/users/' + senderId + '/vinyls')
+            .then(response => {
+                setSenderVinyls(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    };
+
+    useEffect(() => {
+        if (senderVinyls) {
+            console.log("OFFER IS ", props.offer);
+            let overlay = document.getElementById('overlay');
+            overlay.style.display = 'grid';
+        }
+    }, [senderVinyls]);
+
     return (
         <div className="offer">
             <div className="offer-vinyls-wrap">
-                <h3>Moje ploče za razmjenu</h3>
+                <h3>{props.sent ? "Želim ove ploče" : "Pošiljatelj želi ove ploče od mene"}</h3>
                 <div className="offer-vinyls">
                     {props.offer.userVinylsOfferedByReceiver.map((vinyl, index) => (
                         <Card
@@ -84,6 +105,7 @@ export default function Ponuda(props) {
                             key={index}
                             type={""}
                             data={vinyl}
+                            exchangeType="EDIT"
                         />
                     ))}
                 </div>
@@ -98,7 +120,7 @@ export default function Ponuda(props) {
                 </div>
             </div>
             <div className="offer-vinyls-wrap">
-                <h3>Ploče koje ponuditelj šalje</h3>
+                <h3>{props.sent ? "Nudim ove ploče" : "Pošiljatelj šalje ove ploče u razmjenu"}</h3>
                 <div className="offer-vinyls">
                     {props.offer.userVinylsOfferedBySender.map((vinyl, index) => (
                         <Card
@@ -106,6 +128,7 @@ export default function Ponuda(props) {
                             key={index}
                             type={""}
                             data={vinyl}
+                            exchangeType="EDIT"
                         />
                     ))}
                 </div>
@@ -119,11 +142,20 @@ export default function Ponuda(props) {
                     <button onClick={(e) => showNextVinyl(e, "their")} disabled={selectedCardTheir==props.offer.userVinylsOfferedBySender.length ? "disabled" : ""}>→</button>
                 </div>
             </div>
-            <div className="offer-buttons">
+            {!props.sent && <div className="offer-buttons">
                 <button className="accept-button" onClick={(e) => acceptOffer(e)}>Prihvati ponudu</button>
-                <button className="change-button">Izmjeni ponudu</button>
+                <button className="change-button" onClick={(e) => editOffer(e)}>Izmjeni ponudu</button>
                 <button className="cancel-button" onClick={(e) => cancelOffer(e)}>Odbaci ponudu</button>
-            </div>
+            </div>}
+            <ChooseExchangeVinyl vinyls={senderVinyls ? senderVinyls : new Array()} 
+                transactionData={{
+                    "senderId":props.offer.receiver.userId,
+                    "receiverId":props.offer.sender.userId,
+                    "receiverUserVinylIds":props.offer.userVinylsOfferedByReceiver
+                }} 
+                type="EDIT"
+                toCancel={props.offer.transactionId}
+            />
         </div>
     )
 };

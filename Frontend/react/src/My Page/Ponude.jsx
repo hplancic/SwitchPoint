@@ -7,6 +7,7 @@ import Ponuda from "./Ponuda";
 function Ponude() {
 
     const [offers, setOffers] = useState([]);
+    const [sentOffers, setSentOffers] = useState([]);
 
     useEffect(() => {
         let username = JSON.parse(localStorage.getItem('auth')).username;
@@ -21,6 +22,13 @@ function Ponude() {
                     .catch(error => {
                         console.log(error);
                     })
+                axios.get('/api/transactions/sent/' + userId)
+                    .then(response => {
+                        setSentOffers(response.data)
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
                 
             })
             .catch(error => {
@@ -30,10 +38,16 @@ function Ponude() {
 
     return (
         <>
-            <h1>Ponude</h1>
+            <h1>Dobivene ponude</h1>
             <div id="offer-view">
                 {offers.filter((a) => {return a.status=="PENDING"}).map((offer, index) => (
                     <Ponuda key={index} offer={offer} />
+                ))}
+            </div>
+            <h1>Poslane ponude</h1>
+            <div id="offer-view">
+                {sentOffers.filter((a) => {return a.status=="PENDING"}).map((offer, index) => (
+                    <Ponuda key={index} offer={offer} sent={true} />
                 ))}
             </div>
         </>
