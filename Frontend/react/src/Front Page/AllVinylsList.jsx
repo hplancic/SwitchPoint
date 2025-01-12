@@ -24,6 +24,12 @@ export default function AllVinylsList(props) {
                 }).filter((a) => {
                     // filter godina
                     return a.vinyl.releaseYear >= props.yearMin && a.vinyl.releaseYear <= props.yearMax
+                }).filter((a) => {
+                    // search artist and album
+                    let condition = props.search==[""] ? true : props.search.split(" ").filter((b) => {return b!=""}).map((e) => {
+                        return a.vinyl.artist.toUpperCase().startsWith(e.toUpperCase()) || a.vinyl.vinylTitle.toUpperCase().startsWith(e.toUpperCase())
+                    }).every((c) => c==true);
+                    return condition
                 }).map((userVinyl, index) => (
                     <Card
                         senderId={senderId}

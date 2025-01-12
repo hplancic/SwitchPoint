@@ -32,7 +32,8 @@ export default function AllVinyls(props) {
                         yearMin={props.yearMin}
                         setYearMin={props.setYearMin}
                         yearMax={props.yearMax}
-                        setYearMax={props.setYearMax}/>}
+                        setYearMax={props.setYearMax}
+                        search={props.search} />}
         </div>
     )
 }

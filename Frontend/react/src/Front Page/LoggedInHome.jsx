@@ -31,6 +31,8 @@ function LoggedInHome(props) {
     const [yearMin, setYearMin] = useState(1920);
     const [yearMax, setYearMax] = useState(2024);
 
+    const [search, setSearch] = useState("");
+
     const [flag, setFlag] = useState(false);
 
     const filterSelect = () => {
@@ -61,7 +63,9 @@ function LoggedInHome(props) {
                 yearMax={yearMax}
                 setYearMax={setYearMax}
                 filterSelect={filterSelect} />
-            <SearchBar />
+            <SearchBar
+                search={search}
+                setSearch={setSearch} />
             <AllVinyls 
                 selectedZanrovi={selectedZanrovi} 
                 setSelectedZanrovi={setSelectedZanrovi}
@@ -72,7 +76,8 @@ function LoggedInHome(props) {
                 yearMin={yearMin}
                 setYearMin={setYearMin}
                 yearMax={yearMax}
-                setYearMax={setYearMax}/>
+                setYearMax={setYearMax}
+                search={search} />
         </div>
         </>
     )
