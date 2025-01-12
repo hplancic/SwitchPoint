@@ -38,15 +38,44 @@ function Ponude() {
 
     return (
         <>
-            <h1>Dobivene ponude</h1>
+            <h3>Dobivene ponude (na čekanju)</h3>
             <div id="offer-view">
                 {offers.filter((a) => {return a.status=="PENDING"}).map((offer, index) => (
                     <Ponuda key={index} offer={offer} />
                 ))}
             </div>
-            <h1>Poslane ponude</h1>
+            <hr />
+            <h3>Poslane ponude (na čekanju)</h3>
             <div id="offer-view">
                 {sentOffers.filter((a) => {return a.status=="PENDING"}).map((offer, index) => (
+                    <Ponuda key={index} offer={offer} sent={true} />
+                ))}
+            </div>
+            <hr /> <hr />
+            <h3>Dobivene ponude (prihvaćene)</h3>
+            <div id="offer-view">
+                {offers.filter((a) => {return a.status=="COMPLETED"}).map((offer, index) => (
+                    <Ponuda key={index} offer={offer} sent={true} />
+                ))}
+            </div>
+            <hr />
+            <h3>Poslane ponude (prihvaćene)</h3>
+            <div id="offer-view">
+                {sentOffers.filter((a) => {return a.status=="COMPLETED"}).map((offer, index) => (
+                    <Ponuda key={index} offer={offer} sent={true} />
+                ))}
+            </div>
+            <hr /> <hr />
+            <h3>Dobivene ponude (odbijene)</h3>
+            <div id="offer-view">
+                {offers.filter((a) => {return a.status=="CANCELED"}).map((offer, index) => (
+                    <Ponuda key={index} offer={offer} sent={true} />
+                ))}
+            </div>
+            <hr />
+            <h3>Poslane ponude (odbijene)</h3>
+            <div id="offer-view">
+                {sentOffers.filter((a) => {return a.status=="CANCELED"}).map((offer, index) => (
                     <Ponuda key={index} offer={offer} sent={true} />
                 ))}
             </div>

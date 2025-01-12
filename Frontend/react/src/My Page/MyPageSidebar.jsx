@@ -4,6 +4,13 @@ import { useState } from "react";
 
 function MyPageSidebar({tabs, selectedTab, setSelectedTab}) {
 
+    const tab2path = {
+        "Moje ploče":"/mypage",
+        "Ponude":"/ponude",
+        "Popis želja":"/popis-zelja",
+        "Postavke":"/postavke"
+    }
+
     const changeTab = (e) => {
         let parent = e.target.parentElement;
         for (let i in parent.children) {
@@ -27,7 +34,7 @@ function MyPageSidebar({tabs, selectedTab, setSelectedTab}) {
         <div className="sidebar mypage-sidebar">
             {Object.keys(tabs).map((tab, index) => (
                 <Link 
-                    to='/mypage'
+                    to={tab2path[tab]}
                     onClick={changeTab} 
                     className={tab==selectedTab ? "mypage-sidebar-clicked-link" : "mypage-sidebar-unclicked-link"} 
                     key={index}>{tab}

@@ -1,31 +1,26 @@
 import LoggedInHeader from "../Headers/LoggedInHeader";
 import MyPageSidebar from "./MyPageSidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MojePloce from './MojePloce';
 import Ponude from './Ponude';
 import PopisZelja from './PopisZelja';
 import Postavke from './Postavke';
 
-function MyPage({title, auth, setAuth}) {
+function MyPage(props) {
 
-    const [tabs, setTabs] = useState({
-        'Moje ploče':<MojePloce />,
-        'Ponude':<Ponude />,
-        'Popis želja':<PopisZelja />,
-        'Postavke':<Postavke />
-    });
-
-    const [selectedTab, setSelectedTab] = useState(Object.keys(tabs)[0]);
+    useEffect(() => {
+        if (props.tab) props.setSelectedTab(props.tab);
+    }, []);
 
     return (
         <>
-        <LoggedInHeader title={title} auth={auth} setAuth={setAuth}/>
+        <LoggedInHeader title={props.title} auth={props.auth} setAuth={props.setAuth}/>
         <div className="content">
             <MyPageSidebar 
-                tabs={tabs} 
-                selectedTab={selectedTab}
-                setSelectedTab={setSelectedTab}/>
-            <div className="mypage-tab-content">{tabs[selectedTab]}</div>
+                tabs={props.tabs} 
+                selectedTab={props.selectedTab}
+                setSelectedTab={props.setSelectedTab}/>
+            <div className="mypage-tab-content">{props.tabs[props.selectedTab]}</div>
         </div>
         </>
     )

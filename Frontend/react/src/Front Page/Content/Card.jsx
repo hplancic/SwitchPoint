@@ -114,6 +114,10 @@ function Card(props) {
                 <div className="key">Opis</div>
                 <div className={"value"}> {props.data.opis ? props.data.opis : "-"} </div>
             </div>
+            <div className="KVPair">
+                <div className="key">Korisnik</div>
+                <div className="value bubble"> {props.data.user.username} </div>
+            </div>
 
             <hr></hr>
 

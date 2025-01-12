@@ -1,0 +1,10 @@
+.mypage-top-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mypage-top-content-button {
+    height: fit-content;
+    width: fit-content;
+}

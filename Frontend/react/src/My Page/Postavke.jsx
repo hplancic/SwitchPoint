@@ -4,6 +4,7 @@ function Postavke() {
     return (
         <>
             <h2>Postavke</h2>
+            <hr />
             <ChangeLocation />
         </>
     )

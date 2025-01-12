@@ -3,6 +3,7 @@ import NewVinyl2 from "./NewVinyl2";
 import { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import Card from "../Front Page/Content/Card";
+import "../styles/MypageContent.css"
 
 function useForceUpdate(){
     const [value, setValue] = useState(0);
@@ -44,9 +45,9 @@ function MojePloce() {
     return (
         <>
             <div className="mypage-mojeploce">
-                <div style={{display:'flex', justifyContent:'space-between'}}>
+                <div className="mypage-top-content">
                     <h2>Moje ploče</h2>
-                    <button className="add-vinyl-button" onClick={() => openNewVinylPopUp()}>Add a vinyl</button>
+                    <button className="mypage-top-content-button" onClick={() => openNewVinylPopUp()}>Add a vinyl</button>
                 </div>
                 <hr style={{color:'#313131', marginBottom:'30px', height:'1px'}}/>
                 <NewVinyl/>
