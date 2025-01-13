@@ -8,3 +8,47 @@
     height: fit-content;
     width: fit-content;
 }
+
+.add-wishlist-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-wishlist-row > input {
+    border: 1px solid black;
+}
+
+.add-wishlist-genre {
+    max-width: 600px;
+}
+
+.add-wishlist-genre > .filter-category > .filter-category-container {
+    background-color: white !important;
+}
+
+.add-wishlist-genre > .filter-category > .filter-category-container > div{
+    border: 1px solid black;
+}
+
+#wishcards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wishcard {
+    width: 200px;
+    background-color: #313131;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.wishcard-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wishcard-row > label {
+    color: white;
+}
