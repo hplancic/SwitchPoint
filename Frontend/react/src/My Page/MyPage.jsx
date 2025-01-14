@@ -17,6 +17,7 @@ function MyPage(props) {
         <LoggedInHeader title={props.title} auth={props.auth} setAuth={props.setAuth}/>
         <div className="content">
             <MyPageSidebar 
+                auth={props.auth}
                 tabs={props.tabs} 
                 selectedTab={props.selectedTab}
                 setSelectedTab={props.setSelectedTab}/>

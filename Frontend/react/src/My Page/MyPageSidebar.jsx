@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import '../styles/Mypage.css';
 import { useState } from "react";
 
-function MyPageSidebar({tabs, selectedTab, setSelectedTab}) {
+function MyPageSidebar(props) {
 
     const tab2path = {
         "Moje ploče":"/mypage",
         "Ponude":"/ponude",
         "Popis želja":"/popis-zelja",
-        "Postavke":"/postavke"
+        "Postavke":"/postavke",
+        "Korisnici":"/korisnici"
     }
 
     const changeTab = (e) => {
@@ -23,7 +24,7 @@ function MyPageSidebar({tabs, selectedTab, setSelectedTab}) {
                 if (child == e.target && child.className == 'mypage-sidebar-unclicked-link') {
                     child.classList.remove('mypage-sidebar-unclicked-link')
                     child.classList.add('mypage-sidebar-clicked-link')
-                    setSelectedTab(child.text);
+                    props.setSelectedTab(child.text);
                 }    
             }
         }
@@ -32,11 +33,11 @@ function MyPageSidebar({tabs, selectedTab, setSelectedTab}) {
     return (
         <>
         <div className="sidebar mypage-sidebar">
-            {Object.keys(tabs).map((tab, index) => (
+            {Object.keys(props.tabs).map((tab, index) => (
                 <Link 
                     to={tab2path[tab]}
                     onClick={changeTab} 
-                    className={tab==selectedTab ? "mypage-sidebar-clicked-link" : "mypage-sidebar-unclicked-link"} 
+                    className={tab==props.selectedTab ? "mypage-sidebar-clicked-link" : "mypage-sidebar-unclicked-link"} 
                     key={index}>{tab}
                 </Link>
             ))}

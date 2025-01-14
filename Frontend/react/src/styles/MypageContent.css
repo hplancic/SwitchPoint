@@ -52,3 +52,25 @@
 .wishcard-row > label {
     color: white;
 }
+
+.delete-user-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #313131;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #313131;
+}
+
+.delete-user-username {
+    color: #fff;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+.delete-user-row > button {
+    background-color: #7c0000;
+    color: #fff;
+}

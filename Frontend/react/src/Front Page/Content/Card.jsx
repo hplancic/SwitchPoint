@@ -15,12 +15,24 @@ const conditionToColor = {
     'POOR':"red"
 };
 
+const conditionReducedName = {
+    'MINT': "M",
+    'NEAR_MINT': "NM",
+    'VERY_GOOD_PLUS': "VG+",
+    'VERY_GOOD': "VG",
+    'GOOD_PLUS': "G+",
+    'GOOD': "G",
+    'FAIR':"F",
+    'POOR':"P"
+};
+
 function Card(props) {
 
     //if (props.type=="EXCHANGE_CARD") console.log("2");
 
     const deleteVinyl = () => {
-        axios.delete('/api/users/' + props.data.user.id + '/vinyls/' + props.data.vinyl.id)
+        console.log(props.data, props.data.user.userId, props.data.vinyl.vinylId);
+        axios.delete('/api/users/' + props.data.user.userId + '/vinyls/' + props.data.vinyl.vinylId)
             .then((res) => {
                 window.location.reload();
             })
@@ -78,7 +90,9 @@ function Card(props) {
     
     return (
         <div className="card" onClick={props.type=="EXCHANGE_CARD" ? (e) => {selectVinyl(e)} : null} style={props.hide ? {display:"none"} : null}>
-            <img className="albumImage" src= { props.data.image ? 'data:image/png;base64,' + props.data.image.imageData : '../../public/unavailable-image.jpg'} />
+            <div className='img-wrapper'>
+                <img className="albumImage" src= { props.data.image ? 'data:image/png;base64,' + props.data.image.imageData : '../../public/unavailable-image.jpg'} />
+            </div>
             <div className="KVPair">
                 <div className="key">Izvođač</div>
                 <div className="value"> {props.data.vinyl.artist}</div>
@@ -100,11 +114,11 @@ function Card(props) {
             </div>
             <div className="KVPair">
                 <div className="key">Stanje Ploče</div>
-                <div className={"value bubble colored " + conditionToColor[props.data.vinylCondition]}> {props.data.vinylCondition} </div>
+                <div className={"value bubble colored " + conditionToColor[props.data.vinylCondition]}> {conditionReducedName[props.data.vinylCondition]} </div>
             </div>
             <div className="KVPair">
                 <div className="key">Stanje Omota</div>
-                <div className={"value bubble colored " + conditionToColor[props.data.sleeveCondition]}> {props.data.sleeveCondition} </div>
+                <div className={"value bubble colored " + conditionToColor[props.data.sleeveCondition]}> {conditionReducedName[props.data.sleeveCondition]} </div>
             </div>
             <div className="KVPair">
                 <div className="key">Oznaka izdanja</div>
@@ -126,7 +140,7 @@ function Card(props) {
                 <div className="value">5 km daleko</div>
             </div>
 
-            {props.type=="USER_CARD" && <button className='delete-vinyl-button' onClick={deleteVinyl}>Delete vinyl</button>}
+            {(props.type=="USER_CARD" || props.auth?.username=="admin") && <button className='delete-vinyl-button' onClick={deleteVinyl}>Delete vinyl</button>}
             {props.type=="CHANGE_CARD" && <button className='change-vinyl-button' onClick={changeVinyl}>Ponudi zamjenu</button>}
             {props.exchangeType=="EDIT" ? null : <ChooseExchangeVinyl vinyls={props.myVinyls ? props.myVinyls : new Array()} 
                 transactionData={{

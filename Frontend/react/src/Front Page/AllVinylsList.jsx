@@ -17,10 +17,10 @@ export default function AllVinylsList(props) {
                     return props.selectedZanrovi["All"]==1 ? a : props.selectedZanrovi[a.vinyl.genre] == 1
                 }).filter((a) => {
                     // filter stanja ploce
-                    return props.selectedStanjaPloce["All"]==1 ? a : props.selectedStanjaPloce[a.vinylCondition] == 1
+                    return props.selectedStanjaPloce["All"]==1 ? a : props.selectedStanjaPloce[props.reducedConditions[a.vinylCondition]] == 1
                 }).filter((a) => {
                     // filter stanja omota
-                    return props.selectedStanjaOmota["All"]==1 ? a : props.selectedStanjaOmota[a.sleeveCondition] == 1
+                    return props.selectedStanjaOmota["All"]==1 ? a : props.selectedStanjaOmota[props.reducedConditions[a.sleeveCondition]] == 1
                 }).filter((a) => {
                     // filter godina
                     return a.vinyl.releaseYear >= props.yearMin && a.vinyl.releaseYear <= props.yearMax
@@ -32,6 +32,7 @@ export default function AllVinylsList(props) {
                     return condition
                 }).map((userVinyl, index) => (
                     <Card
+                        auth={props.auth}
                         senderId={senderId}
                         setSenderId={setSenderId}
                         receiverId={receiverId}

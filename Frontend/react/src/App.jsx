@@ -10,6 +10,7 @@ import MojePloce from './My Page/MojePloce.jsx'
 import Ponude from './My Page/Ponude.jsx'
 import PopisZelja from './My Page/PopisZelja.jsx'
 import Postavke from './My Page/Postavke.jsx'
+import DeleteUsers from './My Page/DeleteUsers.jsx'
 
 function App() {
 
@@ -24,6 +25,8 @@ function App() {
     'Postavke':<Postavke />
   });
   const [selectedTab, setSelectedTab] = useState(Object.keys(tabs)[0]);
+
+  {auth.username=="admin" ? tabs["Korisnici"] = <DeleteUsers /> : null}
 
   useEffect(() => {
     localStorage.setItem('auth', JSON.stringify(auth));
@@ -48,7 +51,9 @@ function App() {
               <Route path='/postavke' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
                                                 selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Postavke"} />} />
             </>
-          } 
+          }
+          {auth.username=="admin" && <Route path="/korisnici" element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
+                                                selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Korisnici"} />} />}
           {!auth.isLoggedIn &&
             <>
               <Route path='/login' element={<Login setAuth={setAuth} title={title}/>}/>

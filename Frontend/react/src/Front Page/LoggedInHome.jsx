@@ -17,6 +17,17 @@ function LoggedInHome(props) {
         'All', 'MINT', 'NEAR_MINT', 'VERY_GOOD_PLUS', 
         'VERY_GOOD', 'GOOD_PLUS', 'GOOD', 'FAIR', 'POOR'
     ]
+    const conditionReducedName = {
+        'All': "All",
+        'MINT': "M",
+        'NEAR_MINT': "NM",
+        'VERY_GOOD_PLUS': "VG+",
+        'VERY_GOOD': "VG",
+        'GOOD_PLUS': "G+",
+        'GOOD': "G",
+        'FAIR':"F",
+        'POOR':"P"
+    };
     const selectedList = (array) => {
         let a = {};
         for (let e in array) {
@@ -26,8 +37,8 @@ function LoggedInHome(props) {
     }
 
     const [selectedZanrovi, setSelectedZanrovi] = useState(selectedList(zanrovi));
-    const [selectedStanjaPloce, setSelectedStanjaPloce] = useState(selectedList(conditions));
-    const [selectedStanjaOmota, setSelectedStanjaOmota] = useState(selectedList(conditions));
+    const [selectedStanjaPloce, setSelectedStanjaPloce] = useState(selectedList(conditions.map((e) => {return conditionReducedName[e]})));
+    const [selectedStanjaOmota, setSelectedStanjaOmota] = useState(selectedList(conditions.map((e) => {return conditionReducedName[e]})));
     const [yearMin, setYearMin] = useState(1920);
     const [yearMax, setYearMax] = useState(2024);
 
@@ -52,6 +63,7 @@ function LoggedInHome(props) {
             <Sidebar 
                 zanrovi={zanrovi}
                 conditions={conditions}
+                reducedConditions={conditionReducedName}
                 selectedZanrovi={selectedZanrovi} 
                 setSelectedZanrovi={setSelectedZanrovi}
                 selectedStanjaPloce={selectedStanjaPloce}
@@ -67,6 +79,8 @@ function LoggedInHome(props) {
                 search={search}
                 setSearch={setSearch} />
             <AllVinyls 
+                auth={props.auth}
+                reducedConditions={conditionReducedName}
                 selectedZanrovi={selectedZanrovi} 
                 setSelectedZanrovi={setSelectedZanrovi}
                 selectedStanjaPloce={selectedStanjaPloce}

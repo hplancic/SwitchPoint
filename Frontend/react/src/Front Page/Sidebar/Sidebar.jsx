@@ -76,7 +76,7 @@ function Sidebar(props) {
                     filterSelect={props.filterSelect} />
                 <FilterCategorySelectMultiple 
                     filterName="Stanje ploče"
-                    categories={props.conditions}
+                    categories={props.conditions.map((e) => {return props.reducedConditions[e]})}
                     selected={props.selectedStanjaPloce}
                     setSelected={props.setSelectedStanjaPloce}
                     collapse={collapse}
@@ -85,7 +85,7 @@ function Sidebar(props) {
                     filterSelect={props.filterSelect} />
                 <FilterCategorySelectMultiple
                     filterName="Stanje omota"
-                    categories={props.conditions}
+                    categories={props.conditions.map((e) => {return props.reducedConditions[e]})}
                     selected={props.selectedStanjaOmota}
                     setSelected={props.setSelectedStanjaOmota}
                     collapse={collapse}

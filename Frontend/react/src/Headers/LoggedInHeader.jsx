@@ -8,6 +8,8 @@ function LoggedInHeader({title, auth, setAuth}){
     const logout = () => {
         setAuth({"username":"username", "isLoggedIn":false});
         localStorage.setItem('auth', '{"username":"username", "isLoggedIn":false}');
+        navigate("/");
+        window.location.reload();
     }
 
     return (
