@@ -23,6 +23,7 @@ export default function AllVinyls(props) {
         <div>
             {flag && <AllVinylsList
                         auth={props.auth}
+                        userData={props.userData}
                         allVinyls={allVinyls} 
                         reducedConditions={props.reducedConditions}
                         selectedZanrovi={props.selectedZanrovi} 
