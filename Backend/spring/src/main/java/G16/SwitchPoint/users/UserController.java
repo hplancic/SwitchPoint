@@ -1,8 +1,12 @@
 package G16.SwitchPoint.users;
 
 import G16.SwitchPoint.Email.EmailService;
+import G16.SwitchPoint.Transaction.Transaction;
+import G16.SwitchPoint.Transaction.TransactionService;
 import G16.SwitchPoint.UserVinyls.UserVinyls;
 import G16.SwitchPoint.UserVinyls.UserVinylsService;
+import G16.SwitchPoint.UserWishlist.UserWishlist;
+import G16.SwitchPoint.UserWishlist.UserWishlistService;
 import G16.SwitchPoint.vinyl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,13 +25,17 @@ public class UserController {
     private final UserService userService;
     private final VinylService vinylService;
     private final UserVinylsService userVinylsService;
+    private final UserWishlistService userWishlistService;
+    private final TransactionService transactionService;
 
 
-    public UserController(UserService userService, VinylService vinylService, UserVinylsService userVinylsService) {
+    public UserController(UserService userService, VinylService vinylService, UserVinylsService userVinylsService, UserWishlistService userWishlistService, TransactionService transactionService) {
         this.userService = userService;
         this.vinylService = vinylService;
         this.userVinylsService = userVinylsService;
 
+        this.userWishlistService = userWishlistService;
+        this.transactionService = transactionService;
     }
 
     // Endpoint za registraciju korisnika
@@ -53,6 +61,7 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
     // Endpoint za dohvaćanje korisnika po ID-u
     @GetMapping("/{userId}")

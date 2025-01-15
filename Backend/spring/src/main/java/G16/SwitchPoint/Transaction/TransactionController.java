@@ -109,6 +109,23 @@ public class TransactionController {
     }
 
 
+    @DeleteMapping("/{transactionId}")
+    public ResponseEntity<String> deleteTransaction(@PathVariable Long transactionId) {
+        Optional<Transaction> transactionOpt = transactionRepository.findById(transactionId);
 
+        if (transactionOpt.isEmpty()) {
+            return ResponseEntity.status(404).body("Transaction not found");
+        }
+
+        Transaction transaction = transactionOpt.get();
+
+        try {
+            transactionRepository.delete(transaction);
+
+            return ResponseEntity.ok("Transaction deleted successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error deleting transaction: " + e.getMessage());
+        }
+    }
 
 }

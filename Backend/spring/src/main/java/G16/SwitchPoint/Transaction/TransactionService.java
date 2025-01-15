@@ -123,4 +123,12 @@ public class TransactionService {
                 () -> new IllegalArgumentException("Transaction does not exist: " + transactionId)
         );
     }
+
+    @Transactional
+    public void deleteTransaction(Long transactionId) {
+        Transaction transaction = transactionRepository.findById(transactionId).orElseThrow(
+                () -> new IllegalArgumentException("Transaction does not exist: " + transactionId)
+        );
+        transactionRepository.delete(transaction);
+    }
 }

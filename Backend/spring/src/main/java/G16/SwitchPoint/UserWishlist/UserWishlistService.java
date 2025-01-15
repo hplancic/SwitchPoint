@@ -30,4 +30,11 @@ public UserWishlist addVinylToWishlist(Long userId, Long vinylId,String notes) {
      userWishlist.setNotes(notes);
      return userWishlistRepository.save(userWishlist);
 }
+
+    public void deleteVinylFromWishlist(Long userId, Long vinylId) {
+        UserWishlist userWishlist = userWishlistRepository.findByUser_UserIdAndVinyl_VinylId(userId, vinylId)
+                .orElseThrow(() -> new RuntimeException("Wishlist entry not found"));
+
+        userWishlistRepository.delete(userWishlist);
+    }
 }
