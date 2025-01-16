@@ -1,5 +1,4 @@
 import NewVinyl from "./NewVinyl";
-import NewVinyl2 from "./NewVinyl2";
 import { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import Card from "../Front Page/Content/Card";
@@ -47,7 +46,7 @@ function MojePloce() {
             <div className="mypage-mojeploce">
                 <div className="mypage-top-content">
                     <h2>Moje ploče</h2>
-                    <button className="mypage-top-content-button" onClick={() => openNewVinylPopUp()}>Add a vinyl</button>
+                    <button className="mypage-top-content-button" onClick={() => openNewVinylPopUp()}>Dodaj Ploču</button>
                 </div>
                 <hr style={{color:'#313131', marginBottom:'30px', height:'1px'}}/>
                 <NewVinyl/>

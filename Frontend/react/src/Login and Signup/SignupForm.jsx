@@ -82,7 +82,7 @@ function SignupForm({setAuth, position, setPosition, initCoord}) {
 
     return (
         <>
-        <form action="post" onSubmit={handleSubmit}>
+        <form action="post" onSubmit={handleSubmit} className="login-form">
             <h2>Sign up</h2>
 
             <label htmlFor="username">Username</label>

@@ -30,8 +30,7 @@ function LoginForm({setAuth}) {
     }
 
     return (
-        <>
-        <form action="post" onSubmit={handleSubmit}>
+        <form action="post" onSubmit={handleSubmit} className="login-form">
             <h2>Log in</h2>
 
             <label htmlFor="username">Username</label>
@@ -46,7 +45,6 @@ function LoginForm({setAuth}) {
 
             <input type="submit" value="Log in" className="submit-button"/>
         </form>
-        </>
     )
 }
 

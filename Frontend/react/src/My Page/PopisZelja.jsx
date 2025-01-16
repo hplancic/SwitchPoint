@@ -37,7 +37,7 @@ function PopisZelja() {
         <>
             <div className="mypage-top-content">
                 <h2>Popis želja</h2>      
-                <button className="mypage-top-content-button" onClick={() => openAddWishCard()}>Dodaj željenu ploču</button>          
+                <button className="mypage-top-content-button" onClick={() => openAddWishCard()}>Dodaj Ploču</button>          
             </div>
             <NewWishCard />
             <hr />

@@ -1,26 +1,26 @@
 import '../styles/MypageContent.css'
+import '../styles/Card.css'
+
 
 export default function WishCard(props) {
     return (
         <>
-            <div className="wishcard">
-                <div>
-                <div className="wishcard-row">
-                        <label>Artist</label>
-                        <label>{props.artist}</label>
-                    </div>
-                    <div className="wishcard-row">
-                        <label>Album</label>
-                        <label>{props.album}</label>
-                    </div>
-                    <div className="wishcard-row">
-                        <label>Genre</label>                    
-                        <label>{props.genre}</label>
-                    </div>
-                    <div className="wishcard-row">
-                        <label>Year</label>
-                        <label>{props.year}</label>
-                    </div>
+            <div className="card">
+                <div className="KVPair">
+                    <div className="key">Artist</div>
+                    <div className="value">{props.artist}</div>
+                </div>
+                <div className="KVPair">
+                    <div className="key">Album</div>
+                    <div className="value">{props.album}</div>
+                </div>
+                <div className="KVPair">
+                    <div className="key">Genre</div>
+                    <div className="value bubble">{props.genre}</div>
+                </div>
+                <div className="KVPair">
+                    <div className="key">Year</div>
+                    <div className="value">{props.year}</div>
                 </div>
             </div>
         </>

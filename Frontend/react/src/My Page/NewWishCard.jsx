@@ -11,7 +11,7 @@ export default function NewWishCard() {
     const [year, setYear] = useState(null);
 
     const closePopUp = (e) => {
-        if (e.target.id == 'overlay' || e.target.id == "send-exchange-button") {
+        if (e.target.id == 'overlay' || e.target.id == "send-exchange-button" || e.target.id == "closeButton") {
             let overlay = document.getElementById('overlay');
             overlay.style.display = 'none';        
         }
@@ -53,26 +53,29 @@ export default function NewWishCard() {
         <>
             <div id="overlay" onClick={(e) => {closePopUp(e)}}>
                 <div id="card-exchange-view">
-                    <h2>Add vinyl to Wishlist</h2>
-                    <div className="add-wishlist-row">
-                        <label>Artist</label>
-                        <input type="text" onChange={(e) => setArtist(e.target.value)} />
+                    <div className="titleGroup">
+                        <h2 className="title">Dodaj u Popis Želja</h2>
+                        <input type="image" src="/closeBtn.svg" id="closeButton" onClick={(e) => {closePopUp(e)}}></input>
                     </div>
-                    <div className="add-wishlist-row">
-                        <label>Album name</label>
-                        <input type="text" onChange={(e) => setAlbum(e.target.value)} />
-                    </div>
-                    <div className="add-wishlist-genre">
-                        <label>Select genre</label>                    
-                        <GenreSelect
-                            setSelected={setGenre} />
-                    </div>
-                    <div className="add-wishlist-row">
-                        <label>Year of release</label>
-                        <input type="number" onChange={(e) => setYear(e.target.value)} />
-                    </div>
-                    <div style={{display:"flex", justifyContent:"space-around"}}>
-                        <button style={{width:"100%", backgroundColor:"#313131", color:"white"}} onClick={(e) => addToWishlist(e)}>Add to Wishlist</button>
+                    <div className="addVinylForm">
+                        <div className="inputGroup">
+                            <label>Umjetnik:</label>
+                            <input type="text" onChange={(e) => setArtist(e.target.value)} />
+                        </div>
+                        <div className="inputGroup">
+                            <label>Ime Albuma:</label>
+                            <input type="text" onChange={(e) => setAlbum(e.target.value)} />
+                        </div>
+                        <div className="inputGroup wide">
+                            <label>Žanr:</label>                    
+                            <GenreSelect
+                                setSelected={setGenre} />
+                        </div>
+                        <div className="inputGroup wide">
+                            <label>Godina izdanja:</label>
+                            <input type="number" onChange={(e) => setYear(e.target.value)} />
+                        </div>
+                        <button type="submit" className="wide" onClick={(e) => addToWishlist(e)}>Dodaj</button>
                     </div>
                 </div>
             </div>

@@ -64,7 +64,7 @@ function ConditionSelect({setSelected}) {
     return (
         <>
             <div className='filter-category'>
-                <div className='filter-category-container' style={{display:"flex", backgroundColor:'#313131'}}>
+                <div className='filter-category-container' style={{display:"flex"}}>
                     {conditions.map((condition, index) => (
                         <div key={index} className={condition=="All" ? 'filter-category-clicked' : 'filter-category-unclicked'} onClick={(e) => filterCategoryClick(e)}>{condition}</div>
                     ))}

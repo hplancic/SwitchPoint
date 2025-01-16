@@ -66,57 +66,67 @@ function NewVinyl() {
 
     return (
         <div id="overlay" onClick={closePopUp}>
-            <div id="newvinyl-popup" onClick={ e => e.stopPropagation() }>
+            <div id="card-exchange-view" onClick={ e => e.stopPropagation() }>
                 <div className="titleGroup">
-                    <h2 className="title">Add a new vinyl</h2>
-                    <button id="closeButton" onClick={closePopUp}>X</button>
+                    <h2 className="title">Dodaj Novu Ploču</h2>
+                    <input type="image" src="/closeBtn.svg" id="closeButton" onClick={closePopUp}></input>
                 </div>
-                <form action="post" onSubmit={addVinyl}>
+                <form action="post" onSubmit={addVinyl} class="addVinylForm">
 
-                    <label htmlFor="image">Choose image</label>
-                    <input type="file" name="image" id="inputImage"
-                        onChange={(e) => setFile(e.target.files[0])} />
-
-                    <label htmlFor="artist">Artist name</label>
-                    <input type="text" name="artist" id="" 
-                        onChange={(e) => setArtist(e.target.value)}/>
+                    <div className="inputGroup">
+                        <label htmlFor="artist">Umjetnik:</label>
+                        <input type="text" name="artist" id="" 
+                            onChange={(e) => setArtist(e.target.value)}/>
+                    </div>
                     
-                    <label htmlFor="album">Album name</label>
-                    <input type="text" name="album" id="" 
-                        onChange={(e) => setAlbum(e.target.value)}/>
+                    <div className="inputGroup">
+                        <label htmlFor="album">Ime Albuma:</label>
+                        <input type="text" name="album" id="" 
+                            onChange={(e) => setAlbum(e.target.value)}/>
+                    </div>
 
-                    <div style={{maxWidth:'600px'}}>
-                        <label>Select genre</label>                    
+                    <div className="inputGroup">
+                        <label htmlFor="year">Godina Izdanja:</label>
+                        <input type="number" name="year" id="" 
+                            onChange={(e) => setYear(e.target.value)}/>
+                    </div>
+
+                    <div className="inputGroup">
+                        <label htmlFor="edition">Izdanje</label>
+                        <input type="text" name="edition" id="" 
+                            onChange={(e) => setEdition(e.target.value)}/>
+                    </div>
+
+                    <div className="inputGroup wide">
+                        <label>Žanr:</label>                    
                         <GenreSelect
                             setSelected={setGenre} />
                     </div>
 
-                    <label htmlFor="year">Year of release</label>
-                    <input type="number" name="year" id="" 
-                        onChange={(e) => setYear(e.target.value)}/>
-
-                    <div style={{display:'flex'}}>
-                        <div style={{maxWidth:'300px'}}>
-                            <label>Select vinyl condition</label>                    
-                            <ConditionSelect
-                                setSelected={setVinylCondition} />
-                        </div>
-                        <div style={{maxWidth:'300px'}}>
-                            <label>Select sleeve condition</label>
-                            <ConditionSelect
-                                setSelected={setSleeveCondition} />
-                        </div>
+                    <div className="inputGroup">
+                        <label>Stanje Vinila:</label>                    
+                        <ConditionSelect
+                            setSelected={setVinylCondition} />
+                    </div>
+                    <div className="inputGroup">
+                        <label>Stanje Omota:</label>
+                        <ConditionSelect
+                            setSelected={setSleeveCondition} />
                     </div>
 
-                    <label htmlFor="edition">Edition</label>
-                    <input type="text" name="edition" id="" 
-                        onChange={(e) => setEdition(e.target.value)}/>
+                    <div className="inputGroup">
+                        <label htmlFor="description">Opis:</label>
+                        <input type="text" name="description" id="" 
+                            onChange={(e) => setDescription(e.target.value)}/>
+                    </div>
 
-                    <label htmlFor="description">Description</label>
-                    <input type="text" name="description" id="" 
-                        onChange={(e) => setDescription(e.target.value)}/>
+                    <div className="inputGroup">
+                        <label htmlFor="image">Izaberi Sliku:</label>
+                        <input type="file" name="image" id="inputImage"
+                            onChange={(e) => setFile(e.target.files[0])} />
+                    </div>
 
-                    <input type="submit" value="Add vinyl" />
+                    <input type="submit" value="Dodaj" className="wide"/>
                 </form>
             </div>
         </div>

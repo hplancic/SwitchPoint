@@ -7,6 +7,7 @@
 .mypage-top-content-button {
     height: fit-content;
     width: fit-content;
+    border: 1px solid #313131
 }
 
 .add-wishlist-row {
@@ -24,7 +25,7 @@
 }
 
 .add-wishlist-genre > .filter-category > .filter-category-container {
-    background-color: white !important;
+    background-color: #f9f9f9;
 }
 
 .add-wishlist-genre > .filter-category > .filter-category-container > div{
