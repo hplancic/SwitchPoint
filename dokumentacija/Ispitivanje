@@ -1,1 +1,24 @@
+# SwitchPoint
 
+### Link za deployanu web-aplikaciju: 
+  - https://switchpointx-3993d389768a.herokuapp.com/
+***
+## Ispitivanje sustava
+| **Naziv**     | **Funkcionalni zahtjev** | **Opis**                                                                        | **Ulaz**                                                                                              | **Očekivani izlaz**                                                           | **Izlaz**                                           | **Uspjeh** |
+|---------------|--------------------------|----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------|-----------|
+| **TS-01**     | F-001                   | Registracija novog korisnika                                                    | Korisničko ime: …  
+Lozinka: …  
+E-mail: …                                                                              | - Uspješna registracija  
+- Prikaz profilne stranice                                                          | [Ovdje unositi stvarni ishod testiranja]                         | + / -     |
+| **TS-02**     | F-001                   | Prijava postojećeg korisnika s ispravnim podatcima                              | Korisničko ime: …  
+Lozinka: …                                                                              | - Uspješna prijava  
+- Prikaz profilne stranice                                                          | [Ovdje unositi stvarni ishod testiranja]                         | + / -     |
+| **TS-03**     | F-001                   | Pokušaj prijave korisnika koji ne postoji u sustavu                             | Korisničko ime: …  
+Lozinka: …                                                                              | - Upozorenje o nepostojećem računu  
+- Odbijanje prijave                                                                | [Ovdje unositi stvarni ishod testiranja]                         | + / -     |
+| **TS-04**     | F-001 (OAuth 2.0)       | Prijava/Registracija putem Google računa (OAuth 2.0)                            | Google račun: …                                                                                | - Uspješna prijava/registracija  
+- Preusmjeravanje na profilnu stranicu                                             | [Ovdje unositi stvarni ishod testiranja]                         | + / -     |
+| **TS-05**     | F-001                   | Pokušaj registracije korisnika s neispravnim korisničkim imenom (prekratko/dugo)| Korisničko ime: …  
+Lozinka: …  
+E-mail: …                                                                              | - Upozorenje o neispravnom korisničkom imenu  
+- Odbijanje registracije                                                           | [Ovdje unositi stvarni ishod testiranja]                         | + / -     |
