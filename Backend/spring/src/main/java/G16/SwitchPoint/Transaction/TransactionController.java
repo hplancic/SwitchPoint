@@ -81,30 +81,48 @@ public class TransactionController {
             Principal principal) {
 
         Transaction transaction = transactionService.getTransactionById(transactionId);
-        //security
-       /* if (principal == null) {
+        if (principal == null) {
             throw new SecurityException("You are not authorized to view this transaction, log in first.");
         }
-        // Check if the logged-in user is the sender or receiver
-        String loggedInUsername = principal.getName();
-        if ( !transaction.getSender().getUsername().equals(loggedInUsername)
-                && !transaction.getReceiver().getUsername().equals(loggedInUsername)) {
-            throw new SecurityException("You are not authorized to view this transaction. Current user: " + loggedInUsername);
-        }*/
+
+        String loggedInUsername = principal.getName(); // Get the logged-in user's username
+        User loggedInUser = userService.getUserByUsername(loggedInUsername)
+                .orElseThrow(() -> new SecurityException("User not found"));
+
+        if (!transaction.getSender().getUserId().equals(loggedInUser.getUserId()) &&
+                !transaction.getReceiver().getUserId().equals(loggedInUser.getUserId())) {
+            throw new SecurityException("You are not authorized to view this transaction.");
+        }
 
         return ResponseEntity.ok(transaction);
     }
+
     @PutMapping("/{transactionId}")
-    public ResponseEntity<Transaction> editTransaction(@PathVariable Long transactionId, @RequestBody Transaction editedTransaction){
+    public ResponseEntity<Transaction> editTransaction(
+            @PathVariable Long transactionId,
+            @RequestBody Transaction editedTransaction,
+            Principal principal) {
 
         Transaction transaction = transactionService.getTransactionById(transactionId);
 
-        //security -> ovaj PUT smiju callat useri koji su ili senderi ili receiveri transakcije.
+        // Security check: Only the sender or receiver can edit the transaction
+        if (principal == null) {
+            throw new SecurityException("You are not authorized to edit this transaction, log in first.");
+        }
 
+        String loggedInUsername = principal.getName(); // Get the logged-in user's username
+        User loggedInUser = userService.getUserByUsername(loggedInUsername)
+                .orElseThrow(() -> new SecurityException("User not found"));
+
+        if (!transaction.getSender().getUserId().equals(loggedInUser.getUserId()) &&
+                !transaction.getReceiver().getUserId().equals(loggedInUser.getUserId())) {
+            throw new SecurityException("You are not authorized to edit this transaction.");
+        }
 
         transaction.setUserVinylsOfferedBySender(editedTransaction.getUserVinylsOfferedBySender());
         transaction.setUserVinylsOfferedByReceiver(editedTransaction.getUserVinylsOfferedByReceiver());
         transactionRepository.save(transaction);
+
         return ResponseEntity.ok(transaction);
     }
 
