@@ -33,6 +33,7 @@ export default function AllVinylsList(props) {
                 }).map((userVinyl, index) => (
                     <Card
                         auth={props.auth}
+                        userData={props.userData}
                         senderId={senderId}
                         setSenderId={setSenderId}
                         receiverId={receiverId}

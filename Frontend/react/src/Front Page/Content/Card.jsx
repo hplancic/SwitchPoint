@@ -87,6 +87,35 @@ function Card(props) {
             overlay.style.display = 'grid';
         }
     }, [props.myVinyls]);
+
+    const haversineDistanceKM = (lat1Deg, lon1Deg, lat2Deg, lon2Deg) => {
+        //console.log(lat1Deg, lon1Deg, lat2Deg, lon2Deg);
+        function toRad(degree) {
+            return degree * Math.PI / 180;
+        }
+        
+        const lat1 = toRad(lat1Deg);
+        const lon1 = toRad(lon1Deg);
+        const lat2 = toRad(lat2Deg);
+        const lon2 = toRad(lon2Deg);
+        
+        const { sin, cos, sqrt, atan2 } = Math;
+        
+        const R = 6371; // earth radius in km 
+        const dLat = lat2 - lat1;
+        const dLon = lon2 - lon1;
+        const a = sin(dLat / 2) * sin(dLat / 2)
+                + cos(lat1) * cos(lat2)
+                * sin(dLon / 2) * sin(dLon / 2);
+        const c = 2 * atan2(sqrt(a), sqrt(1 - a)); 
+        const d = R * c;
+        //console.log(d);
+        return d; // distance in km
+    }
+    const [flag, setFlag] = useState(props.userData!=null);
+    useEffect(() => {
+        if (props.userData) setFlag(true);
+    }, [props.userData]);
     
     return (
         <div className="card" onClick={props.type=="EXCHANGE_CARD" ? (e) => {selectVinyl(e)} : null} style={props.hide ? {display:"none"} : null}>
@@ -135,10 +164,12 @@ function Card(props) {
 
             <hr></hr>
 
-            <div className="KVPair">
-                <div className="key bubble">Lokacija</div>
-                <div className="value">5 km daleko</div>
-            </div>
+            {props.auth?.isLoggedIn && flag &&
+                <div className="KVPair">
+                    <div className="key bubble">Udaljenost</div>
+                    <div className="value">{Math.round(haversineDistanceKM(props.userData.latitude, props.userData.longitude, props.data.user.latitude, props.data.user.longitude) * 100) / 100} km</div>
+                </div>
+            }
 
             {(props.type=="USER_CARD" || props.auth?.username=="admin") && <button className='delete-vinyl-button' onClick={deleteVinyl}>Delete vinyl</button>}
             {props.type=="CHANGE_CARD" && <button className='change-vinyl-button' onClick={changeVinyl}>Ponudi zamjenu</button>}

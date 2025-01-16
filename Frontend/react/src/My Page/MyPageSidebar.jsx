@@ -34,12 +34,15 @@ function MyPageSidebar(props) {
         <>
         <div className="sidebar mypage-sidebar">
             {Object.keys(props.tabs).map((tab, index) => (
-                <Link 
-                    to={tab2path[tab]}
-                    onClick={changeTab} 
-                    className={tab==props.selectedTab ? "mypage-sidebar-clicked-link" : "mypage-sidebar-unclicked-link"} 
-                    key={index}>{tab}
-                </Link>
+                <>
+                    <Link 
+                        to={tab2path[tab]}
+                        onClick={changeTab} 
+                        className={tab==props.selectedTab ? "mypage-sidebar-clicked-link" : "mypage-sidebar-unclicked-link"} 
+                        key={index}>
+                            {tab}
+                    </Link>
+                </>
             ))}
         </div>
         </>

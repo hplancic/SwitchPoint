@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.time.Clock;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +56,8 @@ public class UserController {
     // Endpoint za brisanje korisnika po ID-u
     @DeleteMapping("/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+        System.out.println("deleteUser method called with userId: " + userId);
+
         if (userService.getUserById(userId).isPresent()) {
             userService.deleteUser(userId);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -96,6 +99,7 @@ public class UserController {
     @DeleteMapping("/{userId}/vinyls/{vinylId}")
     public ResponseEntity<String> deleteVinylFromUser(@PathVariable Long userId,
                                                       @PathVariable Long vinylId) {
+        System.out.println("deleteVinylFromUser with userId: " + userId);
         try {
             userVinylsService.deleteVinylFromUser(userId, vinylId);
             return new ResponseEntity<>("Ploca uspjesno obrisana.", HttpStatus.OK);

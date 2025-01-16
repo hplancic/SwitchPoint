@@ -5,6 +5,7 @@ import LoggedInHeader from '../Headers/LoggedInHeader.jsx'
 import AllVinyls from './AllVinyls.jsx'
 import Header from '../Headers/Header.jsx'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 function LoggedInHome(props) {
 
@@ -41,6 +42,10 @@ function LoggedInHome(props) {
     const [selectedStanjaOmota, setSelectedStanjaOmota] = useState(selectedList(conditions.map((e) => {return conditionReducedName[e]})));
     const [yearMin, setYearMin] = useState(1920);
     const [yearMax, setYearMax] = useState(2024);
+    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('auth')).userData ? JSON.parse(localStorage.getItem('auth')).userData : null);
+
+    const [offers, setOffers] = useState(null);
+    const [offersFlag, setOffersFlag] = useState(false);
 
     const [search, setSearch] = useState("");
 
@@ -52,12 +57,47 @@ function LoggedInHome(props) {
         else setFlag(true);
     };
 
+    useEffect(() => {
+        if (props.auth.isLoggedIn) {
+            if (userData == null) {
+                axios.get('/api/users/username?username=' + JSON.parse(localStorage.getItem('auth')).username)
+                .then(response => {
+                    setUserData(response.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+            }
+            let username = JSON.parse(localStorage.getItem('auth')).username;
+            axios.get('/api/users/username?username=' + username)
+                .then(response => {
+                    let userId = response.data.userId;
+                    axios.get('/api/transactions/received/' + userId)
+                        .then(response => {
+                            //console.log("OFFERS:", response.data);
+                            setOffers(response.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                })
+                .catch(error => {
+                    console.log(error);
+                })    
+        }
+    }, []);
+
+    useEffect(() => {
+        if (offers) setOffersFlag(true);
+    }, [offers]);
+
     return (
         <>
-        {props.auth.isLoggedIn ? <LoggedInHeader 
+        {props.auth.isLoggedIn ? <LoggedInHeader
             title={props.title} 
             auth={props.auth} 
-            setAuth={props.setAuth}/> : <Header title={props.title} />}
+            setAuth={props.setAuth}
+            numberOfOffers={offersFlag && offers.filter((e) => {return e.status=="PENDING"}).length} /> : <Header title={props.title} />}
         
         <div className='content'>
             <Sidebar 
@@ -80,6 +120,7 @@ function LoggedInHome(props) {
                 setSearch={setSearch} />
             <AllVinyls 
                 auth={props.auth}
+                userData={userData}
                 reducedConditions={conditionReducedName}
                 selectedZanrovi={selectedZanrovi} 
                 setSelectedZanrovi={setSelectedZanrovi}
