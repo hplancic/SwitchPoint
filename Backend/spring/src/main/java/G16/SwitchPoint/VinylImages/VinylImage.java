@@ -14,7 +14,7 @@ public class VinylImage {
     @GeneratedValue
     private Long imageId;
     private String contentType;
-    @Lob
+    //@Lob
     private byte[] imageData;
     private LocalDateTime uploadDate = LocalDateTime.now();
 
