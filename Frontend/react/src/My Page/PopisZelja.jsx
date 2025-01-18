@@ -4,7 +4,7 @@ import NewWishCard from "./NewWishCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function PopisZelja() {
+function PopisZelja(props) {
 
     const [wishlist, setWishlist] = useState(null);
     const [flag, setFlag] = useState(false);

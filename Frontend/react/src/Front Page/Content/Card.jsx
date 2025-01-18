@@ -171,7 +171,7 @@ function Card(props) {
                 </div>
             }
 
-            {(props.type=="USER_CARD" || props.auth?.username=="admin") && <button className='delete-vinyl-button' onClick={deleteVinyl}>Delete vinyl</button>}
+            {(props.type=="USER_CARD" || props.auth?.username=="admin") && <button className='delete-vinyl-button' onClick={deleteVinyl}>Izbriši Ploču</button>}
             {props.type=="CHANGE_CARD" && <button className='change-vinyl-button' onClick={changeVinyl}>Ponudi zamjenu</button>}
             {props.exchangeType=="EDIT" ? null : <ChooseExchangeVinyl vinyls={props.myVinyls ? props.myVinyls : new Array()} 
                 transactionData={{

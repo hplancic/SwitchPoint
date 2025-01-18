@@ -20,7 +20,7 @@ export default function AllVinyls(props) {
     }, []);
 
     return (
-        <div>
+        <>
             {flag && <AllVinylsList
                         auth={props.auth}
                         userData={props.userData}
@@ -37,6 +37,6 @@ export default function AllVinyls(props) {
                         yearMax={props.yearMax}
                         setYearMax={props.setYearMax}
                         search={props.search} />}
-        </div>
+        </>
     )
 }

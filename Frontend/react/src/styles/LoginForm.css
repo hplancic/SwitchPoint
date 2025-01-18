@@ -21,8 +21,8 @@ input, select {
     color:#313131
 }
 
-.submit-button {
-    background-color: cornflowerblue;
+.login-button {
+    background-color: cornflowerblue !important;
     color: white;
     border: 1px solid cornflowerblue;
     border-radius: 5px;
@@ -35,8 +35,8 @@ input, select {
     margin: 10px auto;
 }
 
-.submit-button:hover {
-    background-color: rgb(78, 114, 180);
+.login-button:hover {
+    background-color: rgb(78, 114, 180) !important;
     border: 1px solid #313131;
 }
 

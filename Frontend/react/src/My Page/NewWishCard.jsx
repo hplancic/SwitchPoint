@@ -57,26 +57,29 @@ export default function NewWishCard() {
                         <h2 className="title">Dodaj u Popis Želja</h2>
                         <input type="image" src="/closeBtn.svg" id="closeButton" onClick={(e) => {closePopUp(e)}}></input>
                     </div>
-                    <div className="addVinylForm">
+                    <form className="addVinylForm" action={(e) => addToWishlist(e)}>
                         <div className="inputGroup">
                             <label>Umjetnik:</label>
-                            <input type="text" onChange={(e) => setArtist(e.target.value)} />
+                            <input type="text" required 
+                            onChange={(e) => setArtist(e.target.value)} />
                         </div>
                         <div className="inputGroup">
                             <label>Ime Albuma:</label>
-                            <input type="text" onChange={(e) => setAlbum(e.target.value)} />
+                            <input type="text" required
+                            onChange={(e) => setAlbum(e.target.value)} />
                         </div>
                         <div className="inputGroup wide">
-                            <label>Žanr:</label>                    
+                            <label>Žanr:</label>
                             <GenreSelect
                                 setSelected={setGenre} />
                         </div>
                         <div className="inputGroup wide">
                             <label>Godina izdanja:</label>
-                            <input type="number" onChange={(e) => setYear(e.target.value)} />
+                            <input type="number" required min="1920" max={new Date().getFullYear()}
+                             onChange={(e) => setYear(e.target.value)} />
                         </div>
-                        <button type="submit" className="wide" onClick={(e) => addToWishlist(e)}>Dodaj</button>
-                    </div>
+                        <button type="submit" className="wide" >Dodaj</button>
+                    </form>
                 </div>
             </div>
         </>

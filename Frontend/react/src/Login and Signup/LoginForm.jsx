@@ -43,7 +43,7 @@ function LoginForm({setAuth}) {
 
             <h5 id="invalid-login-text">Invalid username or password.</h5>
 
-            <input type="submit" value="Log in" className="submit-button"/>
+            <input type="submit" value="Log in" className="login-button"/>
         </form>
     )
 }

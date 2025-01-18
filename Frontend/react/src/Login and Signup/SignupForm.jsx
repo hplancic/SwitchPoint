@@ -109,7 +109,7 @@ function SignupForm({setAuth, position, setPosition, initCoord}) {
             <label htmlFor="lat">Latitude: {position.lat}</label>
             <label htmlFor="lng">Longitude: {position.lng}</label>
 
-            <input type="submit" value="Sign up" className="submit-button"/>
+            <input type="submit" value="Sign up" className="login-button"/>
         </form>
         </>
     )

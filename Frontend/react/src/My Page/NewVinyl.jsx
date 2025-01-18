@@ -74,20 +74,20 @@ function NewVinyl() {
                 <form action="post" onSubmit={addVinyl} class="addVinylForm">
 
                     <div className="inputGroup">
-                        <label htmlFor="artist">Umjetnik:</label>
-                        <input type="text" name="artist" id="" 
+                        <label htmlFor="artist">Izvođač:</label>
+                        <input type="text" name="artist" id="" required
                             onChange={(e) => setArtist(e.target.value)}/>
                     </div>
                     
                     <div className="inputGroup">
                         <label htmlFor="album">Ime Albuma:</label>
-                        <input type="text" name="album" id="" 
+                        <input type="text" name="album" id="" required
                             onChange={(e) => setAlbum(e.target.value)}/>
                     </div>
 
                     <div className="inputGroup">
                         <label htmlFor="year">Godina Izdanja:</label>
-                        <input type="number" name="year" id="" 
+                        <input type="number" name="year" id="" required min="1920" max={new Date().getFullYear()} step="1"
                             onChange={(e) => setYear(e.target.value)}/>
                     </div>
 
@@ -116,13 +116,13 @@ function NewVinyl() {
 
                     <div className="inputGroup">
                         <label htmlFor="description">Opis:</label>
-                        <input type="text" name="description" id="" 
+                        <input type="text" name="description" id="" maxLength="30"
                             onChange={(e) => setDescription(e.target.value)}/>
                     </div>
 
                     <div className="inputGroup">
                         <label htmlFor="image">Izaberi Sliku:</label>
-                        <input type="file" name="image" id="inputImage"
+                        <input type="file" name="image" id="inputImage" required
                             onChange={(e) => setFile(e.target.files[0])} />
                     </div>
 

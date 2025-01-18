@@ -28,8 +28,8 @@
 
 .mypage-tab-content {
     color: #313131;
-    margin: 0 0 0 50px;
-    padding: 10px 20px;
+    margin: 0px;
+    padding: 10px;
     border-radius: 5px;
 }
 
@@ -175,7 +175,12 @@ textarea {
     width: 100%;
 }
 
-@media screen and (max-width: 933px /* Wide enough to fit two cards */) {
+.mypage-mojeploce .card-list {
+    overflow: visible;
+    height: auto;
+}
+
+@media screen and (max-width: 991px /* Wide enough to fit two cards */) {
     .mypage-tab-content {
         margin: 0;
     }

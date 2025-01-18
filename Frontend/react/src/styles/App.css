@@ -29,7 +29,7 @@ input, select {
 }
 
 .card-list {
-    height: 1200px;
+    height: 760px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -39,7 +39,7 @@ input, select {
 }
 /* END CONTENT */
 
-@media screen and (max-width: 933px /* Wide enough to fit two cards */) {
+@media screen and (max-width: 991px /* Wide enough to fit two cards */) {
     .content {
         display: grid;
         grid-template-columns: 1fr;
@@ -52,5 +52,9 @@ input, select {
     #root {
         margin: 0;
         width: 100vw;
+    }
+    .card-list{
+        height:auto;
+        overflow-y: visible;
     }
 }

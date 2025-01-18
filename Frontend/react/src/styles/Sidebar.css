@@ -164,11 +164,14 @@ hr {
     font-weight: 600;
 }
 
-@media screen and (max-width: 933px /* Wide enough to fit two cards */) {
+@media screen and (max-width: 991px /* Wide enough to fit two cards */) {
     .mypage-sidebar {
         flex-direction: row;
         justify-content: space-around;
         font-size: 3vw;
         padding: 0;
+    }
+    .filter-title {
+        width: auto;
     }
 }

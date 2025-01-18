@@ -30,6 +30,6 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 933px /* Wide enough to fit two cards */) {
+@media screen and (max-width: 991px /* Wide enough to fit two cards */) {
     
 }
