@@ -46,7 +46,7 @@ public class TransactionService {
         transaction.setStatus(TransactionStatus.PENDING);
 
         String subject = "SwitchPoint - NOVA PONUDA";
-        String link = "https://switchpointx-3993d389768a.herokuapp.com/transactions/"+transaction.getTransactionId();
+        String link = "https://switchpoint1-c39a98ff47c7.herokuapp.com/";
         String body = "Poštovani,\n stigla vam je nova ponuda za zamjenu u aplikaciji SwtichPoint:\n"+link+"\nSwitchPoint inc.";
         emailService.sendEmail(receiver.getEmail(), subject, body);
 

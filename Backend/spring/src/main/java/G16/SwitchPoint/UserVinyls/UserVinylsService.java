@@ -122,7 +122,7 @@ public class UserVinylsService {
 
             String body = "Poštovani " + user.getUsername() + ",\n\n" +
                     "Ploča koju ste čekali, \"" + vinyl.getVinylTitle() + "\", sada je dostupna na našoj web stranici.\n" +
-                    "Srdačan pozdrav,\nTim SwitchPoint\n" + "https://switchpointx-3993d389768a.herokuapp.com/";
+                    "Srdačan pozdrav,\nTim SwitchPoint\n" + "https://switchpoint1-c39a98ff47c7.herokuapp.com/";
 
             emailService.sendEmail(user.getEmail(), subject, body);
         }
