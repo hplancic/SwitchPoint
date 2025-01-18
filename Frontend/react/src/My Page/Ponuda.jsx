@@ -23,7 +23,7 @@ export default function Ponuda(props) {
     };
 
     const changeVinylShown = (e, type, whose) => {
-        let wrap = e.target.closest(".offer-vinyls-wrap");
+        let wrap = e.target.closest(".offer");
         let cardContainer = wrap.querySelector(".offer-vinyls");
         let cardArray = Array.from(cardContainer.children);
         let shownIndex = -1;
@@ -96,51 +96,47 @@ export default function Ponuda(props) {
 
     return (
         <div className="offer">
-            <div className="offer-vinyls-wrap">
-                <h3>{props.sent ? "Želim ove ploče" : "Pošiljatelj želi ove ploče od mene"}</h3>
-                <div className="offer-vinyls">
-                    {props.offer.userVinylsOfferedByReceiver.map((vinyl, index) => (
-                        <Card
-                            hide={index!=0}
-                            key={index}
-                            type={""}
-                            data={vinyl}
-                            exchangeType="EDIT"
-                        />
-                    ))}
-                </div>
-                <div className="offer-switch-cards">
-                    <button onClick={(e) => showPreviousVinyl(e, "my")} disabled={selectedCardMy==1 ? "disabled" : ""}>←</button>
-                    <div className="offer-number-of-cards">
-                        <h4>{selectedCardMy}/{props.offer.userVinylsOfferedByReceiver.length}</h4>
-                        <h4>{props.offer.userVinylsOfferedByReceiver.length} {dekl(props.offer.userVinylsOfferedByReceiver.length)}
-                        </h4>
-                    </div>                    
-                    <button onClick={(e) => showNextVinyl(e, "my")} disabled={selectedCardMy==props.offer.userVinylsOfferedByReceiver.length ? "disabled" : ""}>→</button>
-                </div>
+            <h3>{props.sent ? "Želim ove ploče" : "Pošiljatelj želi ove ploče"}</h3>
+            <h3>{props.sent ? "Nudim ove ploče" : "Pošiljatelj nudi ove ploče"}</h3>
+            <div className="offer-vinyls">
+                {props.offer.userVinylsOfferedByReceiver.map((vinyl, index) => (
+                    <Card
+                        hide={index!=0}
+                        key={index}
+                        type={""}
+                        data={vinyl}
+                        exchangeType="EDIT"
+                    />
+                ))}
             </div>
-            <div className="offer-vinyls-wrap">
-                <h3>{props.sent ? "Nudim ove ploče" : "Pošiljatelj šalje ove ploče u razmjenu"}</h3>
-                <div className="offer-vinyls">
-                    {props.offer.userVinylsOfferedBySender.map((vinyl, index) => (
-                        <Card
-                            hide={index!=0}
-                            key={index}
-                            type={""}
-                            data={vinyl}
-                            exchangeType="EDIT"
-                        />
-                    ))}
+            <div className="offer-vinyls">
+                {props.offer.userVinylsOfferedBySender.map((vinyl, index) => (
+                    <Card
+                        hide={index!=0}
+                        key={index}
+                        type={""}
+                        data={vinyl}
+                        exchangeType="EDIT"
+                    />
+                ))}
+            </div>
+            <div className="offer-switch-cards">
+                <button onClick={(e) => showPreviousVinyl(e, "my")} disabled={selectedCardMy==1 ? "disabled" : ""}><img src="/leftArrow.svg" /></button>
+                <div className="offer-number-of-cards">
+                    <h4>{selectedCardMy}/{props.offer.userVinylsOfferedByReceiver.length}</h4>
+                    <h4>{props.offer.userVinylsOfferedByReceiver.length} {dekl(props.offer.userVinylsOfferedByReceiver.length)}
+                    </h4>
+                </div>                    
+                <button onClick={(e) => showNextVinyl(e, "my")} disabled={selectedCardMy==props.offer.userVinylsOfferedByReceiver.length ? "disabled" : ""}><img src="/rightArrow.svg" /></button>
+            </div>
+            <div className="offer-switch-cards">
+                <button onClick={(e) => showPreviousVinyl(e, "their")} disabled={selectedCardTheir==1 ? "disabled" : ""}><img src="/leftArrow.svg" /></button>
+                <div className="offer-number-of-cards">
+                    <h4>{selectedCardTheir}/{props.offer.userVinylsOfferedBySender.length}</h4>
+                    <h4>{props.offer.userVinylsOfferedBySender.length} {dekl(props.offer.userVinylsOfferedBySender.length)}
+                    </h4>
                 </div>
-                <div className="offer-switch-cards">
-                    <button onClick={(e) => showPreviousVinyl(e, "their")} disabled={selectedCardTheir==1 ? "disabled" : ""}>←</button>
-                    <div className="offer-number-of-cards">
-                        <h4>{selectedCardTheir}/{props.offer.userVinylsOfferedBySender.length}</h4>
-                        <h4>{props.offer.userVinylsOfferedBySender.length} {dekl(props.offer.userVinylsOfferedBySender.length)}
-                        </h4>
-                    </div>
-                    <button onClick={(e) => showNextVinyl(e, "their")} disabled={selectedCardTheir==props.offer.userVinylsOfferedBySender.length ? "disabled" : ""}>→</button>
-                </div>
+                <button onClick={(e) => showNextVinyl(e, "their")} disabled={selectedCardTheir==props.offer.userVinylsOfferedBySender.length ? "disabled" : ""}><img src="/rightArrow.svg" /></button>
             </div>
             {!props.sent && <div className="offer-buttons">
                 <button className="accept-button" onClick={(e) => acceptOffer(e)}>Prihvati ponudu</button>
