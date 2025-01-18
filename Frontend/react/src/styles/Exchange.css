@@ -1,13 +1,22 @@
-
 #card-exchange-view {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 5px;
     cursor:auto;
+    height: 80vh;
+    width: 80vw;
+    align-self: center;
+    justify-self: center;
+    position: absolute;
+    top: 10vh;
+    overflow-y: auto;
+    display: grid;
 }
 
 #card-exchange-cards {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 #card-exchange-cards > .card {
@@ -19,5 +28,5 @@
 }
 
 #send-exchange-button {
-
+    border: 1px solid black;
 }

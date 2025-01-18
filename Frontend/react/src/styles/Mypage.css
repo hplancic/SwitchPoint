@@ -176,6 +176,7 @@ textarea {
 }
 
 .mypage-mojeploce .card-list {
+    margin: 0;
     overflow: visible;
     height: auto;
 }

@@ -42,7 +42,7 @@ function LoggedInHome(props) {
     const [selectedStanjaOmota, setSelectedStanjaOmota] = useState(selectedList(conditions.map((e) => {return conditionReducedName[e]})));
     const [yearMin, setYearMin] = useState(1920);
     const [yearMax, setYearMax] = useState(2024);
-    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('auth')).userData ? JSON.parse(localStorage.getItem('auth')).userData : null);
+    const [userData, setUserData] = useState(localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')).userData : null);
 
     const [offers, setOffers] = useState(null);
     const [offersFlag, setOffersFlag] = useState(false);

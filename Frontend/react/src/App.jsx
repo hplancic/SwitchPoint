@@ -40,18 +40,14 @@ function App() {
                                     title={title} 
                                     auth={auth} 
                                     setAuth={setAuth} />} />
-          {auth.isLoggedIn &&
-            <>
-              <Route path='/mypage' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
-                                                selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Moje ploče"} />} />
-              <Route path='/ponude' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
-                                                selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Ponude"} />} />
-              <Route path='/popis-zelja' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
-                                                selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Popis želja"} />} />
-              <Route path='/postavke' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
-                                                selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Postavke"} />} />
-            </>
-          }
+          <Route path='/mypage' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
+                                            selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Moje ploče"} />} />
+          <Route path='/ponude' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
+                                            selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Ponude"} />} />
+          <Route path='/popis-zelja' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
+                                            selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Popis želja"} />} />
+          <Route path='/postavke' element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
+                                            selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Postavke"} />} />
           {auth.username=="admin" && <Route path="/korisnici" element={<MyPage title={title} auth={auth} setAuth={setAuth} tabs={tabs} 
                                                 selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Korisnici"} />} />}
           {!auth.isLoggedIn &&

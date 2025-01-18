@@ -34,6 +34,8 @@ function MyPage(props) {
         console.log(offers);
     }, [offers]);
 
+    if (props.auth.isLoggedIn == false) window.location.replace("/");
+
     return (
         <>
         <LoggedInHeader title={props.title} auth={props.auth} setAuth={props.setAuth} numberOfOffers={offersFlag && offers.filter((e) => {return e.status=="PENDING"}).length} />
