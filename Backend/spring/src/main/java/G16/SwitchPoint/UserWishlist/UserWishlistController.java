@@ -22,4 +22,13 @@ public class UserWishlistController {
         UserWishlist userWishlist = userWishlistService.addVinylToWishlist(userId, vinylId, notes);
         return ResponseEntity.ok(userWishlist);
 }
+
+@DeleteMapping("/{userId}/wishlist/{wishlistId}")
+public ResponseEntity<Void> deleteWishlistItem(
+            @PathVariable Long userId,
+            @PathVariable Long wishlistId) {
+        userWishlistService.deleteWishlistItem(userId, wishlistId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

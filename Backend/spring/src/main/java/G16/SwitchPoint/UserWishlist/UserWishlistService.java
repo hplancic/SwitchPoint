@@ -37,4 +37,16 @@ public UserWishlist addVinylToWishlist(Long userId, Long vinylId,String notes) {
 
         userWishlistRepository.delete(userWishlist);
     }
+
+    public void deleteWishlistItem(Long userId, Long wishlistId) {
+
+        UserWishlist userWishlist = userWishlistRepository.findById(wishlistId)
+                .orElseThrow(() -> new RuntimeException("Wishlist item not found"));
+
+        if (!userWishlist.getUser().getUserId().equals(userId)) {
+            throw new RuntimeException("Wishlist item does not belong to the specified user");
+        }
+
+        userWishlistRepository.delete(userWishlist);
+    }
 }
