@@ -52,7 +52,7 @@ export default function NewWishCard() {
     return (
         <>
             <div id="overlay" onClick={(e) => {closePopUp(e)}}>
-                <div id="card-exchange-view">
+                <div id="new-item-form">
                     <div className="titleGroup">
                         <h2 className="title">Dodaj u Popis Želja</h2>
                         <input type="image" src="/closeBtn.svg" id="closeButton" onClick={(e) => {closePopUp(e)}}></input>

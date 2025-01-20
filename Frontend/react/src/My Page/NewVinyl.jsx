@@ -66,7 +66,7 @@ function NewVinyl() {
 
     return (
         <div id="overlay" onClick={closePopUp}>
-            <div id="card-exchange-view" onClick={ e => e.stopPropagation() }>
+            <div id="new-item-form" onClick={ e => e.stopPropagation() }>
                 <div className="titleGroup">
                     <h2 className="title">Dodaj Novu Ploču</h2>
                     <input type="image" src="/closeBtn.svg" id="closeButton" onClick={closePopUp}></input>

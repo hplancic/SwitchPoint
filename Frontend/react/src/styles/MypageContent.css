@@ -75,3 +75,17 @@
     background-color: #7c0000;
     color: #fff;
 }
+
+#new-item-form {
+    color: #313131;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor:auto;
+    align-self: center;
+    justify-self: center;
+    overflow-y: auto;
+    max-height: 100%;
+    display: grid;
+}

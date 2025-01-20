@@ -8,6 +8,7 @@ function PopisZelja(props) {
 
     const [wishlist, setWishlist] = useState(null);
     const [flag, setFlag] = useState(false);
+    const [userId, setUserId] = useState(null)
 
     const openAddWishCard = () => {
         let overlay = document.getElementById('overlay');
@@ -19,6 +20,7 @@ function PopisZelja(props) {
         axios.get('/api/users/username?username=' + username)
             .then(response => {
                 let userId = response.data.userId;
+                setUserId(userId)
                 axios.get('/api/users/' + userId + '/wishlist')
                     .then(response => setWishlist(response.data))
                     .catch(error => console.log(error));
@@ -48,7 +50,9 @@ function PopisZelja(props) {
                         artist={wishcard.vinyl.artist}
                         album={wishcard.vinyl.vinylTitle}
                         genre={wishcard.vinyl.genre}
-                        year={wishcard.vinyl.releaseYear}/>
+                        year={wishcard.vinyl.releaseYear}
+                        wishlistId={wishcard.id}
+                        userId={userId}/>
                 ))}
             </div>
         </>

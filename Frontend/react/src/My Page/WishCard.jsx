@@ -1,8 +1,21 @@
 import '../styles/MypageContent.css'
 import '../styles/Card.css'
+import axios from "axios";
 
 
 export default function WishCard(props) {
+
+    const deleteWishCard = () => {
+        axios.delete('/api/users/' + props.userId + '/wishlist/' + props.wishlistId)
+            .then((res) => {
+                window.location.reload();
+            })
+            .catch((err) => {
+                console.log("Delete WishCard ERROR:", err);
+            });
+    };
+
+
     return (
         <>
             <div className="card">
@@ -22,6 +35,8 @@ export default function WishCard(props) {
                     <div className="key">Year</div>
                     <div className="value">{props.year}</div>
                 </div>
+
+                <button className='delete-vinyl-button' onClick={deleteWishCard}>Izbriši Ploču</button>
             </div>
         </>
     )

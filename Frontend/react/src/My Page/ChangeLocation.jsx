@@ -33,7 +33,7 @@ export default function ChangeLocation(props) {
 
     return (
         <>
-        <form action="post" onSubmit={handleSubmit}>
+        <form action="post" onSubmit={handleSubmit} id="new-item-form">
             <h3>Promijeni Lokaciju:</h3>
             <Map position={position} setPosition={setPosition} initCoord={initCoord} />
             <h5>Zemljopisna Širina: {position.lat}</h5>
