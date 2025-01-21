@@ -30,6 +30,13 @@ function Card(props) {
 
     //if (props.type=="EXCHANGE_CARD") console.log("2");
 
+    const showMore = (e) => {
+        let element = e.target;
+        let clicked = element.classList.contains("value-clicked");
+        if (!clicked) element.classList.add("value-clicked");
+        else element.classList.remove("value-clicked");
+    };
+
     const deleteVinyl = () => {
         console.log(props.data, props.data.user.userId, props.data.vinyl.vinylId);
         axios.delete('/api/users/' + props.data.user.userId + '/vinyls/' + props.data.vinyl.vinylId)
@@ -124,11 +131,11 @@ function Card(props) {
             </div>
             <div className="KVPair">
                 <div className="key">Izvođač</div>
-                <div className="value"> {props.data.vinyl.artist}</div>
+                <div className="value" onClick={(e) => showMore(e)}> {props.data.vinyl.artist}</div>
             </div>
             <div className="KVPair">
                 <div className="key">Album</div>
-                <div className="value"> {props.data.vinyl.vinylTitle} </div>
+                <div className="value" onClick={(e) => showMore(e)}> {props.data.vinyl.vinylTitle} </div>
             </div>
             <div className="KVPair">
                 <div className="key">Žanr</div>
@@ -151,15 +158,15 @@ function Card(props) {
             </div>
             <div className="KVPair">
                 <div className="key">Oznaka izdanja</div>
-                <div className={"value"}> {props.data.oznIzdanja ? props.data.oznIzdanja : "-"} </div>
+                <div className={"value"} onClick={(e) => showMore(e)}> {props.data.oznIzdanja ? props.data.oznIzdanja : "-"} </div>
             </div>
             <div className="KVPair">
                 <div className="key">Opis</div>
-                <div className={"value"}> {props.data.opis ? props.data.opis : "-"} </div>
+                <div className={"value"} onClick={(e) => showMore(e)}> {props.data.opis ? props.data.opis : "-"} </div>
             </div>
             <div className="KVPair">
                 <div className="key">Korisnik</div>
-                <div className="value bubble"> {props.data.user.username} </div>
+                <div className="value bubble" onClick={(e) => showMore(e)}> {props.data.user.username} </div>
             </div>
 
             <hr></hr>

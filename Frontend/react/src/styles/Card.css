@@ -43,14 +43,15 @@
     max-width: 80%;
     justify-self: right;
     text-align: right;
-    /*white-space: nowrap;
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;*/
+    text-overflow: ellipsis;
 }
 
-/*.value:hover {
+.value-clicked {
     overflow: visible;
-}*/
+    white-space: wrap;
+}
 
 .bubble {
     color:black;
