@@ -18,7 +18,7 @@ function FilterCategoryYearSelect({filterYearMinValue, filterYearMaxValue, setFi
             </div>
             <MultiRangeSlider
                 min={1920}
-                max={2024}
+                max={new Date().getFullYear()}
                 minValue={filterYearMinValue}
                 maxValue={filterYearMaxValue}
                 step={1}
