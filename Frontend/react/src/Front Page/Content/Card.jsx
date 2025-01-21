@@ -29,6 +29,7 @@ const conditionReducedName = {
 function Card(props) {
 
     //if (props.type=="EXCHANGE_CARD") console.log("2");
+    const [expanded, setExpanded] = useState(false);
 
     const showMore = (e) => {
         let element = e.target;
@@ -36,6 +37,12 @@ function Card(props) {
         if (!clicked) element.classList.add("value-clicked");
         else element.classList.remove("value-clicked");
     };
+
+    const expandCard = (e) => {
+        let selectedCard = e.target.closest(".card");
+        if (expanded) setExpanded(false);
+        else setExpanded(true);
+    }
 
     const deleteVinyl = () => {
         console.log(props.data, props.data.user.userId, props.data.vinyl.vinylId);
@@ -125,53 +132,48 @@ function Card(props) {
     }, [props.userData]);
     
     return (
-        <div className="card" onClick={props.type=="EXCHANGE_CARD" ? (e) => {selectVinyl(e)} : null} style={props.hide ? {display:"none"} : null}>
+        <div className="card" onClick={props.type=="EXCHANGE_CARD" ? (e) => {selectVinyl(e)} : (e) => {expandCard(e)}} style={props.hide ? {display:"none"} : null}>
             <div className='img-wrapper'>
                 <img className="albumImage" src= { props.data.image ? 'data:image/png;base64,' + props.data.image.imageData : '../../public/unavailable-image.jpg'} />
             </div>
             <div className="KVPair">
-                <div className="key">Izvođač</div>
-                <div className="value" onClick={(e) => showMore(e)}> {props.data.vinyl.artist}</div>
+                <div className="value album-title" onClick={(e) => showMore(e)}> {props.data.vinyl.vinylTitle} </div>
             </div>
             <div className="KVPair">
-                <div className="key">Album</div>
-                <div className="value" onClick={(e) => showMore(e)}> {props.data.vinyl.vinylTitle} </div>
+                <div className="value album-artist" onClick={(e) => showMore(e)}> {props.data.vinyl.artist}</div>
             </div>
             <div className="KVPair">
-                <div className="key">Žanr</div>
+                <div className="key">Žanr: </div>
                 <div className="value bubble"> {props.data.vinyl.genre} </div>
             </div>
 
-            <hr></hr>
-
             <div className="KVPair">
-                <div className="key">Godina Izdanja</div>
+                <div className="key">Godina: </div>
                 <div className="value bubble"> {props.data.vinyl.releaseYear} </div>
             </div>
             <div className="KVPair">
-                <div className="key">Stanje Ploče</div>
+                <div className="key">Stanje Ploče: </div>
                 <div className={"value bubble colored " + conditionToColor[props.data.vinylCondition]}> {conditionReducedName[props.data.vinylCondition]} </div>
             </div>
             <div className="KVPair">
-                <div className="key">Stanje Omota</div>
+                <div className="key">Stanje Omota: </div>
                 <div className={"value bubble colored " + conditionToColor[props.data.sleeveCondition]}> {conditionReducedName[props.data.sleeveCondition]} </div>
             </div>
-            <div className="KVPair">
+            {expanded && <hr></hr>}
+            {expanded && <div className="KVPair">
                 <div className="key">Oznaka izdanja</div>
                 <div className={"value"} onClick={(e) => showMore(e)}> {props.data.oznIzdanja ? props.data.oznIzdanja : "-"} </div>
-            </div>
-            <div className="KVPair">
+            </div>}
+            {expanded && <div className="KVPair">
                 <div className="key">Opis</div>
                 <div className={"value"} onClick={(e) => showMore(e)}> {props.data.opis ? props.data.opis : "-"} </div>
-            </div>
-            <div className="KVPair">
+            </div>}
+            {expanded && <div className="KVPair">
                 <div className="key">Korisnik</div>
                 <div className="value bubble" onClick={(e) => showMore(e)}> {props.data.user.username} </div>
-            </div>
+            </div>}
 
-            <hr></hr>
-
-            {props.auth?.isLoggedIn && flag &&
+            {props.auth?.isLoggedIn && flag && expanded &&
                 <div className="KVPair">
                     <div className="key bubble">Udaljenost</div>
                     <div className="value">{Math.round(haversineDistanceKM(props.userData.latitude, props.userData.longitude, props.data.user.latitude, props.data.user.longitude) * 100) / 100} km</div>

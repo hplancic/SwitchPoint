@@ -5,7 +5,7 @@
     color:white;
     border: 2px solid black;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px 10px 20px 10px;
     margin: 0px 5px 5px 5px;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
 
 .img-wrapper {
     width: 100%;
-    height: 10em;
+    height: 15em;
     display: flex;
     justify-content: center;
 }
@@ -37,15 +37,38 @@
     justify-self: left;
     color: lightgray;
     font-weight: bold;
+    font-size: 1em;
 }
 
 .value {
     max-width: 80%;
     justify-self: right;
     text-align: right;
-    white-space: nowrap;
+/*     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
+    overflow: visible;
+    white-space: wrap;
+    font-size: 1em;
+}
+
+.album-title {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 800;
+    justify-self: left;
+    margin: 10px 0;
+}
+
+.album-artist {
+    color: #bcbcbc;
+    font-size: 1em;
+    justify-self: left;
+    margin: 5px 0;
+}
+
+.hidden {
+    display: none;
 }
 
 .value-clicked {
