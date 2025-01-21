@@ -19,6 +19,8 @@ export default function WishCard(props) {
     return (
         <>
             <div className="card">
+                <img src="halfVinyl.svg" className="wishcard-image" />
+                <hr />
                 <div className="KVPair">
                     <div className="key">Artist</div>
                     <div className="value">{props.artist}</div>

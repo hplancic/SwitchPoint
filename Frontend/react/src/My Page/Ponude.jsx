@@ -41,42 +41,42 @@ function Ponude() {
             <h3>Dobivene ponude (na čekanju)</h3>
             <div id="offer-view">
                 {offers.filter((a) => {return a.status=="PENDING"}).map((offer, index) => (
-                    <Ponuda key={index} offer={offer} />
+                    <Ponuda key={index} index={index} offer={offer} />
                 ))}
             </div>
             <hr />
             <h3>Poslane ponude (na čekanju)</h3>
             <div id="offer-view">
                 {sentOffers.filter((a) => {return a.status=="PENDING"}).map((offer, index) => (
-                    <Ponuda key={index} offer={offer} sent={true} />
+                    <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
             </div>
             <hr /> <hr />
             <h3>Dobivene ponude (prihvaćene)</h3>
             <div id="offer-view">
                 {offers.filter((a) => {return a.status=="COMPLETED"}).map((offer, index) => (
-                    <Ponuda key={index} offer={offer} sent={true} />
+                    <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
             </div>
             <hr />
             <h3>Poslane ponude (prihvaćene)</h3>
             <div id="offer-view">
                 {sentOffers.filter((a) => {return a.status=="COMPLETED"}).map((offer, index) => (
-                    <Ponuda key={index} offer={offer} sent={true} />
+                    <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
             </div>
             <hr /> <hr />
             <h3>Dobivene ponude (odbijene)</h3>
             <div id="offer-view">
                 {offers.filter((a) => {return a.status=="CANCELED"}).map((offer, index) => (
-                    <Ponuda key={index} offer={offer} sent={true} />
+                    <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
             </div>
             <hr />
             <h3>Poslane ponude (odbijene)</h3>
             <div id="offer-view">
                 {sentOffers.filter((a) => {return a.status=="CANCELED"}).map((offer, index) => (
-                    <Ponuda key={index} offer={offer} sent={true} />
+                    <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
             </div>
         </>

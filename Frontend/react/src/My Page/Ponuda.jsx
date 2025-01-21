@@ -23,8 +23,15 @@ export default function Ponuda(props) {
     };
 
     const changeVinylShown = (e, type, whose) => {
-        let wrap = e.target.closest(".offer");
-        let cardContainer = wrap.querySelector(".offer-vinyls");
+        //let wrap = e.target.closest(".offer");
+        //let cardContainer = wrap.querySelector(".offer-vinyls");
+        let cardContainer;
+        if (whose == "my") {
+            cardContainer = document.getElementById("oscmy" + props.index);
+        }
+        else if (whose == "their") {
+            cardContainer = document.getElementById("osctheir" + props.index);
+        }
         let cardArray = Array.from(cardContainer.children);
         let shownIndex = -1;
         cardArray.forEach((card, index) => {
@@ -97,8 +104,8 @@ export default function Ponuda(props) {
     return (
         <div className="offer">
             <h3>{props.sent ? "Želim ove ploče" : "Pošiljatelj želi ove ploče"}</h3>
-            <h3>{props.sent ? "Nudim ove ploče" : "Pošiljatelj nudi ove ploče"}</h3>
-            <div className="offer-vinyls">
+            <h3 className="nudim-text">{props.sent ? "Nudim ove ploče" : "Pošiljatelj nudi ove ploče"}</h3>
+            <div className="offer-vinyls" id={"oscmy" + props.index}>
                 {props.offer.userVinylsOfferedByReceiver.map((vinyl, index) => (
                     <Card
                         hide={index!=0}
@@ -109,7 +116,7 @@ export default function Ponuda(props) {
                     />
                 ))}
             </div>
-            <div className="offer-vinyls">
+            <div className="offer-vinyls second-offer-vinyls" id={"osctheir" + props.index}>
                 {props.offer.userVinylsOfferedBySender.map((vinyl, index) => (
                     <Card
                         hide={index!=0}
@@ -129,7 +136,7 @@ export default function Ponuda(props) {
                 </div>                    
                 <button onClick={(e) => showNextVinyl(e, "my")} disabled={selectedCardMy==props.offer.userVinylsOfferedByReceiver.length ? "disabled" : ""}><img src="/rightArrow.svg" /></button>
             </div>
-            <div className="offer-switch-cards">
+            <div className="offer-switch-cards second-switch-cards">
                 <button onClick={(e) => showPreviousVinyl(e, "their")} disabled={selectedCardTheir==1 ? "disabled" : ""}><img src="/leftArrow.svg" /></button>
                 <div className="offer-number-of-cards">
                     <h4>{selectedCardTheir}/{props.offer.userVinylsOfferedBySender.length}</h4>

@@ -64,3 +64,27 @@
 hr {
     color: #313131;
 }
+
+@media screen and (max-width: 640px ) {
+    .offer {
+        grid-template-columns: 1fr;
+    }
+    .offer-vinyls {
+        grid-row: 2;
+    }
+    .offer-switch-cards {
+        grid-row: 3;
+    }
+    .nudim-text {
+        grid-row: 4;
+    }
+    .second-offer-vinyls {
+        grid-row: 5;
+    }
+    .second-switch-cards {
+        grid-row: 6;
+    }
+    .offer-buttons {
+        grid-row: 7;
+    }
+}

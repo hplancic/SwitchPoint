@@ -45,6 +45,14 @@
     margin: 10px;
 }
 
+.wishcard-image {
+    margin-top: 10px;
+}
+
+.card hr {
+    color:#f9f9f9
+}
+
 .wishcard-row {
     display: flex;
     justify-content: space-between;
