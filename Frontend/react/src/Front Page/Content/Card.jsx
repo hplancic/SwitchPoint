@@ -32,14 +32,17 @@ function Card(props) {
     const [expanded, setExpanded] = useState(false);
 
     const showMore = (e) => {
-        let element = e.target;
-        let clicked = element.classList.contains("value-clicked");
-        if (!clicked) element.classList.add("value-clicked");
-        else element.classList.remove("value-clicked");
+        let clicked = e.classList.contains("value-clicked");
+        if (!clicked) e.classList.add("value-clicked");
+        else e.classList.remove("value-clicked");
     };
 
     const expandCard = (e) => {
         let selectedCard = e.target.closest(".card");
+        let artist = selectedCard.querySelector(".artist-title");
+        let album = selectedCard.querySelector(".album-title");
+        showMore(artist);
+        showMore(album);
         if (expanded) setExpanded(false);
         else setExpanded(true);
     }
@@ -137,10 +140,10 @@ function Card(props) {
                 <img className="albumImage" src= { props.data.image ? 'data:image/png;base64,' + props.data.image.imageData : '../../public/unavailable-image.jpg'} />
             </div>
             <div className="KVPair">
-                <div className="value album-title" onClick={(e) => showMore(e)}> {props.data.vinyl.vinylTitle} </div>
+                <div className="value album-title"> {props.data.vinyl.vinylTitle} </div>
             </div>
             <div className="KVPair">
-                <div className="value album-artist" onClick={(e) => showMore(e)}> {props.data.vinyl.artist}</div>
+                <div className="value artist-title"> {props.data.vinyl.artist}</div>
             </div>
             <div className="KVPair">
                 <div className="key">Žanr: </div>
@@ -162,15 +165,15 @@ function Card(props) {
             {expanded && <hr></hr>}
             {expanded && <div className="KVPair">
                 <div className="key">Oznaka izdanja</div>
-                <div className={"value"} onClick={(e) => showMore(e)}> {props.data.oznIzdanja ? props.data.oznIzdanja : "-"} </div>
+                <div className={"value"}> {props.data.oznIzdanja ? props.data.oznIzdanja : "-"} </div>
             </div>}
             {expanded && <div className="KVPair">
                 <div className="key">Opis</div>
-                <div className={"value"} onClick={(e) => showMore(e)}> {props.data.opis ? props.data.opis : "-"} </div>
+                <div className={"value"}> {props.data.opis ? props.data.opis : "-"} </div>
             </div>}
             {expanded && <div className="KVPair">
                 <div className="key">Korisnik</div>
-                <div className="value bubble" onClick={(e) => showMore(e)}> {props.data.user.username} </div>
+                <div className="value bubble"> {props.data.user.username} </div>
             </div>}
 
             {props.auth?.isLoggedIn && flag && expanded &&

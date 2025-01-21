@@ -41,9 +41,10 @@
 }
 
 .value {
-    max-width: 80%;
+    /* max-width: 80%; */
+    max-width: 100%;
     justify-self: right;
-    text-align: right;
+    /* text-align: right; */
 /*     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
@@ -58,13 +59,19 @@
     font-weight: 800;
     justify-self: left;
     margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.album-artist {
+.artist-title {
     color: #bcbcbc;
     font-size: 1em;
     justify-self: left;
     margin: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hidden {
