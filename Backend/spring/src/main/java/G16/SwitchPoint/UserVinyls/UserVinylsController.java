@@ -30,7 +30,7 @@ public class UserVinylsController {
     @GetMapping
     public ResponseEntity<Page<UserVinyls>> getUserVinyls(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "100000") int size,
             @RequestParam(defaultValue = "vinyl.vinylTitle") String sortBy,
             @RequestParam(defaultValue = "asc") String direction,
 
