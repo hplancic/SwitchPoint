@@ -72,6 +72,10 @@ hr {
     border-radius: 5px;
 }
 
+.offer-title:hover {
+    cursor: pointer;
+}
+
 .accepted {
     background-color: #004c0f;
 }

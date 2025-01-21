@@ -24,9 +24,10 @@ export default function Ponuda(props) {
 
     const changeVinylShown = (e, type, whose) => {
         let wrap = e.target.closest(".offer");
-        let cardContainer = wrap.querySelector(".offer-vinyls");
+        let cardContainer = wrap.querySelector("." + whose);
         let cardArray = Array.from(cardContainer.children);
         let shownIndex = -1;
+        //console.log(whose, wrap, cardContainer);
         cardArray.forEach((card, index) => {
             let display = window.getComputedStyle(card).display;
             if (display == "flex") {
@@ -98,7 +99,7 @@ export default function Ponuda(props) {
         <div className="offer">
             <h3>{props.sent ? "Želim ove ploče" : "Pošiljatelj želi ove ploče"}</h3>
             <h3>{props.sent ? "Nudim ove ploče" : "Pošiljatelj nudi ove ploče"}</h3>
-            <div className="offer-vinyls">
+            <div className="offer-vinyls my">
                 {props.offer.userVinylsOfferedByReceiver.map((vinyl, index) => (
                     <Card
                         hide={index!=0}
@@ -109,7 +110,7 @@ export default function Ponuda(props) {
                     />
                 ))}
             </div>
-            <div className="offer-vinyls">
+            <div className="offer-vinyls their">
                 {props.offer.userVinylsOfferedBySender.map((vinyl, index) => (
                     <Card
                         hide={index!=0}
