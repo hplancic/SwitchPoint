@@ -64,3 +64,10 @@
 hr {
     color: #313131;
 }
+
+.offer-title {
+    background-color: #313131;
+    color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}

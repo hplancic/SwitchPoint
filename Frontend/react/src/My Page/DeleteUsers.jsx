@@ -35,6 +35,7 @@ export default function DeleteUsers() {
     return (
         <>
             <div>
+                {!flag && <h2>Učitavanje korisnika...</h2>}
                 {flag && users.map((user, index) => (
                     <div className='delete-user-row' key={index}>
                         <div className='delete-user-username'>{user.username}</div>

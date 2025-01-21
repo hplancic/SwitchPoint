@@ -1,4 +1,11 @@
 .leaflet-container {
     height: 35vh;
-    width: 100wh;
+    width: 55vw;
+}
+
+@media screen and (max-width: 991px /* Wide enough to fit two cards */) {
+  .leaflet-container {
+    height: 35vh;
+    width: 80vw;
   }
+}

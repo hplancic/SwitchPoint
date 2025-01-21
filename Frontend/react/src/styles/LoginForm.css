@@ -40,7 +40,7 @@ input, select {
     border: 1px solid #313131;
 }
 
-#invalid-login-text, #invalid-email-text, #invalid-username-text, #invalid-password-text, #existing-username-text {
+#invalid-login-text, #invalid-email-text, #invalid-username-text, #invalid-password-text, #existing-username-text, #existing-email-text {
     color: red;
     text-align: center;
     display: none;
