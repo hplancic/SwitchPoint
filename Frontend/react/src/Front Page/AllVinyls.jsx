@@ -21,8 +21,8 @@ export default function AllVinyls(props) {
 
     return (
         <>
-            {!flag && <h2>Učitavanje ploča...</h2>}
-            {flag && allVinyls.length==0 && <h2>Nema ploča.</h2>}
+            {!flag && <h2 style={{color:"#313131", marginLeft:"10px"}}>Učitavanje ploča...</h2>}
+            {flag && allVinyls.length==0 && <h2 style={{color:"#313131", marginLeft:"10px"}}>Nema ploča.</h2>}
             {flag && <AllVinylsList
                         auth={props.auth}
                         userData={props.userData}

@@ -3,6 +3,11 @@
     width: 55vw;
 }
 
+#signup-map {
+  height: 35vh;
+  width: 100%;
+}
+
 @media screen and (max-width: 991px /* Wide enough to fit two cards */) {
   .leaflet-container {
     height: 35vh;

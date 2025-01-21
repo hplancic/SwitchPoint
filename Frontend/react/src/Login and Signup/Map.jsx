@@ -21,7 +21,7 @@ export default function Map({position, setPosition, initCoord}) {
     }
 
     return (
-        <MapContainer center={initCoord} zoom={13} scrollWheelZoom={false}>
+        <MapContainer center={initCoord} zoom={13} scrollWheelZoom={false} id='signup-map'>
             <TileLayer 
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
