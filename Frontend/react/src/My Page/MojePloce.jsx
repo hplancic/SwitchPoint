@@ -12,6 +12,7 @@ function useForceUpdate(){
 function MojePloce() {
 
     const [userVinyls, setUserVinyls] = useState([]);
+    const [flag, setFlag] = useState(false);
 
     const openNewVinylPopUp = () => {
         let overlay = document.getElementById('overlay');
@@ -26,6 +27,7 @@ function MojePloce() {
                 axios.get('/api/users/' + userId + '/vinyls')
                     .then(response => {
                         setUserVinyls(response.data);
+                        setFlag(true);
                     })
                     .catch(error => {
                         console.log(error);
@@ -45,12 +47,14 @@ function MojePloce() {
         <>
             <div className="mypage-mojeploce">
                 <div className="mypage-top-content">
-                    <h2>Moje ploče</h2>
+                    <h2 className="title">Moje ploče</h2>
                     <button className="mypage-top-content-button" onClick={() => openNewVinylPopUp()}>Dodaj Ploču</button>
                 </div>
                 <hr style={{color:'#313131', marginBottom:'30px', height:'1px'}}/>
                 <NewVinyl/>
                 <div className="card-list">
+                    {!flag && <h2>Učitavanje ploča...</h2>}
+                    {flag && userVinyls.length==0 && <h2>Nema ploča.</h2>}
                     {userVinyls.map((userVinyl, index) => (
                         <Card 
                             key={index}

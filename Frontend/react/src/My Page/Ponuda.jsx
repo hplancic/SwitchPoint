@@ -34,6 +34,7 @@ export default function Ponuda(props) {
         }
         let cardArray = Array.from(cardContainer.children);
         let shownIndex = -1;
+        //console.log(whose, wrap, cardContainer);
         cardArray.forEach((card, index) => {
             let display = window.getComputedStyle(card).display;
             if (display == "flex") {
@@ -104,8 +105,8 @@ export default function Ponuda(props) {
     return (
         <div className="offer">
             <h3>{props.sent ? "Želim ove ploče" : "Pošiljatelj želi ove ploče"}</h3>
-            <h3 className="nudim-text">{props.sent ? "Nudim ove ploče" : "Pošiljatelj nudi ove ploče"}</h3>
-            <div className="offer-vinyls" id={"oscmy" + props.index}>
+            <h3>{props.sent ? "Nudim ove ploče" : "Pošiljatelj nudi ove ploče"}</h3>
+            <div className="offer-vinyls my" id={"oscmy" + props.index}>
                 {props.offer.userVinylsOfferedByReceiver.map((vinyl, index) => (
                     <Card
                         hide={index!=0}
@@ -116,7 +117,7 @@ export default function Ponuda(props) {
                     />
                 ))}
             </div>
-            <div className="offer-vinyls second-offer-vinyls" id={"osctheir" + props.index}>
+            <div className="offer-vinyls their second-offer-vinyls" id={"osctheir" + props.index}>
                 {props.offer.userVinylsOfferedBySender.map((vinyl, index) => (
                     <Card
                         hide={index!=0}

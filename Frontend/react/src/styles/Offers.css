@@ -65,6 +65,25 @@ hr {
     color: #313131;
 }
 
+.offer-title {
+    background-color: #313131;
+    color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.offer-title:hover {
+    cursor: pointer;
+}
+
+.accepted {
+    background-color: #004c0f;
+}
+
+.declined {
+    background-color: #761200;
+}
+
 @media screen and (max-width: 640px ) {
     .offer {
         grid-template-columns: 1fr;

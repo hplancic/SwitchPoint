@@ -50,7 +50,14 @@ function SignupForm({setAuth, position, setPosition, initCoord}) {
                 let inputBox = existingText.previousElementSibling.previousElementSibling;
                 inputBox.style.border = '1px solid red';
                 let inputText = inputBox.previousElementSibling;
-                inputText.style.color = 'red';    
+                inputText.style.color = 'red';
+
+                let existingText2 = document.getElementById('existing-email-text');
+                existingText2.style.display = 'block';
+                let inputBox2 = existingText2.previousElementSibling.previousElementSibling;
+                inputBox2.style.border = '1px solid red';
+                let inputText2 = inputBox2.previousElementSibling;
+                inputText2.style.color = 'red';    
             });
         } else {
             if (!isValidUsername) {
@@ -97,6 +104,7 @@ function SignupForm({setAuth, position, setPosition, initCoord}) {
                 onChange={(e) => setEmail(e.target.value)}/>
 
             <h5 id="invalid-email-text">Invalid email.</h5>
+            <h5 id="existing-email-text">Email already exists.</h5>
 
             <label htmlFor="password">Password</label>
             <input type="password" name="password"

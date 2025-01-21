@@ -8,7 +8,8 @@ function PopisZelja(props) {
 
     const [wishlist, setWishlist] = useState(null);
     const [flag, setFlag] = useState(false);
-    const [userId, setUserId] = useState(null)
+    const [userId, setUserId] = useState(null);
+    const [loadedFlag, setLoadedFlag] = useState(false);
 
     const openAddWishCard = () => {
         let overlay = document.getElementById('overlay');
@@ -22,7 +23,10 @@ function PopisZelja(props) {
                 let userId = response.data.userId;
                 setUserId(userId)
                 axios.get('/api/users/' + userId + '/wishlist')
-                    .then(response => setWishlist(response.data))
+                    .then(response => {
+                        setWishlist(response.data);
+                        setLoadedFlag(true);
+                    })
                     .catch(error => console.log(error));
             })
             .catch(error => {
@@ -38,12 +42,14 @@ function PopisZelja(props) {
     return (
         <>
             <div className="mypage-top-content">
-                <h2>Popis želja</h2>      
+                <h2 className="title">Popis želja</h2>      
                 <button className="mypage-top-content-button" onClick={() => openAddWishCard()}>Dodaj Ploču</button>          
             </div>
             <NewWishCard />
             <hr />
             <div id="wishcards">
+                {!loadedFlag && <h2>Učitavanje popisa želja...</h2>}
+                {flag && wishlist.length==0 && <h2 style={{marginLeft:"10px"}}>Nema želja.</h2>}
                 {flag && wishlist.map((wishcard, index) => (
                     <WishCard
                         key={index}
