@@ -67,8 +67,8 @@ function Ponude() {
                     <Ponuda key={index} offer={offer} sent={true} />
                 ))}
             </div>
-            <hr /> <hr />
-            <h2 className="offer-title" onClick={(e) => collapse(e)}>Dobivene ponude (prihvaćene)</h2>
+            <hr />
+            <h2 className="offer-title accepted" onClick={(e) => collapse(e)}>Dobivene ponude (prihvaćene)</h2>
             <div id="offer-view">
                 {!flag1 && <h2>Učitavanje dobivenih ponuda...</h2>}
                 {flag1 && offers.filter((a) => {return a.status=="COMPLETED"}).length==0 && <h2>Nema ponuda.</h2>}
@@ -77,7 +77,7 @@ function Ponude() {
                 ))}
             </div>
             <hr />
-            <h2 className="offer-title" onClick={(e) => collapse(e)}>Poslane ponude (prihvaćene)</h2>
+            <h2 className="offer-title accepted" onClick={(e) => collapse(e)}>Poslane ponude (prihvaćene)</h2>
             <div id="offer-view">
                 {!flag2 && <h2>Učitavanje poslanih ponuda...</h2>}
                 {flag2 && sentOffers.filter((a) => {return a.status=="COMPLETED"}).length==0 && <h2>Nema ponuda.</h2>}
@@ -85,8 +85,8 @@ function Ponude() {
                     <Ponuda key={index} offer={offer} sent={true} />
                 ))}
             </div>
-            <hr /> <hr />
-            <h2 className="offer-title" onClick={(e) => collapse(e)}>Dobivene ponude (odbijene)</h2>
+            <hr />
+            <h2 className="offer-title declined" onClick={(e) => collapse(e)}>Dobivene ponude (odbijene)</h2>
             <div id="offer-view">
                 {!flag1 && <h2>Učitavanje dobivenih ponuda...</h2>}
                 {flag1 && offers.filter((a) => {return a.status=="CANCELED"}).length==0 && <h2>Nema ponuda.</h2>}
@@ -95,7 +95,7 @@ function Ponude() {
                 ))}
             </div>
             <hr />
-            <h2 className="offer-title" onClick={(e) => collapse(e)}>Poslane ponude (odbijene)</h2>
+            <h2 className="offer-title declined" onClick={(e) => collapse(e)}>Poslane ponude (odbijene)</h2>
             <div id="offer-view">
                 {!flag2 && <h2>Učitavanje poslanih ponuda...</h2>}
                 {flag2 && sentOffers.filter((a) => {return a.status=="CANCELED"}).length==0 && <h2>Nema ponuda.</h2>}
@@ -103,6 +103,7 @@ function Ponude() {
                     <Ponuda key={index} offer={offer} sent={true} />
                 ))}
             </div>
+            <hr />
         </>
     )
 }

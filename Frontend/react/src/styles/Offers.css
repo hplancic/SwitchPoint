@@ -71,3 +71,11 @@ hr {
     padding: 10px;
     border-radius: 5px;
 }
+
+.accepted {
+    background-color: #004c0f;
+}
+
+.declined {
+    background-color: #761200;
+}
