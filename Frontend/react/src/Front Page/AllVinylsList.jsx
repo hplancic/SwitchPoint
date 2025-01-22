@@ -26,8 +26,12 @@ export default function AllVinylsList(props) {
                     return a.vinyl.releaseYear >= props.yearMin && a.vinyl.releaseYear <= props.yearMax
                 }).filter((a) => {
                     // search artist and album
-                    let condition = props.search==[""] ? true : props.search.split(" ").filter((b) => {return b!=""}).map((e) => {
-                        return a.vinyl.artist.toUpperCase().startsWith(e.toUpperCase()) || a.vinyl.vinylTitle.toUpperCase().startsWith(e.toUpperCase())
+                    let keywords = a.vinyl.artist.toUpperCase().split(" ").concat(a.vinyl.vinylTitle.toUpperCase().split(" "));
+                    let condition = props.search==[""] ? true : props.search.toUpperCase().split(" ").filter((b) => {return b!=""}).map((e) => {
+                        let test = keywords.filter((b) => {return b!=""}).map((keyword) => {
+                            return keyword.startsWith(e);
+                        }).includes(true);
+                        return test;
                     }).every((c) => c==true);
                     return condition
                 }).map((userVinyl, index) => (

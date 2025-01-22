@@ -12,7 +12,7 @@ function LoggedInHeader(props){
         window.location.reload();
     }
 
-    console.log(props.numberOfOffers);
+    //console.log(props.numberOfOffers);
 
     return (
         <div className="header">
