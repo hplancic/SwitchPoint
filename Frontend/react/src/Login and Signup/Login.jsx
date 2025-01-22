@@ -6,8 +6,9 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import LoggedInHeader from '../Headers/LoggedInHeader.jsx';
 
-function Login({setAuth, title}) {
+function Login({auth, setAuth, title}) {
 
     const navigate = useNavigate();
     const google = window.google;
@@ -30,7 +31,7 @@ function Login({setAuth, title}) {
 
     return (
         <>
-        <Header title={title}/>
+        <LoggedInHeader title={title} auth={auth} />
         <div className='login-form'>
             <LoginForm setAuth={setAuth}/>
             <GoogleOAuthProvider clientId="817895363129-joisrep5bkd9fcomrekms9hbagm3u05d.apps.googleusercontent.com">

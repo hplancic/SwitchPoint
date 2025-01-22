@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import AllVinylsList from "./AllVinylsList";
+import { ThemeContext } from "../App";
 
 export default function AllVinyls(props) {
 
     const [allVinyls, setAllVinyls] = useState([]);
     const [flag, setFlag] = useState(false);
+    const theme = useContext(ThemeContext);
 
     useEffect(() => {
         axios.get('/api/user-vinyls')
@@ -21,8 +23,8 @@ export default function AllVinyls(props) {
 
     return (
         <>
-            {!flag && <h2 style={{color:"#313131", marginLeft:"10px"}}>Učitavanje ploča...</h2>}
-            {flag && allVinyls.length==0 && <h2 style={{color:"#313131", marginLeft:"10px"}}>Nema ploča.</h2>}
+            {!flag && <h2 style={{marginLeft:"10px"}} className={theme}>Učitavanje ploča...</h2>}
+            {flag && allVinyls.length==0 && <h2 style={{color:"#313131", marginLeft:"10px"}} className={theme}>Nema ploča.</h2>}
             {flag && <AllVinylsList
                         auth={props.auth}
                         userData={props.userData}

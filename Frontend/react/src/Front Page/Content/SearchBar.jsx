@@ -1,6 +1,11 @@
 import '../../styles/SearchBar.css'
+import { useContext } from 'react';
+import { ThemeContext } from '../../App';
+import '../../styles/App.css'
 
 function SearchBar(props) {
+
+    const theme = useContext(ThemeContext);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -12,7 +17,7 @@ function SearchBar(props) {
     };
 
     return (
-        <form action="post" className="searchForm" onSubmit={handleSearch}>
+        <form action="post" className={theme + " searchForm"} onSubmit={handleSearch}>
             <input type="text" name="search" id="searchInput" placeholder="Search artist or album name" onChange={(e) => searchChange(e)}/>
         </form>
     )

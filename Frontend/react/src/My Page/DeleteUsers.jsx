@@ -1,11 +1,13 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import "../styles/MypageContent.css"
+import { ThemeContext } from '../App';
 
 export default function DeleteUsers() {
 
     const [users, setUsers] = useState(null);
     const [flag, setFlag] = useState(false);
+    const theme = useContext(ThemeContext);
 
     const deleteUser = (id) => {
         axios.delete("/api/users/" + id)
@@ -35,7 +37,7 @@ export default function DeleteUsers() {
     return (
         <>
             <div>
-                {!flag && <h2>Učitavanje korisnika...</h2>}
+                {!flag && <h2 className={theme}>Učitavanje korisnika...</h2>}
                 {flag && users.map((user, index) => (
                     <div className='delete-user-row' key={index}>
                         <div className='delete-user-username'>{user.username}</div>

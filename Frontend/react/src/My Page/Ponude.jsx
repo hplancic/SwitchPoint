@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Offers.css"
 import Card from "../Front Page/Content/Card";
 import Ponuda from "./Ponuda";
+import { ThemeContext } from "../App";
 
 function Ponude() {
 
@@ -10,6 +11,7 @@ function Ponude() {
     const [sentOffers, setSentOffers] = useState([]);
     const [flag1, setFlag1] = useState(false);
     const [flag2, setFlag2] = useState(false);
+    const theme = useContext(ThemeContext);
 
     const collapse = (e) => {
         let element = e.target;
@@ -52,8 +54,8 @@ function Ponude() {
         <>
             <h2 className="offer-title" onClick={(e) => collapse(e)}>Dobivene ponude (na čekanju)</h2>
             <div id="offer-view">
-                {!flag1 && <h2>Učitavanje dobivenih ponuda...</h2>}
-                {flag1 && offers.filter((a) => {return a.status=="PENDING"}).length==0 && <h2>Nema ponuda.</h2>}
+                {!flag1 && <h2 className={theme}>Učitavanje dobivenih ponuda...</h2>}
+                {flag1 && offers.filter((a) => {return a.status=="PENDING"}).length==0 && <h2 className={theme}>Nema ponuda.</h2>}
                 {offers.filter((a) => {return a.status=="PENDING"}).map((offer, index) => (
                     <Ponuda key={index} index={index} offer={offer} />
                 ))}
@@ -61,8 +63,8 @@ function Ponude() {
             <hr />
             <h2 className="offer-title" onClick={(e) => collapse(e)}>Poslane ponude (na čekanju)</h2>
             <div id="offer-view">
-                {!flag2 && <h2>Učitavanje poslanih ponuda...</h2>}
-                {flag2 && sentOffers.filter((a) => {return a.status=="PENDING"}).length==0 && <h2>Nema ponuda.</h2>}
+                {!flag2 && <h2 className={theme}>Učitavanje poslanih ponuda...</h2>}
+                {flag2 && sentOffers.filter((a) => {return a.status=="PENDING"}).length==0 && <h2 className={theme}>Nema ponuda.</h2>}
                 {sentOffers.filter((a) => {return a.status=="PENDING"}).map((offer, index) => (
                     <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
@@ -70,8 +72,8 @@ function Ponude() {
             <hr />
             <h2 className="offer-title accepted" onClick={(e) => collapse(e)}>Dobivene ponude (prihvaćene)</h2>
             <div id="offer-view">
-                {!flag1 && <h2>Učitavanje dobivenih ponuda...</h2>}
-                {flag1 && offers.filter((a) => {return a.status=="COMPLETED"}).length==0 && <h2>Nema ponuda.</h2>}
+                {!flag1 && <h2 className={theme}>Učitavanje dobivenih ponuda...</h2>}
+                {flag1 && offers.filter((a) => {return a.status=="COMPLETED"}).length==0 && <h2 className={theme}>Nema ponuda.</h2>}
                 {offers.filter((a) => {return a.status=="COMPLETED"}).map((offer, index) => (
                     <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
@@ -79,8 +81,8 @@ function Ponude() {
             <hr />
             <h2 className="offer-title accepted" onClick={(e) => collapse(e)}>Poslane ponude (prihvaćene)</h2>
             <div id="offer-view">
-                {!flag2 && <h2>Učitavanje poslanih ponuda...</h2>}
-                {flag2 && sentOffers.filter((a) => {return a.status=="COMPLETED"}).length==0 && <h2>Nema ponuda.</h2>}
+                {!flag2 && <h2 className={theme}>Učitavanje poslanih ponuda...</h2>}
+                {flag2 && sentOffers.filter((a) => {return a.status=="COMPLETED"}).length==0 && <h2 className={theme}>Nema ponuda.</h2>}
                 {sentOffers.filter((a) => {return a.status=="COMPLETED"}).map((offer, index) => (
                     <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
@@ -88,8 +90,8 @@ function Ponude() {
             <hr />
             <h2 className="offer-title declined" onClick={(e) => collapse(e)}>Dobivene ponude (odbijene)</h2>
             <div id="offer-view">
-                {!flag1 && <h2>Učitavanje dobivenih ponuda...</h2>}
-                {flag1 && offers.filter((a) => {return a.status=="CANCELED"}).length==0 && <h2>Nema ponuda.</h2>}
+                {!flag1 && <h2 className={theme}>Učitavanje dobivenih ponuda...</h2>}
+                {flag1 && offers.filter((a) => {return a.status=="CANCELED"}).length==0 && <h2 className={theme}>Nema ponuda.</h2>}
                 {offers.filter((a) => {return a.status=="CANCELED"}).map((offer, index) => (
                     <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}
@@ -97,8 +99,8 @@ function Ponude() {
             <hr />
             <h2 className="offer-title declined" onClick={(e) => collapse(e)}>Poslane ponude (odbijene)</h2>
             <div id="offer-view">
-                {!flag2 && <h2>Učitavanje poslanih ponuda...</h2>}
-                {flag2 && sentOffers.filter((a) => {return a.status=="CANCELED"}).length==0 && <h2>Nema ponuda.</h2>}
+                {!flag2 && <h2 className={theme}>Učitavanje poslanih ponuda...</h2>}
+                {flag2 && sentOffers.filter((a) => {return a.status=="CANCELED"}).length==0 && <h2 className={theme}>Nema ponuda.</h2>}
                 {sentOffers.filter((a) => {return a.status=="CANCELED"}).map((offer, index) => (
                     <Ponuda key={index} index={index} offer={offer} sent={true} />
                 ))}

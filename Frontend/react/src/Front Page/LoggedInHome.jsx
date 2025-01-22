@@ -4,10 +4,14 @@ import SearchBar from './Content/SearchBar.jsx'
 import LoggedInHeader from '../Headers/LoggedInHeader.jsx'
 import AllVinyls from './AllVinyls.jsx'
 import Header from '../Headers/Header.jsx'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
+import { ThemeContext } from '../App.jsx'
+import "../styles/App.css";
 
 function LoggedInHome(props) {
+
+    const theme = useContext(ThemeContext);
 
     const zanrovi = [
         "All", "ROCK", "JAZZ", "HIP_HOP", "CLASSICAL", "POP", "ELECTRONIC",
@@ -93,11 +97,11 @@ function LoggedInHome(props) {
 
     return (
         <>
-        {props.auth.isLoggedIn ? <LoggedInHeader
+        <LoggedInHeader
             title={props.title} 
             auth={props.auth} 
             setAuth={props.setAuth}
-            numberOfOffers={offersFlag && offers.filter((e) => {return e.status=="PENDING"}).length} /> : <Header title={props.title} />}
+            numberOfOffers={offersFlag && offers.filter((e) => {return e.status=="PENDING"}).length} />
         
         <div className='content'>
             <Sidebar 

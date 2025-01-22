@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ChangeLocation from "./ChangeLocation";
 import axios from "axios";
 import "../styles/MypageContent.css";
+import { ThemeContext } from "../App";
 
 function Postavke() {
 
@@ -9,6 +10,7 @@ function Postavke() {
     const [locationSet, setLocationSet] = useState(false)
     const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')))
     const [loadedLocationFlag, setLoadedLocationFlag] = useState(false);
+    const theme = useContext(ThemeContext);
 
     useEffect(() => {
         //console.log("auth", auth);
@@ -32,9 +34,9 @@ function Postavke() {
 
     return (
         <>
-            <h2 className="title">Postavke</h2>
+            <h2 className={"title " + theme}>Postavke</h2>
             <hr />
-            {!loadedLocationFlag && <h2>Učitavanje lokacije...</h2>}
+            {!loadedLocationFlag && <h2 className={theme}>Učitavanje lokacije...</h2>}
             {locationSet && <ChangeLocation location={location} />}
         </>
     )

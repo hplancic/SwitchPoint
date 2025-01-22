@@ -1,8 +1,9 @@
 import WishCard from "./WishCard";
 import "../styles/MypageContent.css";
 import NewWishCard from "./NewWishCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { ThemeContext } from "../App";
 
 function PopisZelja(props) {
 
@@ -10,6 +11,7 @@ function PopisZelja(props) {
     const [flag, setFlag] = useState(false);
     const [userId, setUserId] = useState(null);
     const [loadedFlag, setLoadedFlag] = useState(false);
+    const theme = useContext(ThemeContext);
 
     const openAddWishCard = () => {
         let overlay = document.getElementById('overlay');
@@ -42,14 +44,14 @@ function PopisZelja(props) {
     return (
         <>
             <div className="mypage-top-content">
-                <h2 className="title">Popis želja</h2>      
+                <h2 className={"title " + theme}>Popis želja</h2>      
                 <button className="mypage-top-content-button" onClick={() => openAddWishCard()}>Dodaj Ploču</button>          
             </div>
             <NewWishCard />
             <hr />
             <div id="wishcards">
-                {!loadedFlag && <h2>Učitavanje popisa želja...</h2>}
-                {flag && wishlist.length==0 && <h2 style={{marginLeft:"10px"}}>Nema želja.</h2>}
+                {!loadedFlag && <h2 className={theme}>Učitavanje popisa želja...</h2>}
+                {flag && wishlist.length==0 && <h2 style={{marginLeft:"10px"}} className={theme}>Nema želja.</h2>}
                 {flag && wishlist.map((wishcard, index) => (
                     <WishCard
                         key={index}

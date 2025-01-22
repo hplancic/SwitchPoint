@@ -1,8 +1,9 @@
 import NewVinyl from "./NewVinyl";
-import { useEffect, useState, useReducer } from "react";
+import { useEffect, useState, useReducer, useContext } from "react";
 import axios from "axios";
 import Card from "../Front Page/Content/Card";
 import "../styles/MypageContent.css"
+import { ThemeContext } from "../App";
 
 function useForceUpdate(){
     const [value, setValue] = useState(0);
@@ -13,6 +14,7 @@ function MojePloce() {
 
     const [userVinyls, setUserVinyls] = useState([]);
     const [flag, setFlag] = useState(false);
+    const theme = useContext(ThemeContext);
 
     const openNewVinylPopUp = () => {
         let overlay = document.getElementById('overlay');
@@ -47,14 +49,14 @@ function MojePloce() {
         <>
             <div className="mypage-mojeploce">
                 <div className="mypage-top-content">
-                    <h2 className="title">Moje ploče</h2>
+                    <h2 className={"title " + theme}>Moje ploče</h2>
                     <button className="mypage-top-content-button" onClick={() => openNewVinylPopUp()}>Dodaj Ploču</button>
                 </div>
                 <hr style={{color:'#313131', marginBottom:'30px', height:'1px'}}/>
                 <NewVinyl/>
                 <div className="card-list">
-                    {!flag && <h2>Učitavanje ploča...</h2>}
-                    {flag && userVinyls.length==0 && <h2>Nema ploča.</h2>}
+                    {!flag && <h2 className={theme}>Učitavanje ploča...</h2>}
+                    {flag && userVinyls.length==0 && <h2 className={theme}>Nema ploča.</h2>}
                     {userVinyls.map((userVinyl, index) => (
                         <Card 
                             key={index}

@@ -7,10 +7,11 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
+import LoggedInHeader from "../Headers/LoggedInHeader.jsx";
 
 const initCoord = [45.8150, 15.9819];
 
-function Signup({setAuth, title}) {
+function Signup({auth, setAuth, title}) {
 
     const navigate = useNavigate();
     const [position, setPosition] = useState({"lat":initCoord[0], "lng":initCoord[1]});
@@ -21,7 +22,7 @@ function Signup({setAuth, title}) {
 
     return (
         <>
-            <Header title={title} />
+            <LoggedInHeader title={title} auth={auth}/>
             <div className="login-form">
                 <SignupForm setAuth={setAuth} position={position} setPosition={setPosition} initCoord={initCoord} />
                 <GoogleOAuthProvider clientId="817895363129-joisrep5bkd9fcomrekms9hbagm3u05d.apps.googleusercontent.com">

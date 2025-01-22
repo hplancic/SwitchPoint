@@ -2,6 +2,16 @@ body {
     background-color: black;
 }
 
+.dark {
+    background-color: black;
+    color: white;
+}
+
+.light {
+    background-color: white;
+    color: black;
+}
+
 #root {
     /*max-width: 1200px;*/
     margin: 12px;
@@ -29,7 +39,7 @@ input, select {
 }
 
 .card-list {
-    height: 760px;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
