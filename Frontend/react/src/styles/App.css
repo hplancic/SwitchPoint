@@ -1,11 +1,11 @@
 body {
-    background-color: aliceblue;
+    background-color: black;
 }
 
 #root {
-    max-width: 1200px;
+    /*max-width: 1200px;*/
     margin: 12px;
-    width: 90vw;
+    /*width: 90vw;*/
 }
 
 /* CONTENT */

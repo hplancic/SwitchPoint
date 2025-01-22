@@ -4,7 +4,7 @@
 }
 
 .offer {
-    background-color: #d1d1d1;
+    background-color: black;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px;

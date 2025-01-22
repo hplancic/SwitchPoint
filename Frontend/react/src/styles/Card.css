@@ -145,8 +145,8 @@
 }
 
 .change-vinyl-button {
-    background-color: cornflowerblue;
-    color: #fff;
+    background-color: #FFD700;
+    /*color: #fff;*/
     width: 100%;
     margin-top: 1rem;
 }
