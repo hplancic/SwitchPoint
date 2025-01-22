@@ -38,6 +38,8 @@ function Card(props) {
     };
 
     const expandCard = (e) => {
+        //console.log(e.target, Array.from(e.target.classList));
+        if (Array.from(e.target.classList).includes("change-vinyl-button")) return;
         let selectedCard = e.target.closest(".card");
         let artist = selectedCard.querySelector(".artist-title");
         let album = selectedCard.querySelector(".album-title");
@@ -135,6 +137,7 @@ function Card(props) {
     }, [props.userData]);
     
     return (
+        <>
         <div className="card" onClick={props.type=="EXCHANGE_CARD" ? (e) => {selectVinyl(e)} : (e) => {expandCard(e)}} style={props.hide ? {display:"none"} : null}>
             <div className='img-wrapper'>
                 <img className="albumImage" src= { props.data.image ? 'data:image/png;base64,' + props.data.image.imageData : '../../public/unavailable-image.jpg'} />
@@ -185,15 +188,18 @@ function Card(props) {
 
             {(props.type=="USER_CARD" || props.auth?.username=="admin") && <button className='delete-vinyl-button' onClick={deleteVinyl}>Izbriši Ploču</button>}
             {props.type=="CHANGE_CARD" && <button className='change-vinyl-button' onClick={changeVinyl}>Ponudi zamjenu</button>}
-            {props.exchangeType=="EDIT" ? null : <ChooseExchangeVinyl vinyls={props.myVinyls ? props.myVinyls : new Array()} 
-                transactionData={{
-                    "senderId":props.senderId,
-                    "receiverId":props.receiverId,
-                    "receiverUserVinylIds":props.receiverUserVinylIds
-                }}
-                type={props.exchangeType ? props.exchangeType : ""}
-            />}
         </div>
+        {props.exchangeType=="EDIT" ? null : <ChooseExchangeVinyl 
+            vinyls={props.myVinyls ? props.myVinyls : new Array()} 
+            setVinyls={props.setMyVinyls}
+            transactionData={{
+                "senderId":props.senderId,
+                "receiverId":props.receiverId,
+                "receiverUserVinylIds":props.receiverUserVinylIds
+            }}
+            type={props.exchangeType ? props.exchangeType : ""}
+        />}
+        </>
     )
 }
 

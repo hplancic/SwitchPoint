@@ -12,7 +12,8 @@ export default function ChooseExchangeVinyl(props) {
     const closePopUp = (e) => {
         if (e.target.id == 'overlay' || e.target.id == "send-exchange-button") {
             let overlay = document.getElementById('overlay');
-            overlay.style.display = 'none';        
+            overlay.style.display = 'none';
+            props.setVinyls(null);    
         }
     }
 
