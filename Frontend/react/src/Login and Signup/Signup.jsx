@@ -11,7 +11,7 @@ import LoggedInHeader from "../Headers/LoggedInHeader.jsx";
 
 const initCoord = [45.8150, 15.9819];
 
-function Signup({auth, setAuth, title}) {
+function Signup({setAuth, title}) {
 
     const navigate = useNavigate();
     const [position, setPosition] = useState({"lat":initCoord[0], "lng":initCoord[1]});
@@ -22,7 +22,7 @@ function Signup({auth, setAuth, title}) {
 
     return (
         <>
-            <LoggedInHeader title={title} auth={auth}/>
+            <Header title={title}/>
             <div className="login-form">
                 <SignupForm setAuth={setAuth} position={position} setPosition={setPosition} initCoord={initCoord} />
                 <GoogleOAuthProvider clientId="817895363129-joisrep5bkd9fcomrekms9hbagm3u05d.apps.googleusercontent.com">

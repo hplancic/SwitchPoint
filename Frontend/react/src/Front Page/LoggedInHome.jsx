@@ -97,11 +97,12 @@ function LoggedInHome(props) {
 
     return (
         <>
-        <LoggedInHeader
+        {props.auth.isLoggedIn ? <LoggedInHeader
             title={props.title} 
             auth={props.auth} 
             setAuth={props.setAuth}
             numberOfOffers={offersFlag && offers.filter((e) => {return e.status=="PENDING"}).length} />
+            : <Header title={props.title} />}
         
         <div className='content'>
             <Sidebar 

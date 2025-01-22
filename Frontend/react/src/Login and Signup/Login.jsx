@@ -8,7 +8,7 @@ import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import LoggedInHeader from '../Headers/LoggedInHeader.jsx';
 
-function Login({auth, setAuth, title}) {
+function Login({setAuth, title}) {
 
     const navigate = useNavigate();
     const google = window.google;
@@ -18,12 +18,12 @@ function Login({auth, setAuth, title}) {
     };
 
     useEffect(() => {
-        google.accounts.id.initialize({
+        google?.accounts.id.initialize({
             client_id:"817895363129-joisrep5bkd9fcomrekms9hbagm3u05d.apps.googleusercontent.com",
             callback: handleCallbackResponse,
         });
 
-        google.accounts.id.renderButton(document.getElementById('google-login'), {
+        google?.accounts.id.renderButton(document.getElementById('google-login'), {
             theme: 'outline',
             size: 'large',
         });
@@ -31,7 +31,7 @@ function Login({auth, setAuth, title}) {
 
     return (
         <>
-        <LoggedInHeader title={title} auth={auth} />
+        <Header title={title} />
         <div className='login-form'>
             <LoginForm setAuth={setAuth}/>
             <GoogleOAuthProvider clientId="817895363129-joisrep5bkd9fcomrekms9hbagm3u05d.apps.googleusercontent.com">

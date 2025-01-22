@@ -62,8 +62,8 @@ function App() {
                                                   selectedTab={selectedTab} setSelectedTab={setSelectedTab} tab={"Korisnici"} />} />}
             {!auth.isLoggedIn &&
               <>
-                <Route path='/login' element={<Login auth={auth} setAuth={setAuth} title={title}/>}/>
-                <Route path='/signup' element={<Signup auth={auth} setAuth={setAuth} title={title}/>}/>
+                <Route path='/login' element={<Login setAuth={setAuth} title={title}/>}/>
+                <Route path='/signup' element={<Signup setAuth={setAuth} title={title}/>}/>
               </>
             }
           </Routes>
