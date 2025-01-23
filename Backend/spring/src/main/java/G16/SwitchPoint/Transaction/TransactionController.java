@@ -28,25 +28,54 @@ public class TransactionController {
         this.transactionRepository = transactionRepository;
     }
     @PostMapping("/initiate")
-    public Transaction initiateTrade(@RequestParam Long senderId,
-                                     @RequestParam Set<Long> senderUserVinylIds,
-                                     @RequestParam Long receiverId,
-                                     @RequestParam Set<Long> receiverUserVinylIds) {
-        User sender = userService.getUserById(senderId).orElseThrow(
-                ()->new IllegalArgumentException("User not found")
-        );
-        User receiver = userService.getUserById(receiverId).orElseThrow(
-                ()->new IllegalArgumentException("User not found")
-        );
+    public Transaction initiateTrade(
+            Principal principal,
+            @RequestParam Set<Long> senderUserVinylIds,
+            @RequestParam Long receiverId,
+            @RequestParam Set<Long> receiverUserVinylIds) {
 
-        Set<UserVinyls> senderUserVinyls = new HashSet<>( userVinylRepository.findAllById(senderUserVinylIds) );
-        Set<UserVinyls> receiverUserVinyls = new HashSet<>( userVinylRepository.findAllById(receiverUserVinylIds) );
+        // Get logged-in user (sender) from the Principal
+        User sender = userService.getUserByUsername(principal.getName())
+                .orElseThrow(() -> new IllegalArgumentException("Sender not found"));
 
-        return transactionService.initiateTrade(sender, senderUserVinyls, receiver, receiverUserVinyls);
+        // Look up the receiver by ID
+        User receiver = userService.getUserById(receiverId)
+                .orElseThrow(() -> new IllegalArgumentException("Receiver not found"));
+
+        // Validate ownership of sender's vinyls
+        Set<UserVinyls> senderVinyls = validateVinylOwnership(senderUserVinylIds, sender);
+
+        // Validate ownership of receiver's vinyls
+        Set<UserVinyls> receiverVinyls = validateVinylOwnership(receiverUserVinylIds, receiver);
+
+        // Proceed with the trade
+        return transactionService.initiateTrade(sender, senderVinyls, receiver, receiverVinyls);
+    }
+
+    private Set<UserVinyls> validateVinylOwnership(Set<Long> vinylIds, User owner) {
+        Set<UserVinyls> vinyls = new HashSet<>(userVinylRepository.findAllById(vinylIds));
+
+        // Check 1: All provided vinyl IDs exist in the database
+        if (vinyls.size() != vinylIds.size()) {
+            throw new IllegalArgumentException("One or more vinyls do not exist");
+        }
+
+        // Check 2: All vinyls belong to the specified owner
+        if (vinyls.stream().anyMatch(v -> !v.getUser().equals(owner))) { // <-- Fix here
+            throw new IllegalArgumentException("One or more vinyls do not belong to the owner");
+        }
+
+        return vinyls;
     }
 
     @PostMapping("/complete/{transactionId}")
-    public Transaction completeTrade(@PathVariable Long transactionId) {
+    public Transaction completeTrade(@PathVariable Long transactionId, Principal principal) {
+        Transaction transaction = transactionService.getTransactionById(transactionId);
+        User user = userService.getUserByUsername(principal.getName())
+                .orElseThrow(() -> new SecurityException("User not found"));
+        if (!transaction.getReceiver().equals(user)) {
+            throw new SecurityException("Only the receiver can complete the transaction");
+        }
         return transactionService.completeTrade(transactionId);
     }
 
@@ -55,13 +84,20 @@ public class TransactionController {
         return transactionService.cancelTrade(transactionId);
     }
 
-    @GetMapping("/sent/{userId}")
-    public List<Transaction> getSentTransactions(@PathVariable Long userId,
-                                                 @RequestParam(required = false) TransactionStatus status) {
+    @GetMapping("/sent")
+    public List<Transaction> getSentTransactions(
+            Principal principal,
+            @RequestParam(required = false) TransactionStatus status) {
+
+        // Get the logged-in user
+        User loggedInUser = userService.getUserByUsername(principal.getName())
+                .orElseThrow(() -> new SecurityException("User not found"));
+
+        // Fetch transactions for the logged-in user
         if (status != null) {
-            return transactionService.getTransactionsSentByUserIdAndStatus(userId, status);
+            return transactionService.getTransactionsSentByUserIdAndStatus(loggedInUser.getUserId(), status);
         } else {
-            return transactionService.getTransactionsSentByUserId(userId);
+            return transactionService.getTransactionsSentByUserId(loggedInUser.getUserId());
         }
     }
 
@@ -128,18 +164,30 @@ public class TransactionController {
 
 
     @DeleteMapping("/{transactionId}")
-    public ResponseEntity<String> deleteTransaction(@PathVariable Long transactionId) {
-        Optional<Transaction> transactionOpt = transactionRepository.findById(transactionId);
+    public ResponseEntity<String> deleteTransaction(
+            @PathVariable Long transactionId,
+            Principal principal) {
 
-        if (transactionOpt.isEmpty()) {
-            return ResponseEntity.status(404).body("Transaction not found");
+        // Get the logged-in user
+        User loggedInUser = userService.getUserByUsername(principal.getName())
+                .orElseThrow(() -> new SecurityException("User not found"));
+
+        // Fetch the transaction
+        Transaction transaction = transactionRepository.findById(transactionId)
+                .orElseThrow(() -> new IllegalArgumentException("Transaction not found"));
+
+        // Check if the logged-in user is the sender, receiver, or an admin
+        boolean isSender = transaction.getSender().getUserId().equals(loggedInUser.getUserId());
+        boolean isReceiver = transaction.getReceiver().getUserId().equals(loggedInUser.getUserId());
+        boolean isAdmin = "admin".equals(loggedInUser.getUsername()); // Check if the user is an admin
+
+        if (!isSender && !isReceiver && !isAdmin) {
+            throw new SecurityException("You are not authorized to delete this transaction.");
         }
 
-        Transaction transaction = transactionOpt.get();
-
+        // Delete the transaction
         try {
             transactionRepository.delete(transaction);
-
             return ResponseEntity.ok("Transaction deleted successfully.");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error deleting transaction: " + e.getMessage());
