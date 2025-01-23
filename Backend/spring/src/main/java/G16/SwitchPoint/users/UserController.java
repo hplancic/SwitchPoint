@@ -55,9 +55,24 @@ public class UserController {
 
     // Endpoint za brisanje korisnika po ID-u
     @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+    public ResponseEntity<Void> deleteUser(
+            @PathVariable Long userId,
+            Principal principal) {  // Added Principal parameter
+
         System.out.println("deleteUser method called with userId: " + userId);
 
+        // Check authentication
+        if (principal == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        // Verify admin privileges
+        String loggedInUsername = principal.getName();
+        if (!"admin".equals(loggedInUsername)) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        // Proceed with deletion if user is admin
         if (userService.getUserById(userId).isPresent()) {
             userService.deleteUser(userId);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -97,12 +112,35 @@ public class UserController {
 
 
     @DeleteMapping("/{userId}/vinyls/{vinylId}")
-    public ResponseEntity<String> deleteVinylFromUser(@PathVariable Long userId,
-                                                      @PathVariable Long vinylId) {
+    public ResponseEntity<String> deleteVinylFromUser(
+            @PathVariable Long userId,
+            @PathVariable Long vinylId,
+            Principal principal) {  // Added Principal parameter
+
         System.out.println("deleteVinylFromUser with userId: " + userId);
+
         try {
+            // Authentication check
+            if (principal == null) {
+                return new ResponseEntity<>("Potrebna je prijava.", HttpStatus.FORBIDDEN);
+            }
+
+            String loggedInUsername = principal.getName();
+
+            // Admin can delete any vinyl, users can only delete their own
+            if (!"admin".equals(loggedInUsername)) {
+                // Get logged-in user's ID to compare with path userId
+                User loggedInUser = userService.getUserByUsername(loggedInUsername)
+                        .orElseThrow(() -> new SecurityException("Korisnik nije pronađen"));
+
+                if (!loggedInUser.getUserId().equals(userId)) {
+                    return new ResponseEntity<>("Nemate ovlaštenje za brisanje ovog vinila", HttpStatus.FORBIDDEN);
+                }
+            }
+
             userVinylsService.deleteVinylFromUser(userId, vinylId);
-            return new ResponseEntity<>("Ploca uspjesno obrisana.", HttpStatus.OK);
+            return new ResponseEntity<>("Ploča uspješno obrisana.", HttpStatus.OK);
+
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
