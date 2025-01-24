@@ -1,0 +1,108 @@
+.mypage-top-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mypage-top-content-button {
+    height: fit-content;
+    width: fit-content;
+    border: 1px solid #313131
+}
+
+.add-wishlist-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-wishlist-row > input {
+    border: 1px solid black;
+}
+
+.add-wishlist-genre {
+    max-width: 600px;
+}
+
+.add-wishlist-genre > .filter-category > .filter-category-container {
+    background-color: #f9f9f9;
+}
+
+.add-wishlist-genre > .filter-category > .filter-category-container > div{
+    border: 1px solid black;
+}
+
+#wishcards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wishcard {
+    width: 200px;
+    background-color: #313131;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.wishcard-image {
+    margin-top: 10px;
+}
+
+.card hr {
+    color:#f9f9f9
+}
+
+.wishcard-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wishcard-row > label {
+    color: white;
+}
+
+.delete-user-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #313131;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #313131;
+}
+
+.delete-user-username {
+    color: #fff;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+.delete-user-row > button {
+    background-color: #7c0000;
+    color: #fff;
+}
+
+#new-item-form {
+    color: #313131;
+    background-color: #e3e3e3;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor:auto;
+    align-self: center;
+    justify-self: center;
+    overflow-y: auto;
+    max-height: 100%;
+    display: grid;
+}
+
+.title {
+/*     background-color: #313131;
+    color: #f9f9f9; */
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 0;
+    width: fit-content;
+}

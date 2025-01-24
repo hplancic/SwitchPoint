@@ -1,0 +1,109 @@
+#offer-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.offer {
+    background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 5px solid #313131;
+    border-radius: 5px;
+}
+
+.offer-vinyls-wrap {
+
+}
+
+.offer-vinyls {
+    display: flex;
+    justify-self: center;
+}
+
+.offer-buttons {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cancel-button {
+    background-color: maroon;
+    color: #f9f9f9;
+    width: 100%;
+}
+
+.accept-button {
+    background-color: green;
+    color: #f9f9f9;
+    width: 100%;
+}
+
+.change-button {
+    background-color: dimgray;
+    color: #f9f9f9;
+    width: 100%;
+}
+
+.offer-switch-cards {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.offer-number-of-cards {
+    display:flex;
+    flex-direction: column;
+}
+
+.offer-number-of-cards > h4 {
+    margin: 0;
+    text-align: center;
+}
+
+hr {
+    color: #313131;
+}
+
+.offer-title {
+    background-color: #313131;
+    color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.offer-title:hover {
+    cursor: pointer;
+}
+
+.accepted {
+    background-color: #004c0f;
+}
+
+.declined {
+    background-color: #761200;
+}
+
+@media screen and (max-width: 640px ) {
+    .offer {
+        grid-template-columns: 1fr;
+    }
+    .offer-vinyls {
+        grid-row: 2;
+    }
+    .offer-switch-cards {
+        grid-row: 3;
+    }
+    .nudim-text {
+        grid-row: 4;
+    }
+    .second-offer-vinyls {
+        grid-row: 5;
+    }
+    .second-switch-cards {
+        grid-row: 6;
+    }
+    .offer-buttons {
+        grid-row: 7;
+    }
+}
