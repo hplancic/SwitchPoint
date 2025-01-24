@@ -5,7 +5,6 @@
 ***
 ## Opis projekta
 
-Ovaj projekt rezultat je timskog rada razvijenog u sklopu projektnog zadatka kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu.
 Cilj ovog projekta je izraditi platformu pod nazivom **VinylSwap** koja omogućava ljubiteljima gramofonskih ploča jednostavnu razmjenu ploča.
 Platforma će korisnicima omogućiti objavljivanje ploča koje žele zamijeniti, pregledavanje dostupnih ploča i zamjenu s drugim registriranim korisnicima.
 Registrirani korisnici mogu unositi detalje o pločama(izvođač, album, godina izdavanja, lokacije korištenjem OpenStreetMap usluge)
