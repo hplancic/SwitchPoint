@@ -1,7 +1,7 @@
 # SwitchPoint
 
 ### Link za deployanu web-aplikaciju: 
-  - https://switchpointx-3993d389768a.herokuapp.com/
+- https://switchpoint1-c39a98ff47c7.herokuapp.com/
 ***
 ## Opis projekta
 
