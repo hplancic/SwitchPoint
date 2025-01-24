@@ -1,0 +1,34 @@
+.searchForm {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 0 0 10px;
+    max-height: 5vh;
+}
+
+#searchInput {
+    padding: 10px;
+    width: 50%;
+    border-radius: 20px;
+    border: 1px solid #9d9d9d;
+}
+
+#searchButton {
+    border-radius: 5px;
+    border: 1px solid #9d9d9d;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#searchIcon {
+    background-color: #313131;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 991px /* Wide enough to fit two cards */) {
+    
+}
